@@ -1,0 +1,41 @@
+{
+  "generated": "2026-09-18T09:23:19.905Z",
+  "items": [
+    {
+      "image": "/images/gallery/cabin-mpv.jpg",
+      "width": 1024,
+      "height": 640,
+      "order": 0
+    },
+    {
+      "image": "/images/gallery/curbside-wait.jpg",
+      "width": 1024,
+      "height": 640,
+      "order": 1
+    },
+    {
+      "image": "/images/gallery/luggage-cart.jpg",
+      "width": 1024,
+      "height": 1280,
+      "order": 2
+    },
+    {
+      "image": "/images/gallery/name-sign.jpg",
+      "width": 1024,
+      "height": 512,
+      "order": 3
+    },
+    {
+      "image": "/images/gallery/terminal-walk.jpg",
+      "width": 1024,
+      "height": 512,
+      "order": 4
+    },
+    {
+      "image": "/images/gallery/trunk-loading.jpg",
+      "width": 1024,
+      "height": 1280,
+      "order": 5
+    }
+  ]
+}
