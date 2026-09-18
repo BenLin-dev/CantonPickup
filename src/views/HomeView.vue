@@ -1,4 +1,5 @@
 <script setup>
+import { computed, ref } from 'vue'
 import HeroSection from '@/components/HeroSection.vue'
 import TrustStrip from '@/components/TrustStrip.vue'
 import ProcessSteps from '@/components/ProcessSteps.vue'
@@ -7,11 +8,28 @@ import TestimonialWall from '@/components/TestimonialWall.vue'
 import VideoGallery from '@/components/VideoGallery.vue'
 import AppIcon from '@/components/AppIcon.vue'
 import { useSeo, useJsonLd } from '@/composables/useSeo'
-import { pages, homeServices, homeSteps, aboutAdvantages, ctaBands } from '@/data/content'
+import { pages, serviceCards, homeSteps, aboutAdvantages, ctaBands } from '@/data/content'
 import { site, seoKeywords } from '@/data/site'
 
 const page = pages.home
 useSeo(page)
+
+/**
+ * Three services are shown up front; the rest sit behind "More services".
+ * The featured set is the three highest-demand products, in the order they
+ * should be read — airport pickups first, because that is how most guests
+ * arrive at us.
+ */
+const featuredSlugs = ['airport-transfer', 'factory-visits', 'canton-fair-transfer']
+const showAllServices = ref(false)
+
+const featured = featuredSlugs
+  .map((slug) => serviceCards.find((s) => s.slug === slug))
+  .filter(Boolean)
+
+const hiddenCount = serviceCards.length - featured.length
+
+const shownServices = computed(() => (showAllServices.value ? serviceCards : featured))
 
 useJsonLd('home-service', {
   '@context': 'https://schema.org',
@@ -21,6 +39,60 @@ useJsonLd('home-service', {
   inLanguage: 'en',
   description: page.description,
   keywords: seoKeywords.join(', '),
+})
+
+/**
+ * LocalBusiness block for the home page — gives Google a single canonical
+ * source of NAP info, opening hours and the service area so the knowledge
+ * graph has something concrete to attach to. `knowsAbout` mirrors the 20
+ * keywords in `seo和推广关键词.txt`.
+ */
+useJsonLd('home-business', {
+  '@context': 'https://schema.org',
+  '@type': 'LocalBusiness',
+  '@id': `${site.domain}#business`,
+  name: site.name,
+  legalName: site.legalName,
+  url: site.domain,
+  telephone: site.phoneRaw,
+  email: site.email,
+  image: `${site.domain}/images/hero/guangzhou-bluehour.jpg`,
+  description: page.description,
+  priceRange: '$$',
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: site.addressLine,
+    addressLocality: site.city,
+    addressRegion: site.region,
+    addressCountry: site.country,
+  },
+  areaServed: site.areaServed.split(' · ').map((name) => ({
+    '@type': 'City',
+    name,
+  })),
+  openingHoursSpecification: [
+    {
+      '@type': 'OpeningHoursSpecification',
+      dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
+      opens: '00:00',
+      closes: '23:59',
+    },
+  ],
+  knowsAbout: [
+    'Guangzhou airport transfer',
+    'Guangzhou Baiyun Airport (CAN) pickup',
+    'Guangzhou South Railway Station transfer',
+    'English speaking driver Guangzhou',
+    'Private driver Guangzhou',
+    'Private driver Foshan',
+    'Full day private driver Guangzhou',
+    'Private driver for factory visits Guangzhou',
+    'Private driver for Foshan factory visits',
+    'Guangzhou to Foshan private transfer',
+    'Foshan sourcing trip private driver',
+    'Private driver in China',
+  ],
+  sameAs: [site.whatsappLink],
 })
 </script>
 
@@ -32,6 +104,7 @@ useJsonLd('home-service', {
     eyebrow="Guangzhou · Foshan · Pearl River Delta"
     :title="page.h1"
     :lead="page.lead"
+    :badges="['Fixed price per vehicle', 'English-speaking driver', 'Door to door', 'Flights tracked']"
     priority
     :meta="[
       { icon: 'shield', text: 'Licensed, professional drivers' },
@@ -59,30 +132,77 @@ useJsonLd('home-service', {
         <p class="eyebrow">What we do</p>
         <h2>Our Services</h2>
         <p class="lead">
-          Everything you need to move around Guangzhou and Foshan — from a single
-          airport pickup to a driver who stays with you for the whole trip.
+          Private driver and car service in Guangzhou for your business trip, factory visit
+          or holiday — from a single airport pickup to a driver who stays with you all week.
         </p>
       </div>
 
-      <div class="grid grid--4">
-        <RouterLink
-          v-for="(s, i) in homeServices"
-          :key="s.title"
-          :to="s.to"
-          class="card card--link"
-          v-reveal="{ delay: i * 70 }"
+      <div class="grid grid--3">
+        <article
+          v-for="(s, i) in serviceCards"
+          :key="s.slug"
+          class="service-card"
+          :class="{ 'service-card--collapsed': !shownServices.includes(s) }"
+          v-reveal="{ delay: (i % 3) * 80 }"
         >
-          <span class="icon-badge">
-            <AppIcon :name="s.icon" :size="24" :stroke="1.9" />
-          </span>
-          <h3 class="card__title">{{ s.title }}</h3>
-          <p class="pill" style="align-self: flex-start">{{ s.subtitle }}</p>
-          <p class="card__text">{{ s.text }}</p>
-          <span class="card__sub">
-            Learn more
-            <AppIcon name="arrow" :size="15" :stroke="2.2" />
-          </span>
-        </RouterLink>
+          <div class="service-card__media">
+            <img :src="s.image" :alt="s.imageAlt" loading="lazy" decoding="async" />
+            <span v-if="s.badge" class="service-card__badge">{{ s.badge }}</span>
+            <span class="service-card__label">
+              <AppIcon :name="s.icon" :size="15" :stroke="2.1" />
+              {{ s.label }}
+            </span>
+          </div>
+
+          <div class="service-card__body">
+            <h3 class="service-card__title">
+              <RouterLink :to="s.to">{{ s.title }}</RouterLink>
+            </h3>
+
+            <p class="service-card__text">{{ s.text }}</p>
+
+            <ul class="service-card__points">
+              <li v-for="p in s.points" :key="p">
+                <AppIcon name="check" :size="15" :stroke="2.6" />
+                {{ p }}
+              </li>
+            </ul>
+
+            <div class="service-card__actions">
+              <RouterLink :to="s.to" class="btn btn--outline btn--sm">
+                Learn more
+                <AppIcon name="arrow" :size="15" :stroke="2.2" class="btn__arrow" />
+              </RouterLink>
+              <RouterLink
+                :to="{ path: '/contact', query: { service: s.slug }, hash: '#quote' }"
+                class="btn btn--sm"
+              >
+                Book Now
+              </RouterLink>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <!-- the remaining services stay in the markup so the links are crawlable;
+           only their visibility is toggled -->
+      <div class="btn-row mt-32" style="justify-content: center">
+        <button
+          type="button"
+          class="btn btn--outline btn--lg services-toggle"
+          :aria-expanded="showAllServices"
+          aria-controls="our-services"
+          @click="showAllServices = !showAllServices"
+        >
+          <template v-if="showAllServices">
+            Show fewer services
+          </template>
+          <template v-else>
+            More services
+            <span class="services-toggle__count">+{{ hiddenCount }}</span>
+            <AppIcon name="arrow" :size="17" :stroke="2.2" class="btn__arrow" />
+          </template>
+        </button>
       </div>
     </div>
   </section>
@@ -157,7 +277,7 @@ useJsonLd('home-service', {
         </p>
       </div>
 
-      <TestimonialWall :batch="6" />
+      <TestimonialWall />
     </div>
   </section>
 

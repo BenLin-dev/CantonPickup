@@ -10,6 +10,7 @@
  *
  *   public/images/vehicles/  ->  public/data/vehicles.json
  *   public/images/reviews/   ->  public/data/reviews.json
+ *   public/images/gallery/   ->  public/data/gallery.json
  *   public/videos/           ->  public/data/videos.json
  *
  * It runs automatically before `npm run dev` and `npm run build`, so the usual
@@ -48,16 +49,46 @@
  *   review text. Reviews without a photo (text only) go in
  *   `public/data/reviews.manual.json` as a plain array of the same objects.
  *
+ * GALLERY — `public/images/gallery/`
+ *   The "See Us in Action" photo wall. Copy a photo in and it appears; there
+ *   is nothing else to create. No sidecar, no caption, no alt text, no
+ *   ordering file — deliberately. A wall that asks for a JSON file per photo
+ *   is a wall that stays at six photos.
+ *
+ *     public/images/gallery/arrivals-hall.jpg
+ *     public/images/gallery/boot-loaded.jpg
+ *
+ *   Order is filename order, so a numeric prefix pins it (`01-…`, `02-…`).
+ *   Files starting with `_` are skipped, which is the agreed way to park a
+ *   reference or work-in-progress image in a content folder.
+ *
  * VIDEOS — `public/videos/`
- *   my-trip.mp4                      a video file
+ *   Everything about a clip lives here — the file *or* the link, its poster
+ *   and its caption — so there is one folder to open and one naming rule to
+ *   remember. Three files share a basename:
+ *
+ *   my-trip.mp4 / my-trip.json       a video file + its caption
  *   my-trip.jpg                      its poster image (optional)
- *   my-trip.json                     optional caption sidecar
  *
- *   Videos hosted elsewhere (YouTube, Vimeo, a CDN) go in
- *   `public/data/videos.manual.json`:
+ *   Videos hosted elsewhere (YouTube, Vimeo, a CDN) use the same rule. There
+ *   is no local video file, so the sidecar carries the address instead:
  *
- *     [ { "title": "Airport pickup", "url": "https://youtu.be/…",
- *         "poster": "/images/hero/airport.jpg" } ]
+ *     public/videos/airport-pickup.json
+ *     public/videos/airport-pickup.jpg
+ *
+ *       { "title": "Clients pickup at Guangzhou Baiyun airport",
+ *         "caption": "Meet & greet in the arrivals hall",
+ *         "url": "https://youtube.com/shorts/…" }
+ *
+ *   `url` may be a watch link, a `youtu.be/` short link, a `/shorts/` link or
+ *   an `/embed/` link — the gallery rewrites all of them into an embeddable
+ *   URL, and works out `provider` on its own. Give a `.json` with a `url` but
+ *   no picture and the card still appears, without a poster. `poster` may
+ *   also be set to any other path under `public/`. `order` (lower first)
+ *   pins a clip's position; without it the files are shown alphabetically.
+ *
+ *   Nothing is hard-coded in the Vue component, and nothing needs to be
+ *   registered twice.
  */
 
 import { readdir, readFile, writeFile, mkdir, stat } from 'node:fs/promises'
@@ -71,6 +102,7 @@ const pub = join(root, 'public')
 
 const VEHICLE_DIR = join(pub, 'images', 'vehicles')
 const REVIEW_DIR = join(pub, 'images', 'reviews')
+const GALLERY_DIR = join(pub, 'images', 'gallery')
 const VIDEO_DIR = join(pub, 'videos')
 const DATA_DIR = join(pub, 'data')
 
@@ -109,6 +141,45 @@ function titleize(slug) {
     .filter(Boolean)
     .map((w) => (w.length <= 3 && /^[a-z]+$/.test(w) ? w.toUpperCase() : w[0].toUpperCase() + w.slice(1)))
     .join(' ')
+}
+
+/**
+ * Pixel size of a JPEG, read straight out of its header.
+ *
+ * The photo wall is a CSS multi-column layout, and a multi-column layout has
+ * to know how tall each item is *before* it can decide which column the item
+ * lands in. With `height: auto` the browser only learns that once the bytes
+ * arrive, so it lays the wall out twice: photos visibly hop between columns as
+ * they load, and the section twitches every time the visitor scrolls past it.
+ *
+ * Declaring `width`/`height` on the `<img>` fixes that — the browser derives
+ * the aspect ratio, reserves the space, and the columns are stable from the
+ * first paint. It costs one header scan here, and saves the CLS.
+ *
+ * Only JPEG is parsed (that is what our image pipeline emits, so it is every
+ * file in the folder in practice). Anything else returns `null` and simply
+ * ships without dimensions — still displayed, just not pre-sized.
+ */
+async function jpegSize(file) {
+  const buf = await readFile(file).catch(() => null)
+  if (!buf || buf[0] !== 0xff || buf[1] !== 0xd8) return null
+
+  let i = 2
+  while (i < buf.length - 9) {
+    if (buf[i] !== 0xff) {
+      i++
+      continue
+    }
+    const marker = buf[i + 1]
+    // SOF0–SOF15 carry the frame size. C4/C8/CC are DHT/JPG/DAC, not SOF.
+    const isSof = marker >= 0xc0 && marker <= 0xcf && ![0xc4, 0xc8, 0xcc].includes(marker)
+    if (isSof) return { height: buf.readUInt16BE(i + 5), width: buf.readUInt16BE(i + 7) }
+
+    const len = buf.readUInt16BE(i + 2)
+    if (len < 2) return null
+    i += 2 + len
+  }
+  return null
 }
 
 /** Split "byd-han__2.jpg" into { slug: 'byd-han', order: 2 }. */
@@ -266,6 +337,45 @@ async function scanReviews() {
   note(`reviews.json   — ${items.length} reviews (${manualItems.length} from reviews.manual.json)`)
 }
 
+/* ------------------------------------------------------------------- gallery */
+
+/**
+ * The photo wall — `public/images/gallery/`, in and out.
+ *
+ * A record carries nothing but the path. No `alt`, no `caption`, no `size`,
+ * and deliberately so: this section is a contact sheet of what a working day
+ * looks like, and the only thing a photo should have to be is *in the folder*.
+ * Anything that needs a sentence underneath it belongs in a review or an
+ * article instead — those have somewhere to put the sentence.
+ *
+ * Order is the filename, compared numerically, so `10-x.jpg` follows `9-x.jpg`
+ * rather than `1-x.jpg`. A `NN-` prefix is therefore enough to pin a position.
+ */
+async function scanGallery() {
+  await ensureDir(GALLERY_DIR)
+  const files = await listDir(GALLERY_DIR)
+
+  const names = files
+    .filter((file) => IMAGE_EXT.has(extname(file).toLowerCase()))
+    .filter((file) => !basename(file).startsWith('_'))
+    .sort((a, b) => a.localeCompare(b, 'en', { numeric: true, sensitivity: 'base' }))
+
+  const items = []
+  for (const file of names) {
+    const size = await jpegSize(join(GALLERY_DIR, file))
+    items.push({
+      image: `/images/gallery/${file}`,
+      // pre-sizing only — see the note on `jpegSize`. Not a description.
+      ...(size ? { width: size.width, height: size.height } : {}),
+      order: items.length,
+    })
+  }
+
+  await writeJson(join(DATA_DIR, 'gallery.json'), { generated: new Date().toISOString(), items })
+  const sized = items.filter((i) => i.width).length
+  note(`gallery.json   — ${items.length} photos, ${sized} pre-sized (filename order, no captions)`)
+}
+
 /* -------------------------------------------------------------------- videos */
 
 async function scanVideos() {
@@ -291,38 +401,38 @@ async function scanVideos() {
   }
 
   const items = []
+  let seq = 0
   for (const [base, entry] of [...byBase.entries()].sort((a, b) => a[0].localeCompare(b[0]))) {
-    if (!entry.video) continue
     const meta = entry.meta || {}
+    const url = meta.url || ''
+
+    // A clip qualifies when there is a file to play *or* a sidecar that says
+    // where to find it. A stray .jpg or .txt on its own is not a clip.
+    if (!entry.video && !url) continue
+
     items.push({
-      id: base,
+      id: meta.id || base,
       title: meta.title || titleize(base),
       caption: meta.caption || '',
-      src: `/videos/${entry.video}`,
-      poster: entry.poster ? `/videos/${entry.poster}` : meta.poster || '',
-      url: '',
-      order: meta.order ?? items.length,
+      // `src` plays locally, `url` gets embedded — exactly one is ever set
+      src: entry.video ? `/videos/${entry.video}` : meta.src || '',
+      poster: meta.poster || (entry.poster ? `/videos/${entry.poster}` : ''),
+      url,
+      provider: meta.provider || guessProvider(url),
+      order: meta.order ?? seq++,
     })
   }
   items.sort((a, b) => a.order - b.order)
 
-  // externally hosted videos (YouTube / Vimeo / a CDN) are hand-authored
-  const manual = await readJson(join(DATA_DIR, 'videos.manual.json'))
-  const manualItems = Array.isArray(manual) ? manual : (manual?.items ?? [])
-  const external = manualItems.map((v, n) => ({
-    id: v.id || `external-${n + 1}`,
-    title: v.title || 'Video',
-    caption: v.caption || '',
-    src: v.src || '',
-    poster: v.poster || '',
-    url: v.url || '',
-    provider: v.provider || '',
-    order: v.order ?? 1000 + n,
-  }))
+  await writeJson(join(DATA_DIR, 'videos.json'), { generated: new Date().toISOString(), items })
+  note(`videos.json    — ${items.length} videos (${items.filter((v) => v.url).length} external links)`)
+}
 
-  const all = [...items, ...external].sort((a, b) => a.order - b.order)
-  await writeJson(join(DATA_DIR, 'videos.json'), { generated: new Date().toISOString(), items: all })
-  note(`videos.json    — ${all.length} videos (${external.length} external links)`)
+/** Fill in `provider` so a sidecar only ever needs a url. */
+function guessProvider(url) {
+  if (/youtu\.?be/.test(url)) return 'youtube'
+  if (/vimeo\.com/.test(url)) return 'vimeo'
+  return ''
 }
 
 /* --------------------------------------------------------------------- utils */
@@ -338,9 +448,11 @@ async function main() {
   console.log('\nScanning assets…')
   await ensureDir(DATA_DIR)
   await ensureDir(REVIEW_DIR)
+  await ensureDir(GALLERY_DIR)
   await ensureDir(VIDEO_DIR)
   await scanVehicles()
   await scanReviews()
+  await scanGallery()
   await scanVideos()
   console.log('Done. Drop new files in the folders and re-run `npm run assets`.\n')
 }

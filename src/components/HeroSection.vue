@@ -13,6 +13,11 @@ const props = defineProps({
   title: { type: String, required: true },
   lead: { type: String, default: '' },
   meta: { type: Array, default: () => [] },
+  /**
+   * Short trust pills shown directly under the lead — e.g. "Fixed price".
+   * Pass plain strings; they render as a wrapped row of chips.
+   */
+  badges: { type: Array, default: () => [] },
   crumbs: { type: Array, default: () => [] },
   imageAlt: { type: String, default: '' },
   priority: { type: Boolean, default: false },
@@ -51,6 +56,13 @@ const props = defineProps({
           <p v-if="eyebrow" class="eyebrow">{{ eyebrow }}</p>
           <h1 class="hero__title">{{ title }}</h1>
           <p v-if="lead" class="hero__lead">{{ lead }}</p>
+
+          <ul v-if="badges.length" class="hero__badges">
+            <li v-for="b in badges" :key="b" class="hero__badge">
+              <AppIcon name="check" :size="15" :stroke="2.8" />
+              {{ b }}
+            </li>
+          </ul>
 
           <div class="btn-row">
             <slot name="actions" />

@@ -2,15 +2,20 @@
 import HeroSection from '@/components/HeroSection.vue'
 import CtaBand from '@/components/CtaBand.vue'
 import AppIcon from '@/components/AppIcon.vue'
-import { useSeo } from '@/composables/useSeo'
+import { useSeo, useBreadcrumbs } from '@/composables/useSeo'
 import { pages, aboutAdvantages, aboutPrinciples, aboutStory, ctaBands } from '@/data/content'
 import { site } from '@/data/site'
 
 const page = pages.about
 useSeo(page)
 
+useBreadcrumbs('about', [
+  { name: 'Home', path: '/' },
+  { name: 'About Us', path: null },
+])
+
 const facts = [
-  { label: 'Based in', value: 'Foshan, Guangdong' },
+  { label: 'Based in', value: 'Baiyun District, Guangzhou' },
   { label: 'Working since', value: '2019' },
   { label: 'Languages', value: 'English & Mandarin' },
   { label: 'Availability', value: site.hours },

@@ -6,10 +6,11 @@
 export const pages = {
   home: {
     path: '/',
-    title: 'CantonPickup | Guangzhou & Foshan Airport Transfers & Private Driver',
+    title: 'Guangzhou Airport Transfer & Private Driver | CantonPickup',
     description:
-      'English-speaking private driver and airport transfer service in Guangzhou and Foshan. Baiyun Airport pickup, Guangzhou South Station transfers, full-day private drivers and factory visit transport. Fixed prices, no hidden fees.',
-    keywords: 'guangzhou airport transfer, private driver guangzhou, guangzhou to foshan private transfer',
+      'English-speaking private driver and airport transfer service in Guangzhou and Foshan. Baiyun Airport (CAN) pickup, Guangzhou South Station transfer, full-day private drivers and factory visit transport. Fixed prices, no hidden fees.',
+    keywords:
+      'guangzhou airport transfer, guangzhou airport pickup, guangzhou baiyun airport transfer, CAN airport transfer, private driver guangzhou, guangzhou private driver, english speaking driver guangzhou, full day private driver guangzhou, guangzhou to foshan private transfer, foshan private transfer from guangzhou, private driver for factory visits guangzhou, foshan sourcing trip private driver',
     h1: 'Your Ride in Foshan Made Simple',
     lead:
       'Airport transfers, private drivers and factory visits. Reliable, safe and easy — so you can focus on what matters.',
@@ -28,11 +29,11 @@ export const pages = {
 
   privateDriver: {
     path: '/private-driver',
-    title: 'Private Driver in Guangzhou & Foshan — Half Day & Full Day | CantonPickup',
+    title: 'Private Driver Guangzhou & Foshan — Half & Full Day | CantonPickup',
     description:
-      'Hire an English-speaking private driver in Guangzhou or Foshan by the half day, full day or multi-day. Fuel, tolls, parking and a comfortable vehicle included. Flexible itineraries for business and sourcing trips.',
+      'Hire an English-speaking private driver in Guangzhou or Foshan by the half day, full day or multi-day. Fuel, tolls, parking and a comfortable vehicle included. Flexible itineraries for business, factory visits and sourcing trips.',
     keywords:
-      'private driver guangzhou, guangzhou private driver, private driver foshan, english speaking driver guangzhou, full day private driver guangzhou, full day private driver foshan, private driver in china',
+      'private driver guangzhou, guangzhou private driver, private driver foshan, english speaking driver guangzhou, full day private driver guangzhou, full day private driver foshan, private driver in china, private driver for factory visits guangzhou',
     h1: 'Your Own Driver When You Need One',
     lead:
       'Flexible hourly and daily private driver service in Guangzhou and Foshan — for business, meetings, or your own schedule.',
@@ -40,35 +41,68 @@ export const pages = {
 
   factoryVisits: {
     path: '/factory-visits',
-    title: 'Factory Visit Transport in Foshan & Guangzhou | CantonPickup',
+    title: 'Factory Visit Driver — Guangzhou & Foshan | CantonPickup',
     description:
-      'Private driver and transport for factory visits and sourcing trips in Foshan, Guangzhou and the Pearl River Delta. Visit several factories in one day with an English-speaking driver who knows the area.',
+      'Private driver and transport for factory visits and sourcing trips in Foshan, Guangzhou and the Pearl River Delta. See several suppliers in one day with an English-speaking driver who knows the industrial districts.',
     keywords:
-      'private driver for factory visits guangzhou, private driver for foshan factory visits, foshan sourcing trip private driver, private driver foshan',
-    h1: 'Visit Factories with Confidence',
-    lead: 'We arrange transport and coordinate your factory visits in Foshan and nearby areas.',
+      'private driver for factory visits guangzhou, private driver for foshan factory visits, foshan sourcing trip private driver, private driver foshan, english speaking driver guangzhou, guangzhou to foshan private transfer',
+    h1: 'Business Travel & Factory Visits, Handled',
+    lead: 'We plan the route, drive it, and keep your supplier visits running to time.',
+  },
+
+  intercityTransfer: {
+    path: '/intercity-transfer',
+    title: 'Guangzhou to Foshan, Shenzhen & the Pearl River Delta | CantonPickup',
+    description:
+      'Fixed-price intercity car transfer from Guangzhou to Foshan, Dongguan, Zhongshan, Shenzhen, Zhuhai and Huizhou. One flat rate per vehicle in both directions, tolls and parking included, English-speaking driver.',
+    keywords:
+      'guangzhou to foshan private transfer, foshan private transfer from guangzhou, guangzhou to shenzhen private transfer, guangzhou to dongguan car service, intercity transfer guangdong, guangzhou to zhuhai private car',
+    h1: 'Between Cities, Without the Guesswork',
+    lead: 'One flat price per vehicle in both directions — doors covered from your hotel to theirs.',
+  },
+
+  cantonFairTransfer: {
+    path: '/canton-fair-transfer',
+    title: 'Canton Fair Transfer & Private Driver, Guangzhou | CantonPickup',
+    description:
+      'Canton Fair transport with a private driver — hotel to the Pazhou exhibition complex and back, both the April and October sessions. Fixed price per vehicle, early drop-off, English-speaking driver, 24/7.',
+    keywords:
+      'canton fair transfer, canton fair private driver, canton fair transport guangzhou, pazhou exhibition centre transfer, canton fair pickup service',
+    h1: 'Canton Fair, Minus the Queue',
+    lead: 'Fixed-price hotel transfers to the Pazhou complex for both the April and October sessions.',
+  },
+
+  multiDaySourcingTour: {
+    path: '/multi-day-sourcing-tour',
+    title: 'Multi-Day Sourcing Tour Private Driver | CantonPickup',
+    description:
+      'Multi-day private driver for sourcing trips in Guangzhou, Foshan and the Pearl River Delta. Keep the same driver and vehicle for three to ten days, with a discounted daily rate and an itinerary that moves with your week.',
+    keywords:
+      'multi day private driver guangzhou, foshan sourcing trip private driver, sourcing tour private driver china, china sourcing trip driver, private driver for factory visits guangzhou',
+    h1: 'One Driver for Your Whole Sourcing Trip',
+    lead: 'Three days or three weeks — the same car, the same driver, a better daily rate.',
   },
 
   vehiclesPricing: {
     path: '/vehicles-pricing',
-    title: 'Vehicles & Pricing — Sedan and MPV Hire | CantonPickup',
+    title: 'Vehicles & Pricing — Guangzhou Airport Transfer | CantonPickup',
     description:
-      'See our fleet and transparent Guangzhou & Foshan car hire prices. Sedan airport pickup from $57, seven-seat MPV from $77, half-day hire from $97 and full-day hire from $187 per vehicle.',
+      'See our fleet and transparent Guangzhou & Foshan car hire prices. Sedan airport pickup from $57, seven-seat MPV from $77, half-day hire from $97 and full-day hire from $187 per vehicle. All in USD, no hidden fees.',
     keywords:
-      'guangzhou car hire with driver, guangzhou mpv hire, foshan airport transfer price, guangzhou airport transfer price',
+      'guangzhou airport transfer price, foshan airport transfer price, guangzhou car hire with driver, guangzhou mpv hire, guangzhou to foshan private transfer, private driver guangzhou',
     h1: 'The Right Vehicle for Your Trip',
     lead: 'From sedan transfers to larger groups, we have the right vehicle for you.',
   },
 
   about: {
     path: '/about',
-    title: 'About Us — A Local Team in Foshan | CantonPickup',
+    title: 'About Us — A Local Team in Guangzhou | CantonPickup',
     description:
-      'CantonPickup is a small, friendly local team based in Foshan providing safe, reliable transport and local support for international visitors and business travellers in the Pearl River Delta.',
+      'CantonPickup is a small, friendly local team based in Baiyun District, Guangzhou, providing safe, reliable transport and local support for international visitors and business travellers in the Pearl River Delta.',
     keywords: 'english speaking driver guangzhou, private driver in china, cantonpickup',
     h1: 'A Local Team You Can Count On',
     lead:
-      "We're a small, friendly team based in Foshan, with a focus on providing safe and reliable transportation and local support for international visitors.",
+      "We're a small, friendly team based in Baiyun District, Guangzhou, with a focus on providing safe and reliable transportation and local support for international visitors.",
   },
 
   faqs: {
@@ -84,12 +118,44 @@ export const pages = {
 
   contact: {
     path: '/contact',
-    title: 'Contact & Get a Quote | CantonPickup Guangzhou & Foshan',
+    title: 'Contact CantonPickup — Get a Quote | Guangzhou & Foshan',
     description:
-      'Tell us your travel details and get a fast quote for airport transfers, private drivers and factory visit transport in Guangzhou and Foshan. WhatsApp, WeChat or email — we reply quickly.',
-    keywords: 'guangzhou airport transfer quote, book private driver guangzhou',
+      'Tell us your travel details and get a fast quote for Guangzhou airport transfers, private drivers and factory visit transport. WhatsApp, WeChat or email — we reply within 30 minutes.',
+    keywords:
+      'guangzhou airport transfer quote, book private driver guangzhou, contact cantonpickup, guangzhou private driver booking',
     h1: 'Get in Touch',
     lead: "Tell us your travel details and we'll send you a quote as soon as possible.",
+  },
+
+  /**
+   * Blog index page — the SEO config used to live inline in BlogIndexView.vue;
+   * it now lives here so the SSR pass (entry-server.js) can produce the same
+   * `<title>` / `<meta>` / `BreadcrumbList` it does for every other page.
+   */
+  blog: {
+    path: '/blog',
+    title: 'Guangzhou Travel & Sourcing Guides | CantonPickup',
+    description:
+      'Practical guides for buyers and business travellers in Guangzhou and the Pearl River Delta: wholesale markets, factory clusters, airport arrival, the Canton Fair and Chinese business etiquette.',
+    keywords:
+      'guangzhou sourcing guide, guangzhou wholesale markets, guangzhou factory visit guide, canton fair guide, guangzhou travel tips, private driver in china',
+    h1: 'Guangzhou Travel & Sourcing Guides',
+    lead: 'Practical advice for buyers and business travellers.',
+  },
+
+  /**
+   * Social proof page (header link: "Reviews"). SEO config used to live
+   * inline in SocialProofView.vue; lifted here for SSR parity.
+   */
+  reviews: {
+    path: '/reviews',
+    title: 'Reviews, Photos & Track Record | CantonPickup',
+    description:
+      'Guest reviews, photographs from real pickups and factory trips, and the figures behind our Guangzhou and Foshan private car service.',
+    keywords:
+      'cantonpickup reviews, guangzhou private car reviews, guangzhou airport pickup photos, trusted guangzhou driver, english speaking driver guangzhou',
+    h1: 'Reviews, Photos & Track Record',
+    lead: 'Reviews, photographs and the figures behind our service.',
   },
 
   privacy: {
@@ -125,7 +191,7 @@ export const privacySections = [
   {
     title: 'Who we are',
     body: [
-      'CantonPickup is a private car and driver service based in Foshan, Guangdong, providing airport transfers, private driver hire and factory visit transport in Guangzhou, Foshan and the surrounding Pearl River Delta.',
+      'CantonPickup is a private car and driver service based in Baiyun District, Guangzhou, Guangdong, providing airport transfers, private driver hire and factory visit transport in Guangzhou, Foshan and the surrounding Pearl River Delta.',
       'For the purposes of the EU General Data Protection Regulation (GDPR) and comparable laws, we are the controller of the personal information described below.',
     ],
   },
@@ -267,37 +333,132 @@ export const termsSections = [
   },
 ]
 
-/** Home page — the four headline services. */
-export const homeServices = [
+/**
+ * Home page — the six services we offer.
+ *
+ * Each entry drives three things at once: the card in the home page grid,
+ * the Services dropdown in the header (via `src/data/site.js`) and the
+ * detail page it links to. Text here is deliberately our own wording —
+ * `badge` and `label` are the two chips that sit on the photo.
+ */
+export const serviceCards = [
   {
+    slug: 'airport-transfer',
+    /** Pre-selected value on the quote form when the visitor taps Book Now. */
+    quote: 'Airport transfer — arrival',
     icon: 'plane',
     title: 'Airport Transfer',
-    subtitle: 'Pick up & drop off',
+    badge: 'Most popular',
+    label: 'Baiyun Airport · CAN',
     to: '/airport-transfer',
-    text: 'Baiyun Airport and railway station transfers with flight monitoring and a driver waiting for you.',
+    image: '/images/services/airport-transfer.jpg',
+    imageAlt: 'Terminal building at Guangzhou Baiyun International Airport',
+    text: 'Land, clear immigration, and find your driver waiting in the arrivals hall with a sign. We follow your flight, so a late landing never costs you anything extra.',
+    points: [
+      'Flight monitored in real time — no charge if you land late',
+      '60 minutes of free waiting time after your flight lands',
+      'Meet & greet with a name sign inside the terminal',
+    ],
   },
   {
+    slug: 'private-driver',
+    /** Pre-selected value on the quote form when the visitor taps Book Now. */
+    quote: 'Full-day private driver',
     icon: 'user',
     title: 'Private Driver',
-    subtitle: 'Half day / Full day',
+    badge: 'By the hour or day',
+    label: 'Half day · Full day',
     to: '/private-driver',
-    text: 'Hire a car and English-speaking driver by the hour, day or week — your schedule, your itinerary.',
+    image: '/images/services/private-driver.jpg',
+    imageAlt: 'Private driver waiting beside an MPV at night in Guangzhou',
+    text: 'Keep a car and an English-speaking driver for as long as you need and set the itinerary yourself. We handle the driving, the parking and the directions.',
+    points: [
+      '5-hour half day or 10-hour full day, per vehicle',
+      'Fuel, tolls and city parking already included',
+      'Change your plans during the day — no penalty',
+    ],
   },
   {
+    slug: 'factory-visits',
+    /** Pre-selected value on the quote form when the visitor taps Book Now. */
+    quote: 'Business travel & factory visit transport',
     icon: 'factory',
-    title: 'Factory Visits',
-    subtitle: 'Meetings & suppliers',
+    title: 'Business Travel & Factory Visit',
+    badge: 'Sourcing trips',
+    label: 'Foshan · Dongguan',
     to: '/factory-visits',
-    text: 'Reliable transport between hotels, showrooms and factories across Foshan and the Pearl River Delta.',
+    image: '/images/services/business-travel.jpg',
+    imageAlt: 'Modern manufacturing plant visited on a sourcing trip',
+    text: 'Visit two, three or four suppliers in a single day. We group the stops by district so your time goes into meetings rather than into traffic.',
+    points: [
+      'Route planned around the factory list you send us',
+      'Driver waits at every stop with the air conditioning on',
+      'Local calls and basic translation on hand',
+    ],
   },
   {
-    icon: 'shield',
-    title: 'Business Support',
-    subtitle: 'Local help & coordination',
-    to: '/contact',
-    text: 'Local coordination, translation and practical help to make your trip run smoothly.',
+    slug: 'intercity-transfer',
+    /** Pre-selected value on the quote form when the visitor taps Book Now. */
+    quote: 'Intercity transfer',
+    icon: 'route',
+    title: 'Intercity Transfer',
+    badge: 'Fixed route prices',
+    label: 'Pearl River Delta',
+    to: '/intercity-transfer',
+    image: '/images/services/intercity-transfer.jpg',
+    imageAlt: 'Highway interchange at dusk in Guangdong province',
+    text: 'One flat price between Guangzhou and the cities around it — the same rate in both directions, with tolls and parking built into the fare.',
+    points: [
+      'Foshan, Dongguan, Zhongshan, Shenzhen, Zhuhai, Huizhou',
+      'Door to door, luggage handled by the driver',
+      'Sedan or 7-seat MPV — one price per vehicle, not per person',
+    ],
+  },
+  {
+    slug: 'canton-fair-transfer',
+    /** Pre-selected value on the quote form when the visitor taps Book Now. */
+    quote: 'Canton Fair transfer',
+    icon: 'calendar',
+    title: 'Canton Fair Transfer',
+    badge: 'April & October',
+    label: 'Pazhou · Canton Fair',
+    to: '/canton-fair-transfer',
+    image: '/images/services/canton-fair-transfer.jpg',
+    imageAlt: 'Exhibition centre in Guangzhou during the Canton Fair',
+    text: 'The fair is the busiest fortnight of the year in Guangzhou. Book ahead and skip the taxi queue at the end of a long day on the show floor.',
+    points: [
+      'Hotel to the Pazhou complex for both sessions',
+      'Early drop-off before the halls open',
+      'Same driver for the whole fair, on request',
+    ],
+  },
+  {
+    slug: 'multi-day-sourcing-tour',
+    /** Pre-selected value on the quote form when the visitor taps Book Now. */
+    quote: 'Multi-day private driver / sourcing tour',
+    icon: 'briefcase',
+    title: 'Multi-Day Sourcing Tour',
+    badge: 'Best daily rate',
+    label: '3–10 days',
+    to: '/multi-day-sourcing-tour',
+    image: '/images/services/multi-day-sourcing-tour.jpg',
+    imageAlt: 'Aerial view of the Pearl River Delta industrial region',
+    text: 'A driver and vehicle that stay with you for the whole trip. Popular with buyers working through a long supplier list across several cities.',
+    points: [
+      'The same driver and vehicle every day',
+      'Discounted daily rate from the third day onwards',
+      'Itinerary reshaped as your week develops',
+    ],
   },
 ]
+
+/** Slugs in the order they appear on the home page and in the nav dropdown. */
+export const serviceSlugs = serviceCards.map((s) => s.slug)
+
+/** Look-up used by the header, the footer and the "other services" strips. */
+export function serviceBySlug(slug) {
+  return serviceCards.find((s) => s.slug === slug)
+}
 
 /** Reusable trust strip. */
 export const trustStrip = [
@@ -385,7 +546,7 @@ export const driverIncluded = [
 export const driverUseCases = [
   { icon: 'briefcase', title: 'Business meetings', text: 'On time, every time.' },
   { icon: 'factory', title: 'Factory visits', text: 'Multiple stops in one day.' },
-  { icon: 'map', title: 'City tours', text: 'See Guangzhou and Foshan.' },
+  { icon: 'map', title: 'Multi-stop days', text: 'Several addresses, one driver.' },
   { icon: 'building', title: 'Hotel transfers', text: 'Door-to-door, luggage handled.' },
 ]
 
@@ -421,9 +582,172 @@ export const factorySteps = [
   { n: 4, title: 'Wrap up', text: 'Back to your hotel, the airport or your next meeting.' },
 ]
 
+/** Intercity transfer page — why book a fixed route with us. */
+export const intercityAdvantages = [
+  {
+    icon: 'route',
+    title: 'One Price Per Vehicle',
+    text: 'A single rate covers the whole car in both directions. No meter, no multiplier, no surprise at the toll booth.',
+  },
+  {
+    icon: 'wallet',
+    title: 'Tolls Already Included',
+    text: 'Highway tolls and parking are part of the quoted fare, so the figure we confirm is the figure you pay.',
+  },
+  {
+    icon: 'clock',
+    title: 'An Honest Arrival Window',
+    text: 'We build the timing around real rush-hour traffic, not around what a map says the distance is.',
+  },
+  {
+    icon: 'shield',
+    title: 'Door to Door',
+    text: 'We collect you at your hotel, airport or station and drop you at the address you give us — luggage handled at both ends.',
+  },
+]
+
+/** Intercity transfer page — booking flow. */
+export const intercitySteps = [
+  { n: 1, title: 'Send both addresses', text: 'Tell us where you are starting and where you need to be.' },
+  { n: 2, title: 'Get a flat quote', text: 'A fixed price per vehicle for the route, not for the traffic.' },
+  { n: 3, title: 'Confirm your pickup', text: 'Driver name, phone number and vehicle details in advance.' },
+  { n: 4, title: 'Travel door to door', text: 'Tolls and parking included — nothing to settle on the road.' },
+]
+
+/** Canton Fair page — why book with us during show week. */
+export const cantonFairAdvantages = [
+  {
+    icon: 'calendar',
+    title: 'Both Fair Sessions',
+    text: 'We cover the April and October sessions, including the peak days when the taxi queue is at its worst.',
+  },
+  {
+    icon: 'clock',
+    title: 'Early Drop-Off',
+    text: 'Leave before the halls open and arrive with time to register, instead of joining the scrum at the gate.',
+  },
+  {
+    icon: 'wallet',
+    title: 'A Price We Hold',
+    text: 'Transport prices in Guangzhou move fast during show week. We quote one figure before you travel and keep it.',
+  },
+  {
+    icon: 'users',
+    title: 'Room for Samples',
+    text: 'A 7-seat MPV carries catalogues, samples and colleagues — the boot stays yours for the whole day.',
+  },
+]
+
+/** Canton Fair page — how a fair day works. */
+export const cantonFairSteps = [
+  { n: 1, title: 'Tell us your dates', text: 'Send your hotel, the fair session and your party size.' },
+  { n: 2, title: 'Choose your pattern', text: 'Daily return, one-way drop, or a driver on standby all day.' },
+  { n: 3, title: 'Meet your driver', text: 'The same pickup point each morning — or a name sign if you prefer.' },
+  { n: 4, title: 'Leave without queuing', text: 'Your driver waits away from the taxi rank at the end of the day.' },
+]
+
+/** Multi-day sourcing tour page — why buyers keep the same driver. */
+export const sourcingAdvantages = [
+  {
+    icon: 'briefcase',
+    title: 'One Driver Throughout',
+    text: 'No repeating your requirements every morning. Your driver learns your suppliers, your schedule and your preferences.',
+  },
+  {
+    icon: 'wallet',
+    title: 'A Better Daily Rate',
+    text: 'From the third day onwards the per-day price drops, and the whole itinerary is quoted as one figure before you fly.',
+  },
+  {
+    icon: 'factory',
+    title: 'Route Rebuilt Daily',
+    text: 'Supplier confirmations arrive late. Send us the evening changes and tomorrow\u2019s route is redrawn around them.',
+  },
+  {
+    icon: 'shield',
+    title: 'A Base on Wheels',
+    text: 'Samples, catalogues and laptops stay in the vehicle with you between stops rather than in a hotel room.',
+  },
+]
+
+/** Multi-day sourcing tour page — planning flow. */
+export const sourcingSteps = [
+  { n: 1, title: 'Share your outline', text: 'Cities, dates and roughly which suppliers you want to see.' },
+  { n: 2, title: 'We plan the days', text: 'Visits grouped by district, sent back as a day-by-day draft.' },
+  { n: 3, title: 'Adjust as you go', text: 'Confirmations and cancellations are normal — send changes overnight.' },
+  { n: 4, title: 'Settle at the end', text: 'A deposit confirms the trip; the balance is paid afterwards.' },
+]
+
+/**
+ * Canton Fair page — the three ways visitors usually book.
+ *
+ * The figures are the published city rates from `pricing` in `site.js`
+ * (point-to-point, half day, full day), not a show-week surcharge: the price
+ * we quote before the fair is the price charged during it.
+ */
+export const cantonFairOptions = [
+  {
+    icon: 'route',
+    title: 'One-way drop',
+    hours: 'Hotel ↔ Pazhou',
+    from: 57,
+    mpv: 77,
+    text: 'A single run to the complex in the morning, or back to your hotel at the end of a session.',
+  },
+  {
+    icon: 'clock',
+    title: 'Half day',
+    hours: '5 hours / 120 km',
+    from: 97,
+    mpv: 127,
+    text: 'One visit to the halls with your driver waiting nearby — handy if you also have a lunch appointment.',
+  },
+  {
+    icon: 'calendar',
+    title: 'Full day on standby',
+    hours: '10 hours / 250 km',
+    from: 187,
+    mpv: 247,
+    text: 'Your driver stays with you all day, so you can leave the halls for a client meeting and come back.',
+  },
+]
+
+/**
+ * Multi-day sourcing tour page — a sample week.
+ * Deliberately illustrative: real routes are built around the buyer's own
+ * supplier list, and the districts named are the ones we drive every week.
+ */
+export const sourcingSampleDays = [
+  {
+    day: 'Day 1',
+    title: 'Arrival & orientation',
+    text: 'Airport pickup, hotel check-in, then a short drive past your first supplier so you know the way in tomorrow.',
+  },
+  {
+    day: 'Day 2',
+    title: 'Foshan — Shunde & Nanhai',
+    text: 'Furniture, hardware and lighting suppliers, grouped so the day is spent in meetings rather than on the ring road.',
+  },
+  {
+    day: 'Day 3',
+    title: 'Foshan — Chancheng',
+    text: 'Ceramics, sanitary ware and tiles. Sample collections usually go straight into the boot for the ride home.',
+  },
+  {
+    day: 'Day 4',
+    title: 'Guangzhou markets',
+    text: 'Baiyun and Panyu wholesale markets, with the driver on hand to carry, hold and load what you buy.',
+  },
+  {
+    day: 'Day 5',
+    title: 'Follow-ups & departure',
+    text: 'Second meetings with the shortlist, a last look at samples, then the airport with everything checked in.',
+  },
+]
+
 /** About page — why choose us. */
 export const aboutAdvantages = [
-  { icon: 'map', title: 'Local Expertise', text: 'Based in Foshan, working across the region daily.' },
+  { icon: 'map', title: 'Local Expertise', text: 'Based in Baiyun District, Guangzhou, working across the region daily.' },
   { icon: 'shield', title: 'Reliable Service', text: 'On-time pickups and a driver who keeps in touch.' },
   { icon: 'wallet', title: 'Fair Transparent Pricing', text: 'Quoted up front, with no hidden extras.' },
   { icon: 'chat', title: 'Customer-First Support', text: 'Real people answering, 24 hours a day.' },
@@ -526,6 +850,84 @@ export const faqGroups = [
     ],
   },
   {
+    id: 'intercity',
+    title: 'Intercity Transfer',
+    items: [
+      {
+        q: 'Do you charge the same in both directions?',
+        a: 'Yes. Our intercity prices are one-way fares and cost the same whichever way you travel — Guangzhou to Shenzhen is the same price as Shenzhen to Guangzhou. Tolls, fuel and parking are included.',
+      },
+      {
+        q: 'Which cities do you cover on fixed routes?',
+        a: 'Foshan, Dongguan, Zhongshan, Shenzhen, Zhuhai and Huizhou all have published fixed prices from Guangzhou. Anywhere else in Guangdong is quoted individually — send us both addresses and we will come back with a figure, usually the same day.',
+      },
+      {
+        q: 'How long does Guangzhou to Shenzhen take?',
+        a: 'Around two hours in normal traffic, and closer to three if you travel in Friday evening peak. We give you a realistic arrival window when you book rather than a best-case number that falls apart on the day.',
+      },
+      {
+        q: 'Can we add a stop on the way?',
+        a: 'Yes. A short stop costs nothing extra; if it adds meaningful distance or time we tell you the difference before you confirm — never afterwards.',
+      },
+      {
+        q: 'Is a return trip cheaper than two one-way fares?',
+        a: 'If your driver waits for you at the far end, we price the day as a full-day hire, which is usually better value than the two fares plus waiting time. Just tell us your plan and we will recommend whichever works out cheaper.',
+      },
+    ],
+  },
+  {
+    id: 'cantonfair',
+    title: 'Canton Fair',
+    items: [
+      {
+        q: 'How early should I book Canton Fair transport?',
+        a: 'As early as you can. Vehicles and drivers in Guangzhou are booked out across the April and October sessions, and rates rise sharply in the two weeks beforehand. A month ahead is comfortable; a fortnight ahead still usually works.',
+      },
+      {
+        q: 'Where exactly do you drop us at the fair?',
+        a: 'We drop you at the entrance closest to your hall at the Pazhou complex and agree an evening pickup point that avoids the main taxi queue. Your driver sends a pinned location on WeChat or WhatsApp so you always know where to walk.',
+      },
+      {
+        q: 'Can the driver wait for us all day?',
+        a: 'Yes — a full-day hire keeps the vehicle and driver with you, so you can leave for a meeting or lunch and come back without rebooking. Most visitors find a daily return works out cheaper; we will tell you honestly which suits your plans.',
+      },
+      {
+        q: 'Can you collect us from the airport on the same trip?',
+        a: 'Yes, and it is one of our most common combinations. Send your flight number along with the fair dates and we will plan the whole stay — including an early-morning arrival on the first day of the show.',
+      },
+      {
+        q: 'What happens if the fair runs late?',
+        a: 'Sessions often overrun after a busy day and your driver will wait. Overtime is charged at the standard hourly rate for the vehicle you booked, and your driver always tells you before you pass the included hours.',
+      },
+    ],
+  },
+  {
+    id: 'sourcing',
+    title: 'Multi-Day Sourcing Tours',
+    items: [
+      {
+        q: 'How many days do most buyers book?',
+        a: 'Three to five days covers most Foshan and Guangzhou sourcing trips. Buyers working across several cities often book a week or more, and we keep the same driver and vehicle throughout so nothing has to be explained twice.',
+      },
+      {
+        q: 'Is there a discount for longer bookings?',
+        a: 'Yes. Three days or more is charged at a lower daily rate than single-day hire, and we quote the whole itinerary as one figure so you can budget before you fly rather than adding up receipts at the end.',
+      },
+      {
+        q: 'Can we visit factories in different cities on consecutive days?',
+        a: 'Absolutely — that is exactly what this service is for. Foshan, Dongguan, Zhongshan and Shenzhen are all within a couple of hours of Guangzhou, and we plan each day around one cluster of suppliers so you are not crossing the delta twice.',
+      },
+      {
+        q: 'What happens if a supplier cancels at short notice?',
+        a: 'Tell your driver the evening before and we rebuild the day — a different factory, a market visit, or an earlier return to your hotel. Re-planning inside your booked hours costs nothing.',
+      },
+      {
+        q: 'Do we pay per day or per kilometre?',
+        a: 'Per day. Your daily rate covers the vehicle, the driver, fuel, tolls and city parking for the hours booked. Extra hours beyond the agreed day are charged at the published overtime rate, and your driver will tell you before you reach the limit.',
+      },
+    ],
+  },
+  {
     id: 'pricing',
     title: 'Pricing & Payment',
     items: [
@@ -535,7 +937,7 @@ export const faqGroups = [
       },
       {
         q: 'Are tolls and parking included?',
-        a: 'Yes — fuel, tolls and parking within the city area are included in the quoted price. Remote-area surcharges and airport parking beyond the included waiting time are listed separately and always agreed in advance.',
+        a: 'Yes — fuel, tolls and parking within the city area are included in the quoted price. Other extras — overtime, extra distance, or a destination beyond our intercity fixed routes — are listed on the Vehicles & Pricing page and always agreed in advance.',
       },
       {
         q: 'How do I pay?',
@@ -753,6 +1155,21 @@ export const ctaBands = {
   vehicles: {
     title: 'Different needs, same great service.',
     text: 'Not sure which vehicle suits your trip? Send us the details and we will advise.',
+    button: 'Get a Quote',
+  },
+  intercity: {
+    title: 'Crossing the delta?',
+    text: 'Send us both addresses and we will quote one flat price per vehicle — tolls included.',
+    button: 'Get a Quote',
+  },
+  cantonFair: {
+    title: 'Coming to the Canton Fair?',
+    text: 'Send your dates, hotel and flight number and we will plan the whole stay.',
+    button: 'Get a Quote',
+  },
+  sourcing: {
+    title: 'Planning a sourcing trip?',
+    text: 'Share your supplier list and travel dates and we will draft a day-by-day route.',
     button: 'Get a Quote',
   },
   about: {

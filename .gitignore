@@ -7,7 +7,8 @@ node_modules/
 dist/
 *.local
 
-# logsnpm-debug.log*
+# logs
+npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
@@ -27,3 +28,10 @@ Thumbs.db
 # verify artifacts (qa shots, screenshots)
 评价图工具/qa/shots/
 评价图工具/out/chrome-profile/
+
+# image-pipeline work areas
+# `_src/` holds the raw AI renders that scripts/make-service-images.py reads from.
+# They are 2.5 MB apiece and the converted output is committed, so the sources
+# stay local. `_tmp_*` is scratch and must never be committed.
+_src/
+_tmp_*/

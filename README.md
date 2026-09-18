@@ -35,7 +35,7 @@ run `npm run assets` (or restart `npm run dev`), and the site picks them up.
 | --- | --- | --- |
 | `public/images/vehicles/` | `public/data/vehicles.json` | Vehicle photos |
 | `public/images/reviews/` | `public/data/reviews.json` | Guest photos + captions |
-| `public/videos/` | `public/data/videos.json` | Video files (+ poster images) |
+| `public/videos/` | `public/data/videos.json` | Video files *or* YouTube/Vimeo links, + thumbnails |
 
 Detailed instructions live next to the folders:
 
@@ -76,15 +76,55 @@ is hand-authored and is *never* overwritten by the scanner.
 
 ### Videos
 
+Everything about a clip lives in `public/videos/` — **three files sharing a
+basename**. Poster and caption are both optional.
+
 ```
-public/videos/airport-pickup.mp4
-public/videos/airport-pickup.jpg      ← poster
-public/videos/airport-pickup.json     ← { "title": "...", "caption": "..." }
+public/videos/factory-day.mp4          ← a clip you host yourself
+public/videos/factory-day.jpg          ← thumbnail
+public/videos/factory-day.json         ← { "title": "...", "caption": "..." }
 ```
 
-Videos hosted on YouTube / Vimeo / a CDN go in
-`public/data/videos.manual.json`. When there are no videos at all, the video
-section removes itself from the page completely.
+Videos hosted on YouTube / Vimeo / a CDN use the same rule; there is no local
+file, so the `.json` carries the address instead:
+
+```
+public/videos/baiyun-airport-pickup.json
+public/videos/baiyun-airport-pickup.jpg
+```
+
+```json
+{
+  "title": "Clients pickup at Guangzhou Baiyun airport",
+  "caption": "Meet & greet in the arrivals hall",
+  "url": "https://youtube.com/shorts/DUJfKv6unPg",
+  "order": 1
+}
+```
+
+A `/watch?v=`, `youtu.be/`, `/shorts/`, `/embed/` or `/live/` link all work —
+the gallery rewrites them into an embeddable player URL and works out the
+provider itself. `poster` may point anywhere under `public/`, and `order`
+(lower first) pins a clip's position. Nothing is registered in a second place:
+drop the files in, and the next `npm run dev` / `npm run build` picks them up.
+
+Clips render **six at a time and load more as you scroll**, same as the review
+wall. When there are no videos at all, the video section removes itself from
+the page completely.
+
+The thumbnail for an external clip is a 16:9 image made with
+`scripts/make-video-poster.py`, which crops a photo to the card's aspect ratio
+and burns the CantonPickup badge into it — YouTube's own thumbnail for a Short
+carries the creator's burned-in captions, which do not belong on an English
+site:
+
+```bash
+python scripts/make-video-poster.py photo.jpg public/videos/baiyun-airport-pickup.jpg
+python scripts/make-video-poster.py --plain photo.jpg public/videos/baiyun-airport-pickup.jpg
+```
+
+`public/videos/PUT-VIDEOS-HERE.md` has the long version of all of this, and
+sits in the folder next to the files it describes.
 
 ---
 
@@ -116,7 +156,7 @@ quotes and charges in CNY.
 ### Which vehicles appear on the pricing page
 
 `featuredVehicles` in `src/data/site.js` lists the vehicles shown straight away
-on `/vehicles-pricing` — currently **Denza D9, Voyah Dreamer, Hongqi H9**. Every
+on `/vehicles-pricing` — currently **Denza D9, Voyah Dreamer, Hongqi E-QM5**. Every
 other vehicle in the fleet sits behind the "View all vehicles" button. Change
 that one array to promote a different trio.
 

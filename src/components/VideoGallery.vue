@@ -5,9 +5,19 @@ import AppIcon from './AppIcon.vue'
 /**
  * Video gallery.
  *
- * Reads `/data/videos.json`, which `scripts/scan-assets.mjs` builds from the
- * files in `public/videos/` plus any external links listed in
- * `public/data/videos.manual.json`. Nothing is hard-coded here.
+ * Nothing here is hard-coded: the component reads `/data/videos.json`, which
+ * `scripts/scan-assets.mjs` builds from whatever sits in `public/videos/` —
+ * a local clip plus its sidecar, or a sidecar that carries a YouTube / Vimeo
+ * link. One folder, one naming rule, no registry to update.
+ *
+ * Layout is a centred grid of portrait thumbnails. Short clips are shot
+ * vertically, so a 9:16 card shows the whole frame instead of letterboxing it
+ * into a wide band — and a small grid keeps the section from swallowing the
+ * page the way a pair of full-width 16:9 players did.
+ *
+ * Every clip is rendered; there is no scroll-batching here. Portraits are cheap
+ * to lay out, and a gallery that hides half its content until you scroll reads
+ * as broken on a phone.
  *
  * The whole section removes itself when there are no videos yet, so the page
  * never shows an empty shelf. Players are only created once a visitor clicks,
@@ -23,7 +33,12 @@ const props = defineProps({
 const items = ref([])
 const playing = ref('')
 
+/** `limit` is a hard cap on how many clips appear. */
 const shown = computed(() => (props.limit ? items.value.slice(0, props.limit) : items.value))
+
+function key(item) {
+  return item.id || item.src || item.url
+}
 
 onMounted(async () => {
   try {
@@ -42,7 +57,10 @@ onMounted(async () => {
 function embedUrl(item) {
   const url = item.url || ''
   if (item.provider === 'youtube' || /youtu\.?be/.test(url)) {
-    const id = url.match(/(?:v=|youtu\.be\/|embed\/)([\w-]{6,})/)?.[1]
+    // Covers /watch?v=, youtu.be/, /embed/ and /shorts/ — a Short that keeps
+    // its share URL plays nowhere, because youtube.com/shorts/… refuses to
+    // render in a frame.
+    const id = url.match(/(?:v=|youtu\.be\/|embed\/|shorts\/|live\/)([\w-]{6,})/)?.[1]
     if (id) return `https://www.youtube.com/embed/${id}?autoplay=1&rel=0`
   }
   if (item.provider === 'vimeo' || /vimeo\.com/.test(url)) {
@@ -53,7 +71,7 @@ function embedUrl(item) {
 }
 
 function play(item) {
-  playing.value = item.id || item.src || item.url
+  playing.value = key(item)
   if (typeof window !== 'undefined') {
     window.dataLayer = window.dataLayer || []
     window.dataLayer.push({ event: 'video_play', video_title: item.title })
@@ -70,16 +88,16 @@ function play(item) {
         <p v-if="lead" class="lead">{{ lead }}</p>
       </div>
 
-      <div class="grid grid--2">
+      <div class="reel">
         <figure
           v-for="(v, i) in shown"
-          :key="v.id || v.src || i"
-          style="margin: 0"
-          v-reveal="{ delay: i * 80 }"
+          :key="key(v)"
+          class="reel__item"
+          v-reveal="{ delay: (i % 5) * 60 }"
         >
-          <div class="video-card">
+          <div class="reel-card">
             <!-- playing -->
-            <template v-if="playing === (v.id || v.src || v.url)">
+            <template v-if="playing === key(v)">
               <video
                 v-if="v.src"
                 :src="v.src"
@@ -101,25 +119,17 @@ function play(item) {
             <button
               v-else
               type="button"
-              class="video-card__poster"
+              class="reel-card__poster"
               :style="v.poster ? { backgroundImage: `url('${v.poster}')` } : {}"
               :aria-label="`Play video: ${v.title}`"
               @click="play(v)"
             >
-              <span class="video-card__play">
-                <AppIcon name="play" :size="26" :stroke="2" />
+              <span class="reel-card__play">
+                <AppIcon name="play" :size="20" :stroke="2.2" />
               </span>
+              <span v-if="v.title" class="reel-card__caption">{{ v.title }}</span>
             </button>
           </div>
-
-          <figcaption v-if="v.title || v.caption" style="margin-top: 12px">
-            <strong style="display: block; font-size: 0.98rem; color: var(--c-800)">
-              {{ v.title }}
-            </strong>
-            <span v-if="v.caption" style="font-size: 0.86rem; color: var(--c-muted)">
-              {{ v.caption }}
-            </span>
-          </figcaption>
         </figure>
       </div>
     </div>

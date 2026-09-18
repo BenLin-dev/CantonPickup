@@ -70,3 +70,34 @@ export function useJsonLd(id, data) {
     el?.remove()
   })
 }
+
+/**
+ * Adds a BreadcrumbList JSON-LD block for the current page.
+ *
+ * Pass an ordered array of `{ name, path }`:
+ *   - `name` is the visible label that Google will show.
+ *   - `path` is the site-relative path with a leading slash (e.g. `/about`).
+ *   - The final entry (the page itself) should pass `null` for `path` so it is
+ *     treated as the current page, not a self-link.
+ *
+ * Example:
+ *   useBreadcrumbs([
+ *     { name: 'Home', path: '/' },
+ *     { name: 'Airport Transfer', path: '/airport-transfer' },
+ *     { name: 'Guangzhou Baiyun (CAN)', path: null },
+ *   ])
+ */
+export function useBreadcrumbs(id, crumbs) {
+  if (typeof document === 'undefined') return
+  const list = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: crumbs.map((c, i) => ({
+      '@type': 'ListItem',
+      position: i + 1,
+      name: c.name,
+      ...(c.path ? { item: site.domain + c.path } : {}),
+    })),
+  }
+  useJsonLd(`bc-${id}`, list)
+}

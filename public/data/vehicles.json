@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-18T03:28:57.142Z",
+  "generated": "2026-09-18T09:23:19.887Z",
   "items": [
     {
       "slug": "denza-d9",
@@ -41,21 +41,21 @@
     },
     {
       "slug": "hongqi",
-      "name": "Hongqi H9",
-      "models": "Hongqi H9 or similar",
+      "name": "Hongqi E-QM5",
+      "models": "Hongqi E-QM5 or similar",
       "image": "/images/vehicles/hongqi.jpg",
       "images": [
         "/images/vehicles/hongqi.jpg"
       ],
       "passengers": "1–3 passengers",
       "luggage": "2–3 suitcases",
-      "tag": "Executive",
-      "description": "A flagship Chinese executive sedan with generous rear legroom — a smart choice for client pickups and airport arrivals.",
+      "tag": "EV sedan",
+      "description": "Hongqi’s fully electric executive sedan — quiet on the motorway, smooth in city traffic and surprisingly spacious in the back. A popular choice for VIP airport pickups and executive transfers.",
       "features": [
+        "Electric drive",
         "Rear seat comfort",
         "Phone charging",
-        "Bottled water",
-        "English-speaking driver"
+        "Bottled water"
       ]
     },
     {

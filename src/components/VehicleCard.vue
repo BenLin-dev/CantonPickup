@@ -28,6 +28,25 @@ const gallery = computed(() => {
 
 const active = ref(0)
 const current = computed(() => gallery.value[active.value] || gallery.value[0])
+
+/**
+ * Push `select_vehicle` when the card's "Get a quote" button is clicked.
+ * Stronger intent signal than the generic `cta_click` — the visitor picked a
+ * specific vehicle. Google Ads can use this to optimise campaigns toward the
+ * cars that actually drive leads.
+ */
+function trackSelectVehicle() {
+  if (typeof window === 'undefined') return
+  window.dataLayer = window.dataLayer || []
+  window.dataLayer.push({
+    event: 'select_vehicle',
+    vehicle_slug: props.vehicle.slug || '',
+    vehicle_name: props.vehicle.name || '',
+    vehicle_tag: props.vehicle.tag || '',
+    page_path: window.location.pathname,
+    page_title: document.title,
+  })
+}
 </script>
 
 <template>
@@ -83,7 +102,7 @@ const current = computed(() => gallery.value[active.value] || gallery.value[0])
         </button>
       </div>
 
-      <RouterLink to="/contact" class="btn btn--outline btn--sm">
+      <RouterLink to="/contact" class="btn btn--outline btn--sm" @click="trackSelectVehicle">
         Get a quote
         <AppIcon name="arrow" :size="16" :stroke="2.2" class="btn__arrow" />
       </RouterLink>

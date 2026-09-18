@@ -4,7 +4,7 @@ import HeroSection from '@/components/HeroSection.vue'
 import FaqAccordion from '@/components/FaqAccordion.vue'
 import CtaBand from '@/components/CtaBand.vue'
 import AppIcon from '@/components/AppIcon.vue'
-import { useSeo, useJsonLd } from '@/composables/useSeo'
+import { useSeo, useJsonLd, useBreadcrumbs } from '@/composables/useSeo'
 import { pages, faqGroups } from '@/data/content'
 import { site } from '@/data/site'
 
@@ -36,6 +36,11 @@ useJsonLd('faq-all', {
     }))
   ),
 })
+
+useBreadcrumbs('faqs', [
+  { name: 'Home', path: '/' },
+  { name: 'FAQs', path: null },
+])
 </script>
 
 <template>

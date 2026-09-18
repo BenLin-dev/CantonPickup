@@ -4,7 +4,7 @@ import VehicleFleet from '@/components/VehicleFleet.vue'
 import FaqAccordion from '@/components/FaqAccordion.vue'
 import CtaBand from '@/components/CtaBand.vue'
 import AppIcon from '@/components/AppIcon.vue'
-import { useSeo, useJsonLd } from '@/composables/useSeo'
+import { useSeo, useJsonLd, useBreadcrumbs } from '@/composables/useSeo'
 import { pages, driverOptions, driverIncluded, driverUseCases, faqGroups, ctaBands } from '@/data/content'
 import { site } from '@/data/site'
 import { money } from '@/utils/price'
@@ -23,6 +23,30 @@ useJsonLd('faq-driver', {
     acceptedAnswer: { '@type': 'Answer', text: i.a },
   })),
 })
+
+useJsonLd('service-private-driver', {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  '@id': `${site.domain}/private-driver#service`,
+  name: 'Private Driver in Guangzhou & Foshan',
+  serviceType: 'PrivateDriverHire',
+  description: page.description,
+  url: `${site.domain}/private-driver`,
+  provider: { '@id': `${site.domain}#business` },
+  areaServed: [
+    { '@type': 'City', name: 'Guangzhou' },
+    { '@type': 'City', name: 'Foshan' },
+    { '@type': 'City', name: 'Dongguan' },
+    { '@type': 'City', name: 'Shenzhen' },
+  ],
+  offers: { '@type': 'Offer', priceCurrency: 'USD', price: '97', url: `${site.domain}/vehicles-pricing` },
+})
+
+useBreadcrumbs('private-driver', [
+  { name: 'Home', path: '/' },
+  { name: 'Services', path: '/airport-transfer' },
+  { name: 'Private Driver', path: null },
+])
 </script>
 
 <template>

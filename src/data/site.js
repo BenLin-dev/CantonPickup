@@ -4,7 +4,14 @@
  * Everything a non-developer might want to change lives here:
  * contact details, navigation, the fleet list, the price table and the
  * SEO keyword set. Page copy lives in `content.js`.
+ *
+ * NOTE: `scripts/prerender.mjs` imports this file with plain Node ESM (to read
+ * `site.domain` for sitemap.xml), so every relative import here must carry an
+ * explicit `.js` extension — Node does not do extension guessing.
  */
+
+import { serviceCards } from './content.js'
+import { routePages } from './routePages.js'
 
 export const site = {
   name: 'CantonPickup',
@@ -50,40 +57,55 @@ export const site = {
   },
 }
 
-/** Primary navigation. `children` renders as a dropdown. */
+/**
+ * One-line descriptions for the Services dropdown.
+ *
+ * The six services themselves live in `content.js` (`serviceCards`) so the
+ * home page grid, the header dropdown and the footer column can never drift
+ * apart — adding a service there adds it in all three places.
+ */
+const serviceNavDesc = {
+  'airport-transfer': 'Baiyun Airport & railway station pickups',
+  'private-driver': 'Half day, full day and multi-day hire',
+  'factory-visits': 'Supplier meetings across the delta',
+  'intercity-transfer': 'Fixed prices between Guangdong cities',
+  'canton-fair-transfer': 'Pazhou exhibition centre, April & October',
+  'multi-day-sourcing-tour': 'One driver for your whole trip',
+}
+
+/** Primary navigation. `children` renders as a dropdown.
+ *
+ *  NOTE (2026-09-18): the blog / guides entry was removed from the header
+ *  navigation per the client. Visitors still reach the guides via the footer
+ *  (`SiteFooter.vue` → "Guides" → /blog) and via cross-links inside service
+ *  and home pages. The /blog page itself remains prerendered and listed in
+ *  the sitemap so Google can still crawl it. */
 export const nav = [
   { label: 'Home', to: '/' },
   {
     label: 'Services',
     to: '/airport-transfer',
-    children: [
-      {
-        label: 'Airport Transfer',
-        to: '/airport-transfer',
-        desc: 'Baiyun Airport & railway station pickups',
-      },
-      {
-        label: 'Private Driver',
-        to: '/private-driver',
-        desc: 'Half day, full day and multi-day hire',
-      },
-      {
-        label: 'Factory Visits',
-        to: '/factory-visits',
-        desc: 'Transport for sourcing and factory tours',
-      },
-      {
-        label: 'Business Support',
-        to: '/contact',
-        desc: 'Local help, coordination and translation',
-      },
-    ],
+    children: serviceCards.map((s) => ({
+      label: s.title,
+      to: s.to,
+      desc: serviceNavDesc[s.slug] || '',
+    })),
   },
   { label: 'Vehicles & Pricing', to: '/vehicles-pricing' },
+  { label: 'Reviews', to: '/reviews' },
   { label: 'About Us', to: '/about' },
   { label: 'FAQs', to: '/faqs' },
   { label: 'Contact', to: '/contact' },
 ]
+
+/**
+ * Intercity route pages, grouped so the footer and the mobile drawer can offer
+ * them without repeating the list in two places.
+ */
+export const routeNav = routePages.map((r) => ({
+  label: `Guangzhou to ${r.city}`,
+  to: `/${r.slug}`,
+}))
 
 /**
  * Fleet — the fallback list used when `/data/vehicles.json` has not loaded.
@@ -123,15 +145,15 @@ export const fleet = [
   },
   {
     slug: 'hongqi',
-    name: 'Hongqi H9',
-    models: 'Hongqi H9 or similar',
+    name: 'Hongqi E-QM5',
+    models: 'Hongqi E-QM5 or similar',
     image: '/images/vehicles/hongqi.jpg',
     passengers: '1–3 passengers',
     luggage: '2–3 suitcases',
-    tag: 'Executive',
+    tag: 'EV sedan',
     description:
-      'A flagship Chinese executive sedan with generous rear legroom — a smart choice for client pickups and airport arrivals.',
-    features: ['Rear seat comfort', 'Phone charging', 'Bottled water', 'English-speaking driver'],
+      'Hongqi’s fully electric executive sedan — quiet on the motorway, smooth in city traffic and surprisingly spacious in the back. A popular choice for VIP airport pickups and executive transfers.',
+    features: ['Electric drive', 'Rear seat comfort', 'Phone charging', 'Bottled water'],
   },
   {
     slug: 'gac-m8-white',
@@ -333,7 +355,9 @@ export const serviceOptions = [
   'Railway station transfer',
   'Half-day private driver',
   'Full-day private driver',
-  'Multi-day private driver',
-  'Factory visit transport',
+  'Multi-day private driver / sourcing tour',
+  'Business travel & factory visit transport',
+  'Intercity transfer',
+  'Canton Fair transfer',
   'Business support / other',
 ]

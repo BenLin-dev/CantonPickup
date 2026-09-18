@@ -4,7 +4,7 @@ import ProcessSteps from '@/components/ProcessSteps.vue'
 import FaqAccordion from '@/components/FaqAccordion.vue'
 import CtaBand from '@/components/CtaBand.vue'
 import AppIcon from '@/components/AppIcon.vue'
-import { useSeo, useJsonLd } from '@/composables/useSeo'
+import { useSeo, useJsonLd, useBreadcrumbs } from '@/composables/useSeo'
 import { pages, airportAdvantages, airportSteps, faqGroups, ctaBands } from '@/data/content'
 import { site, popularRoutes, vehicleOptions } from '@/data/site'
 import { money } from '@/utils/price'
@@ -23,6 +23,38 @@ useJsonLd('faq-airport', {
     acceptedAnswer: { '@type': 'Answer', text: i.a },
   })),
 })
+
+/**
+ * Service block for the airport transfer page. The service is `Service` with
+ * an `areaServed` that lists both airport and station catchments, and a
+ * `provider` reference back to the LocalBusiness on the home page.
+ */
+useJsonLd('service-airport', {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  '@id': `${site.domain}/airport-transfer#service`,
+  name: 'Guangzhou Baiyun Airport (CAN) Transfer & Pickup',
+  serviceType: 'AirportTransfer',
+  description: page.description,
+  url: `${site.domain}/airport-transfer`,
+  provider: { '@id': `${site.domain}#business` },
+  areaServed: [
+    { '@type': 'Airport', name: 'Guangzhou Baiyun International Airport (CAN)', iataCode: 'CAN' },
+    { '@type': 'Airport', name: 'Shenzhen Bao\u2019an International Airport (SZX)', iataCode: 'SZX' },
+    { '@type': 'TrainStation', name: 'Guangzhou South Railway Station' },
+    { '@type': 'TrainStation', name: 'Guangzhou East Railway Station' },
+    { '@type': 'City', name: 'Guangzhou' },
+    { '@type': 'City', name: 'Foshan' },
+    { '@type': 'City', name: 'Dongguan' },
+  ],
+  offers: { '@type': 'Offer', priceCurrency: 'USD', price: '57', url: `${site.domain}/vehicles-pricing` },
+})
+
+useBreadcrumbs('airport-transfer', [
+  { name: 'Home', path: '/' },
+  { name: 'Services', path: '/airport-transfer' },
+  { name: 'Airport Transfer', path: null },
+])
 </script>
 
 <template>

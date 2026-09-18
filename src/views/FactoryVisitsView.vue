@@ -2,14 +2,52 @@
 import HeroSection from '@/components/HeroSection.vue'
 import ProcessSteps from '@/components/ProcessSteps.vue'
 import VehicleFleet from '@/components/VehicleFleet.vue'
+import FaqAccordion from '@/components/FaqAccordion.vue'
 import CtaBand from '@/components/CtaBand.vue'
 import AppIcon from '@/components/AppIcon.vue'
-import { useSeo } from '@/composables/useSeo'
-import { pages, factorySupport, factorySteps, ctaBands } from '@/data/content'
+import { useSeo, useJsonLd, useBreadcrumbs } from '@/composables/useSeo'
+import { pages, factorySupport, factorySteps, faqGroups, ctaBands } from '@/data/content'
 import { site } from '@/data/site'
 
 const page = pages.factoryVisits
 useSeo(page)
+
+const faq = faqGroups.find((g) => g.id === 'factory')
+
+useJsonLd('faq-factory', {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faq.items.map((i) => ({
+    '@type': 'Question',
+    name: i.q,
+    acceptedAnswer: { '@type': 'Answer', text: i.a },
+  })),
+})
+
+useJsonLd('service-factory', {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  '@id': `${site.domain}/factory-visits#service`,
+  name: 'Private Driver for Factory Visits in Guangzhou & Foshan',
+  serviceType: 'FactoryVisitTransport',
+  description: page.description,
+  url: `${site.domain}/factory-visits`,
+  provider: { '@id': `${site.domain}#business` },
+  areaServed: [
+    { '@type': 'City', name: 'Foshan' },
+    { '@type': 'AdministrativeArea', name: 'Shunde District, Foshan' },
+    { '@type': 'AdministrativeArea', name: 'Nanhai District, Foshan' },
+    { '@type': 'AdministrativeArea', name: 'Chancheng District, Foshan' },
+    { '@type': 'City', name: 'Dongguan' },
+    { '@type': 'City', name: 'Guangzhou' },
+  ],
+})
+
+useBreadcrumbs('factory-visits', [
+  { name: 'Home', path: '/' },
+  { name: 'Services', path: '/airport-transfer' },
+  { name: 'Factory Visits', path: null },
+])
 
 const businessSupport = [
   'Interpreting and translation for meetings and negotiations',
@@ -35,11 +73,11 @@ const areas = [
     variant="media"
     image="/images/hero/factory.jpg"
     image-alt="Modern factory building in Foshan, China"
-    eyebrow="Factory Visits"
+    eyebrow="Business Travel & Factory Visits"
     :title="page.h1"
     :lead="page.lead"
     priority
-    :crumbs="[{ label: 'Home', to: '/' }, { label: 'Factory Visits' }]"
+    :crumbs="[{ label: 'Home', to: '/' }, { label: 'Business Travel & Factory Visits' }]"
   >
     <template #actions>
       <RouterLink to="/contact" class="btn btn--light btn--lg">
@@ -187,6 +225,22 @@ const areas = [
             style="border-radius: var(--r-xl); box-shadow: var(--sh-lg); width: 100%"
           />
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ---------------------------------------------------------------- faq -->
+  <section class="section section--soft">
+    <div class="container container--narrow">
+      <div class="section-head section-head--center" v-reveal>
+        <p class="eyebrow">Good to know</p>
+        <h2>Business Travel &amp; Factory Visit FAQs</h2>
+      </div>
+
+      <FaqAccordion :items="faq.items" id-prefix="fv" :open-index="0" />
+
+      <div class="btn-row mt-32" style="justify-content: center">
+        <RouterLink to="/faqs" class="btn btn--outline btn--sm">All frequently asked questions</RouterLink>
       </div>
     </div>
   </section>

@@ -11,13 +11,18 @@ import { site, serviceOptions } from '@/data/site'
  */
 const props = defineProps({
   compact: { type: Boolean, default: false },
+  /**
+   * Value to pre-select in "Service needed" — set from `?service=<slug>` on the
+   * contact page so a "Book Now" button does not make the visitor choose twice.
+   */
+  preselect: { type: String, default: '' },
 })
 
 const form = reactive({
   name: '',
   email: '',
   phone: '',
-  service: '',
+  service: serviceOptions.includes(props.preselect) ? props.preselect : '',
   date: '',
   flight: '',
   pickup: '',
@@ -31,6 +36,35 @@ const state = ref('idle') // idle | sending | ok | error
 const errorMsg = ref('')
 
 const today = computed(() => new Date().toISOString().slice(0, 10))
+
+/**
+ * SHA-256 of a normalised string, hex-encoded. Returns an empty string when
+ * the input is empty so the dataLayer payload never contains `null` keys.
+ * Uses `crypto.subtle` (browser-only); falls back to a plain string when run
+ * in a non-secure context where SubtleCrypto is unavailable (SSR, http://).
+ */
+async function sha256Hex(text) {
+  const v = String(text || '').trim().toLowerCase()
+  if (!v) return ''
+  if (typeof crypto === 'undefined' || !crypto.subtle) return ''
+  const bytes = new TextEncoder().encode(v)
+  const buf = await crypto.subtle.digest('SHA-256', bytes)
+  return Array.from(new Uint8Array(buf))
+    .map((b) => b.toString(16).padStart(2, '0'))
+    .join('')
+}
+
+/**
+ * Strip everything except digits and a leading `+`. Google Enhanced
+ * Conversions wants the phone in E.164 form (digits + optional leading `+`),
+ * so this is the safe minimum normalisation.
+ */
+function normalizePhone(raw) {
+  const trimmed = String(raw || '').trim()
+  const hasPlus = trimmed.startsWith('+')
+  const digits = trimmed.replace(/[^0-9]/g, '')
+  return (hasPlus ? '+' : '') + digits
+}
 
 async function submit() {
   if (state.value === 'sending') return
@@ -69,6 +103,14 @@ async function submit() {
 
     state.value = 'ok'
     if (typeof window !== 'undefined') {
+      // Enhanced Conversions: hash email and phone with SHA-256 so Google Ads
+      // can match the lead back to a click even with cookies stripped. The
+      // hash is computed locally — the raw values never leave the browser.
+      const [sha256_email, sha256_phone] = await Promise.all([
+        sha256Hex(form.email),
+        sha256Hex(normalizePhone(form.phone)),
+      ])
+
       window.dataLayer = window.dataLayer || []
       window.dataLayer.push({
         event: 'generate_lead',
@@ -76,6 +118,15 @@ async function submit() {
         service: form.service || 'unspecified',
         value: 1,
         currency: 'USD',
+        page_path: window.location.pathname,
+        page_title: document.title,
+        // `user_data` is what Google's Enhanced Conversions tag looks for;
+        // both keys must be SHA-256 hex (lowercase, no leading "0x"). Empty
+        // strings are dropped downstream by GTM's hash check.
+        user_data: {
+          ...(sha256_email ? { sha256_email } : {}),
+          ...(sha256_phone ? { sha256_phone } : {}),
+        },
       })
     }
   } catch (err) {
@@ -167,7 +218,13 @@ function reset() {
 
         <div class="field">
           <label for="q-date">Travel date</label>
-          <input id="q-date" v-model="form.date" name="travel_date" type="date" :min="today" />
+          <input
+            id="q-date"
+            v-model="form.date"
+            name="travel_date"
+            type="date"
+            :min="today"
+          />
         </div>
 
         <div class="field">

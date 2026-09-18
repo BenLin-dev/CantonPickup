@@ -107,8 +107,20 @@ function isActive(item) {
       </div>
     </div>
 
-    <!-- mobile drawer -->
-    <div id="mobile-menu" class="mobile-menu" :class="{ 'is-open': open }">
+    <!-- Mobile drawer, teleported to <body>.
+         The header sets `backdrop-filter`, and that creates a *containing
+         block*: a `position: fixed` descendant gets sized to the header's
+         own box instead of the viewport, so the drawer silently collapsed
+         to the height of the header. Teleporting also lifts it out of the
+         header's stacking context (`z-index: 60`), which was trapping the
+         drawer's `z-index: 90`. -->
+    <Teleport to="body">
+    <div
+      id="mobile-menu"
+      class="mobile-menu"
+      :class="{ 'is-open': open }"
+      @click.self="open = false"
+    >
       <div class="mobile-menu__bar">
         <RouterLink to="/" class="logo" @click="open = false">
           <svg class="logo__mark" viewBox="0 0 40 40" fill="none" aria-hidden="true">
@@ -179,5 +191,6 @@ function isActive(item) {
         </div>
       </div>
     </div>
+    </Teleport>
   </header>
 </template>

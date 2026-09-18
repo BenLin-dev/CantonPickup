@@ -6,7 +6,7 @@ import FaqAccordion from '@/components/FaqAccordion.vue'
 import CtaBand from '@/components/CtaBand.vue'
 import AppIcon from '@/components/AppIcon.vue'
 import PaymentIcons from '@/components/PaymentIcons.vue'
-import { useSeo, useJsonLd } from '@/composables/useSeo'
+import { useSeo, useJsonLd, useBreadcrumbs } from '@/composables/useSeo'
 import {
   pages,
   faqGroups,
@@ -35,6 +35,11 @@ useJsonLd('faq-pricing', {
   })),
 })
 
+useBreadcrumbs('vehicles-pricing', [
+  { name: 'Home', path: '/' },
+  { name: 'Vehicles & Pricing', path: null },
+])
+
 /** Two tables — one per vehicle class — so each price column stays readable. */
 const tables = [
   { key: 'sedan', ...pricing.sedan, image: '/images/vehicles/byd-han.jpg' },
@@ -43,13 +48,30 @@ const tables = [
 
 /** Route rows fall back to "On request" when we have no fixed price yet. */
 const price = moneyOr
+
+/**
+ * Push `cta_click` for the pricing hero / booking widget CTAs. The shared
+ * CtaBand and VehicleCard components have their own tracking; this covers
+ * the one-off `Book with a 20% deposit` link in the booking widget.
+ */
+function trackCta(label, destination) {
+  if (typeof window === 'undefined') return
+  window.dataLayer = window.dataLayer || []
+  window.dataLayer.push({
+    event: 'cta_click',
+    cta_label: label,
+    cta_destination: destination,
+    page_path: window.location.pathname,
+    page_title: document.title,
+  })
+}
 </script>
 
 <template>
   <HeroSection
     variant="media"
     image="/images/hero/fleet.jpg"
-    image-alt="Fleet of private hire vehicles in Foshan"
+    image-alt="Fleet of private hire vehicles in Guangzhou"
     eyebrow="Vehicles &amp; Pricing"
     :title="page.h1"
     :lead="page.lead"
@@ -57,7 +79,7 @@ const price = moneyOr
     :crumbs="[{ label: 'Home', to: '/' }, { label: 'Vehicles & Pricing' }]"
   >
     <template #actions>
-      <RouterLink to="/contact" class="btn btn--light btn--lg">
+      <RouterLink to="/contact" class="btn btn--light btn--lg" @click="trackCta('Get a Quote', '/contact')">
         Get a Quote
         <AppIcon name="arrow" :size="18" :stroke="2.2" class="btn__arrow" />
       </RouterLink>
@@ -354,7 +376,11 @@ const price = moneyOr
           </ul>
 
           <div class="btn-row mt-32">
-            <RouterLink to="/contact" class="btn btn--sm">Book with a 20% deposit</RouterLink>
+            <RouterLink
+              to="/contact"
+              class="btn btn--sm"
+              @click="trackCta('Book with a 20% deposit', '/contact')"
+            >Book with a 20% deposit</RouterLink>
             <a :href="site.whatsappLink" target="_blank" rel="noopener" class="btn btn--outline btn--sm">
               <AppIcon name="whatsapp" :size="17" :stroke="1.8" />
               Ask a question

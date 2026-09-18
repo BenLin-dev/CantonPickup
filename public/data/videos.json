@@ -1,4 +1,15 @@
 {
-  "generated": "2026-09-18T03:28:57.156Z",
-  "items": []
+  "generated": "2026-09-18T09:23:19.907Z",
+  "items": [
+    {
+      "id": "baiyun-airport-pickup",
+      "title": "Clients pickup at Guangzhou Baiyun airport",
+      "caption": "Meet & greet in the arrivals hall, then straight to the hotel",
+      "src": "",
+      "poster": "/videos/baiyun-airport-pickup.jpg",
+      "url": "https://youtube.com/shorts/_Ra8hbWH9K8?si=unsgLCNjEsFUPXOG",
+      "provider": "youtube",
+      "order": 1
+    }
+  ]
 }

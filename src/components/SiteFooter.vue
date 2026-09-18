@@ -2,7 +2,7 @@
 import { computed } from 'vue'
 import AppIcon from './AppIcon.vue'
 import PaymentIcons from './PaymentIcons.vue'
-import { site, nav } from '@/data/site'
+import { site, nav, routeNav } from '@/data/site'
 import { seoKeywords } from '@/data/site'
 
 const year = computed(() => new Date().getFullYear())
@@ -70,6 +70,8 @@ const topKeywords = seoKeywords.slice(0, 9)
         <div>
           <h4>Company</h4>
           <div class="footer__links">
+            <RouterLink to="/reviews">Reviews &amp; Photos</RouterLink>
+            <RouterLink to="/blog">Guides</RouterLink>
             <RouterLink to="/about">About Us</RouterLink>
             <RouterLink to="/faqs">FAQs</RouterLink>
             <RouterLink to="/contact">Contact</RouterLink>
@@ -103,6 +105,20 @@ const topKeywords = seoKeywords.slice(0, 9)
           A 20% deposit confirms your booking. Free cancellation up to 48 hours
           before pickup.
         </span>
+      </div>
+
+      <!-- popular routes: gives every intercity landing page a site-wide link -->
+      <div
+        style="
+          border-top: 1px solid rgba(255, 255, 255, 0.12);
+          padding-top: 22px;
+          padding-bottom: 20px;
+        "
+      >
+        <h4 style="margin-bottom: 12px">Popular routes</h4>
+        <div class="footer__bottom-links">
+          <RouterLink v-for="r in routeNav" :key="r.to" :to="r.to">{{ r.label }}</RouterLink>
+        </div>
       </div>
 
       <!-- keyword footer: helps the long-tail SEO terms the client supplied -->
