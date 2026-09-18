@@ -1,0 +1,22 @@
+{
+  "name": "cantonpickup",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "description": "CantonPickup — Guangzhou & Foshan airport transfers, private drivers and factory visit transport.",
+  "scripts": {
+    "assets": "node scripts/scan-assets.mjs",
+    "dev": "node scripts/scan-assets.mjs && vite",
+    "build": "node scripts/scan-assets.mjs && vite build && node scripts/prerender.mjs",
+    "build:spa": "node scripts/scan-assets.mjs && vite build",
+    "preview": "vite preview --port 4173"
+  },
+  "dependencies": {
+    "vue": "^3.5.13",
+    "vue-router": "^4.5.0"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^5.2.1",
+    "vite": "^6.0.7"
+  }
+}

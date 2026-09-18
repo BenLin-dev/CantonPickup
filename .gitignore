@@ -1,0 +1,29 @@
+# dependencies
+node_modules/
+.pnp/
+.pnp.js
+
+# build output
+dist/
+*.local
+
+# logsnpm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# editor / OS
+.vscode/*
+!.vscode/extensions.json
+.idea/
+.DS_Store
+Thumbs.db
+
+# env (only if you add one later)
+.env
+.env.local
+.env.*.local
+
+# verify artifacts (qa shots, screenshots)
+评价图工具/qa/shots/
+评价图工具/out/chrome-profile/

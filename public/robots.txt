@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+
+# Assets do not need to be crawled
+Disallow: /data/
+Disallow: /videos/
+
+Sitemap: https://cantonpickup.com/sitemap.xml

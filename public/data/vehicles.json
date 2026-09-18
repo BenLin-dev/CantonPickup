@@ -1,0 +1,119 @@
+{
+  "generated": "2026-09-18T03:28:57.142Z",
+  "items": [
+    {
+      "slug": "denza-d9",
+      "name": "Denza D9",
+      "models": "Denza D9 or similar",
+      "image": "/images/vehicles/denza-d9.jpg",
+      "images": [
+        "/images/vehicles/denza-d9.jpg"
+      ],
+      "passengers": "1–6 passengers",
+      "luggage": "4–6 suitcases",
+      "tag": "Most popular",
+      "description": "The best-selling premium MPV in China — captain chairs, a quiet electric drive and a large boot. Our most requested vehicle for airport pickups and factory visits.",
+      "features": [
+        "Captain chairs",
+        "Large luggage space",
+        "Phone charging",
+        "Privacy glass"
+      ]
+    },
+    {
+      "slug": "voyah-mpv",
+      "name": "Voyah Dreamer",
+      "models": "Voyah Dreamer or similar",
+      "image": "/images/vehicles/voyah-mpv.jpg",
+      "images": [
+        "/images/vehicles/voyah-mpv.jpg"
+      ],
+      "passengers": "1–6 passengers",
+      "luggage": "4–6 suitcases",
+      "tag": "Premium",
+      "description": "A new-generation luxury MPV with reclining second-row seats — quiet, refined and perfect for executive travel.",
+      "features": [
+        "Reclining seats",
+        "Panoramic roof",
+        "Phone charging",
+        "Bottled water"
+      ]
+    },
+    {
+      "slug": "hongqi",
+      "name": "Hongqi H9",
+      "models": "Hongqi H9 or similar",
+      "image": "/images/vehicles/hongqi.jpg",
+      "images": [
+        "/images/vehicles/hongqi.jpg"
+      ],
+      "passengers": "1–3 passengers",
+      "luggage": "2–3 suitcases",
+      "tag": "Executive",
+      "description": "A flagship Chinese executive sedan with generous rear legroom — a smart choice for client pickups and airport arrivals.",
+      "features": [
+        "Rear seat comfort",
+        "Phone charging",
+        "Bottled water",
+        "English-speaking driver"
+      ]
+    },
+    {
+      "slug": "gac-m8-white",
+      "name": "7-Seat MPV",
+      "models": "GAC Trumpchi M8 or similar",
+      "image": "/images/vehicles/gac-m8-white.jpg",
+      "images": [
+        "/images/vehicles/gac-m8-white.jpg"
+      ],
+      "passengers": "1–6 passengers",
+      "luggage": "4–6 suitcases",
+      "tag": "Family friendly",
+      "description": "Spacious seven-seat MPV with sliding doors and a large boot — the most popular choice for families and small groups.",
+      "features": [
+        "7 seats",
+        "Large luggage space",
+        "Air conditioning",
+        "Child seat on request"
+      ]
+    },
+    {
+      "slug": "byd-han",
+      "name": "B-Class Sedan",
+      "models": "BYD Han, Passat, Hongqi E-QM5, Arcfox or similar",
+      "image": "/images/vehicles/byd-han.jpg",
+      "images": [
+        "/images/vehicles/byd-han.jpg"
+      ],
+      "passengers": "1–3 passengers",
+      "luggage": "2–3 suitcases",
+      "tag": "Best value",
+      "description": "A quiet, comfortable electric or petrol sedan — ideal for solo travellers and couples who want a smooth, economical transfer.",
+      "features": [
+        "Air conditioning",
+        "Phone charging",
+        "Bottled water",
+        "English-speaking driver"
+      ]
+    },
+    {
+      "slug": "mercedes-vclass",
+      "name": "Mercedes-Benz V-Class",
+      "models": "Mercedes-Benz V-Class or similar",
+      "image": "/images/vehicles/mercedes-vclass.jpg",
+      "images": [
+        "/images/vehicles/mercedes-vclass.jpg"
+      ],
+      "passengers": "1–6 passengers",
+      "luggage": "5–7 suitcases",
+      "tag": "Top tier",
+      "description": "Our flagship vehicle. Leather interior, exceptional comfort and the presence you want for VIP guests and important clients.",
+      "features": [
+        "Leather interior",
+        "Extra legroom",
+        "Panoramic roof",
+        "Meet & greet included"
+      ]
+    }
+  ]
+}
