@@ -1228,6 +1228,11 @@ p:last-child {
   margin-top: 22px;
 }
 
+/* keep a wrapped second row of pills clear of the CTA buttons below */
+.hero__badges + .btn-row {
+  margin-top: 28px;
+}
+
 .hero__badge {
   display: inline-flex;
   align-items: center;
