@@ -25,8 +25,8 @@ export const site = {
   whatsapp: '+86 13202442074',
   whatsappLink: 'https://wa.me/8613202442074',
   wechat: '+86 13202442074',
-  email: 'Jackguoyingjie@gmail.com',
-  mailto: 'mailto:Jackguoyingjie@gmail.com',
+  email: 'jack@cantonpickup.com',
+  mailto: 'mailto:jack@cantonpickup.com',
 
   // ---- address / area ---------------------------------------------------
   // The base of operations. Baiyun District (广州白云区) sits between
@@ -53,7 +53,7 @@ export const site = {
   social: {
     whatsapp: 'https://wa.me/8613202442074',
     wechat: '',
-    email: 'mailto:Jackguoyingjie@gmail.com',
+    email: 'mailto:jack@cantonpickup.com',
   },
 }
 
@@ -324,7 +324,11 @@ export const intercityRoutes = [
   { route: 'Guangzhou ↔ Huizhou', sedan: 157, mpv: 197 },
 ]
 
-/** SEO keyword set, taken from the client's keyword research file. */
+/**
+ * SEO keyword set. The first group is the client's original research file; the
+ * second group was added on 2026-09-20 to cover show-week, visa and payment
+ * questions that competitors already rank for.
+ */
 export const seoKeywords = [
   'guangzhou airport transfer',
   'guangzhou airport pickup',
@@ -346,6 +350,15 @@ export const seoKeywords = [
   'private driver in china',
   'private driver for foshan factory visits',
   'foshan sourcing trip private driver',
+  // second batch — Canton Fair, visa and payment long tail
+  'canton fair 2026 transfer',
+  'canton fair 2027 transfer',
+  'canton fair shuttle bus pazhou',
+  'pazhou complex hotel shuttle',
+  'guangzhou airport to canton fair',
+  'china visa free transit guangzhou',
+  'private car from shenzhen to guangzhou',
+  'paypal private driver china',
 ]
 
 /** Options used by the quote form's "Service needed" select. */

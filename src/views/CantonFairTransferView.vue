@@ -9,6 +9,7 @@ import {
   pages,
   cantonFairAdvantages,
   cantonFairOptions,
+  cantonFairTransitOptions,
   cantonFairSteps,
   faqGroups,
   ctaBands,
@@ -60,6 +61,9 @@ const fairTips = [
   'The halls are a long walk apart. Plan the day by hall rather than by supplier.',
   'The approach to Pazhou peaks between 8:30 and 9:30 in the morning — leave early on day one.',
   'Your driver can take you out for lunch and have you back inside the hour.',
+  'Check whether your hotel is on the official shuttle bus route — it is free on partner routes, and worth knowing before you book anything else.',
+  'Flying in and heading straight for the halls? We collect you at Baiyun arrivals and drive you on to the Pazhou Complex — send your flight number with your fair dates.',
+  'Entering on 240-hour visa-free transit? Keep your onward ticket in your hand luggage; you will be asked for it before you reach immigration.',
   'Bring a power bank. You will be on your phone from the moment the doors open.',
 ]
 </script>
@@ -149,6 +153,58 @@ const fairTips = [
             <AppIcon name="arrow" :size="16" :stroke="2.2" class="btn__arrow" />
           </RouterLink>
         </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ---------------------------------------- shuttle bus vs private car -->
+  <section class="section">
+    <div class="container">
+      <div class="section-head" v-reveal>
+        <p class="eyebrow">Shuttle bus, metro or a car</p>
+        <h2>Getting to the Pazhou Complex</h2>
+        <p class="lead">
+          All three work in show week. They cost very different amounts and they
+          ask very different things of your day, so here is the honest comparison.
+        </p>
+      </div>
+
+      <div class="grid grid--3">
+        <article
+          v-for="(t, i) in cantonFairTransitOptions"
+          :key="t.title"
+          class="card"
+          v-reveal="{ delay: i * 80 }"
+        >
+          <span class="icon-badge">
+            <AppIcon :name="t.icon" :size="24" :stroke="1.9" />
+          </span>
+          <h3 class="card__title">{{ t.title }}</h3>
+          <p class="pill" style="align-self: flex-start">{{ t.cost }}</p>
+          <p class="card__text mt-24">{{ t.text }}</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ------------------------------------------------- your own hotel shuttle -->
+  <section class="section section--tight">
+    <div class="container">
+      <div class="reverse-band" v-reveal>
+        <span class="icon-badge">
+          <AppIcon name="route" :size="24" :stroke="1.9" />
+        </span>
+        <div>
+          <h2 class="reverse-band__title">Your Own Pazhou Complex Hotel Shuttle</h2>
+          <p>
+            Ours is not a loop with a timetable. It is your hotel to the hall
+            entrance closest to your product category each morning of the show,
+            and back to the same spot at night — same driver, same times, no
+            queue. Canton Fair 2026 and Canton Fair 2027 transfer dates are both
+            open now, and the figure we quote is the figure you pay whether your
+            pickup falls in October or next April.
+          </p>
+        </div>
       </div>
     </div>
   </section>

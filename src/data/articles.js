@@ -256,6 +256,19 @@ export const articles = [
         ],
       },
       {
+        heading: 'Arriving on visa-free transit',
+        body: [
+          'Guangzhou Baiyun is one of the ports covered by China\u2019s 240-hour (10-day) visa-free transit policy, which lets travellers from the eligible countries enter without a visa when they are passing through to a third country. Under the Guangdong arrangements you can move around the province, so a Foshan factory visit or a weekend in Zhuhai sits inside the rules rather than outside them.',
+          'At the airport, have three things in reach: a passport valid for at least six months, a confirmed onward ticket leaving inside the 240-hour window, and the address you are staying at. Use the transit counter ahead of immigration rather than joining the main passport queue — the staff there check the documents and stamp the entry.',
+        ],
+        list: [
+          'Eligibility is decided at the border by the immigration officer, not approved in advance',
+          'The country list and the rules change — confirm with the Chinese embassy or your airline before you fly',
+          'Airlines check documents at check-in and will refuse boarding without a valid onward ticket',
+          'Keep the paperwork in your hand luggage; you will be asked for it before you clear immigration',
+        ],
+      },
+      {
         heading: 'Getting connected',
         body: [
           'There are SIM card counters in the arrivals hall selling tourist data packages, and the airport has free Wi-Fi that requires a passport number to activate. If you plan to use WeChat or Alipay, get data sorted before you leave the terminal.',
@@ -394,9 +407,10 @@ export const articles = [
       {
         heading: 'Getting there and back',
         body: [
-          'The metro runs to the fair complex and is the cheapest option. It is also crowded at closing time, and standing on a packed train after a full day on concrete is nobody\u2019s idea of a good evening.',
+          'The metro runs to the Pazhou complex and is the cheapest option. It is also crowded at closing time, and standing on a packed train after a full day on concrete is nobody\u2019s idea of a good evening.',
+          'The fair also runs a shuttle bus between the complex and a list of partner hotels, free on those routes. It is a perfectly good option if your hotel is on that list and you are happy to travel on its timetable — check the official route list for the session you are attending before you commit to a room.',
           'A car and driver for the day removes the whole problem. Your driver drops you at the gate in the morning, waits nearby, and is at the pickup point when you come out — no queue, no negotiating, and somewhere to leave samples and bags during the day.',
-          'For buyers meeting suppliers in the evening, having a car also means you can move between the fair, a factory and a dinner without going back to the hotel first.',
+          'For buyers meeting suppliers in the evening, having a car also means you can move between the fair, a factory and a dinner without going back to the hotel first. The fair runs twice a year, in April and October, and both sessions are busy enough that we suggest booking the car at the same time as the hotel rather than afterwards.',
         ],
       },
       {

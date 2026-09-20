@@ -110,6 +110,7 @@ export const routePages = [
     eyebrow: 'Shenzhen',
     keywords: [
       'guangzhou to shenzhen private transfer',
+      'private car from shenzhen to guangzhou',
       'guangzhou shenzhen car service',
       'shenzhen airport transfer from guangzhou',
       'huaqiangbei electronics market driver',
@@ -151,7 +152,7 @@ export const routePages = [
     ],
     reverse: {
       title: 'Shenzhen to Guangzhou? Same Fixed Price',
-      text: 'We collect from any Shenzhen hotel or office — Futian, Nanshan, Luohu, Bao\u2019an — and drive you to Guangzhou, or directly to Baiyun Airport for a departure the same day.',
+      text: 'A private car from Shenzhen to Guangzhou costs exactly the same as the run the other way. We collect from any Shenzhen hotel or office — Futian, Nanshan, Luohu, Bao\u2019an — and drive you to Guangzhou, or directly to Baiyun Airport for a departure the same day. Hong Kong, China arrivals are met at the Shenzhen border crossing of your choice.',
     },
     faq: [
       {

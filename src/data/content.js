@@ -20,9 +20,9 @@ export const pages = {
     path: '/airport-transfer',
     title: 'Guangzhou Baiyun Airport Transfer & Pickup | CantonPickup',
     description:
-      'Book a Guangzhou Baiyun Airport (CAN) transfer or pickup with an English-speaking driver. Flight monitoring, meet & greet with a name sign, free waiting time and fixed prices to Foshan and Guangzhou.',
+      'Book a Guangzhou Baiyun Airport (CAN) transfer or pickup with an English-speaking driver. Flight monitoring, meet & greet with a name sign, 60 minutes free waiting time and fixed prices to Guangzhou, Foshan and the Canton Fair. Arriving on 240-hour visa-free transit? We meet you at arrivals like everyone else.',
     keywords:
-      'guangzhou airport transfer, guangzhou airport pickup, guangzhou baiyun airport transfer, baiyun airport transfer, CAN airport transfer, guangzhou arrival transfer, guangzhou south station pickup',
+      'guangzhou airport transfer, guangzhou airport pickup, guangzhou baiyun airport transfer, baiyun airport transfer, CAN airport transfer, guangzhou arrival transfer, guangzhou south station pickup, china visa free transit guangzhou, 240-hour visa free transit guangzhou, guangzhou airport to canton fair',
     h1: "From Airport to Foshan — We've Got You",
     lead: 'On-time pickups, flight monitoring, and a friendly driver waiting for you.',
   },
@@ -56,7 +56,7 @@ export const pages = {
     description:
       'Fixed-price intercity car transfer from Guangzhou to Foshan, Dongguan, Zhongshan, Shenzhen, Zhuhai and Huizhou. One flat rate per vehicle in both directions, tolls and parking included, English-speaking driver.',
     keywords:
-      'guangzhou to foshan private transfer, foshan private transfer from guangzhou, guangzhou to shenzhen private transfer, guangzhou to dongguan car service, intercity transfer guangdong, guangzhou to zhuhai private car',
+      'guangzhou to foshan private transfer, foshan private transfer from guangzhou, guangzhou to shenzhen private transfer, private car from shenzhen to guangzhou, guangzhou to dongguan car service, intercity transfer guangdong, guangzhou to zhuhai private car',
     h1: 'Between Cities, Without the Guesswork',
     lead: 'One flat price per vehicle in both directions — doors covered from your hotel to theirs.',
   },
@@ -65,9 +65,9 @@ export const pages = {
     path: '/canton-fair-transfer',
     title: 'Canton Fair Transfer & Private Driver, Guangzhou | CantonPickup',
     description:
-      'Canton Fair transport with a private driver — hotel to the Pazhou exhibition complex and back, both the April and October sessions. Fixed price per vehicle, early drop-off, English-speaking driver, 24/7.',
+      'Canton Fair 2026 and 2027 transport with a private driver — hotel, airport or the Pazhou Complex, for both the April and October sessions. A private car rather than the shuttle bus, fixed price per vehicle, early drop-off, English-speaking driver.',
     keywords:
-      'canton fair transfer, canton fair private driver, canton fair transport guangzhou, pazhou exhibition centre transfer, canton fair pickup service',
+      'canton fair transfer, canton fair private driver, canton fair transport guangzhou, pazhou exhibition centre transfer, canton fair pickup service, canton fair 2026 transfer, canton fair 2027 transfer, canton fair shuttle bus pazhou, pazhou complex hotel shuttle, guangzhou airport to canton fair',
     h1: 'Canton Fair, Minus the Queue',
     lead: 'Fixed-price hotel transfers to the Pazhou complex for both the April and October sessions.',
   },
@@ -89,7 +89,7 @@ export const pages = {
     description:
       'See our fleet and transparent Guangzhou & Foshan car hire prices. Sedan airport pickup from $57, seven-seat MPV from $77, half-day hire from $97 and full-day hire from $187 per vehicle. All in USD, no hidden fees.',
     keywords:
-      'guangzhou airport transfer price, foshan airport transfer price, guangzhou car hire with driver, guangzhou mpv hire, guangzhou to foshan private transfer, private driver guangzhou',
+      'guangzhou airport transfer price, foshan airport transfer price, guangzhou car hire with driver, guangzhou mpv hire, guangzhou to foshan private transfer, private driver guangzhou, paypal private driver china',
     h1: 'The Right Vehicle for Your Trip',
     lead: 'From sedan transfers to larger groups, we have the right vehicle for you.',
   },
@@ -109,8 +109,9 @@ export const pages = {
     path: '/faqs',
     title: 'Frequently Asked Questions | CantonPickup',
     description:
-      'Answers to common questions about Guangzhou and Foshan airport transfers, private drivers, factory visit transport, pricing, payment and booking with CantonPickup.',
-    keywords: 'guangzhou airport transfer faq, guangzhou private driver booking',
+      'Answers to common questions about Guangzhou and Foshan airport transfers, private drivers, factory visits, Canton Fair transport, 240-hour visa-free transit, pricing, payment and booking with CantonPickup.',
+    keywords:
+      'guangzhou airport transfer faq, guangzhou private driver booking, china visa free transit guangzhou, paypal private driver china, canton fair shuttle bus pazhou',
     h1: 'Quick Answers to Your Questions',
     lead:
       'Find quick answers to the most common questions about our services, pricing and booking.',
@@ -230,7 +231,7 @@ export const privacySections = [
     title: 'Your rights',
     body: [
       'You can ask us for a copy of the personal information we hold about you, ask us to correct or delete it, object to certain processing, or withdraw consent you previously gave. Email ' +
-        'Jackguoyingjie@gmail.com and we will respond within 30 days.',
+        'jack@cantonpickup.com and we will respond within 30 days.',
       'If you are in the EU or the UK and believe we have not handled your request properly, you also have the right to complain to your local data protection authority.',
     ],
   },
@@ -250,7 +251,7 @@ export const privacySections = [
     title: 'Changes and contact',
     body: [
       'If we make a material change to this policy we will update the date at the top of the page.',
-      'Questions about privacy? Email Jackguoyingjie@gmail.com or message us on WhatsApp at +86 13202442074.',
+      'Questions about privacy? Email jack@cantonpickup.com or message us on WhatsApp at +86 13202442074.',
     ],
   },
 ]
@@ -713,6 +714,34 @@ export const cantonFairOptions = [
 ]
 
 /**
+ * Canton Fair page — the three ways visitors actually reach the Pazhou
+ * Complex, written as an honest comparison rather than a sales grid. The metro
+ * and the fair's own shuttle bus are genuinely fine options; saying so is more
+ * useful to a first-time visitor than pretending otherwise, and it is the
+ * question "canton fair shuttle bus pazhou" is really asking.
+ */
+export const cantonFairTransitOptions = [
+  {
+    icon: 'route',
+    title: 'Metro',
+    cost: 'Cheapest',
+    text: 'Line 8 runs to Xingang Dong and Pazhou. Reliable and air-conditioned, but you share the carriages with everyone else leaving at closing time, and a case of samples is awkward at the ticket gates.',
+  },
+  {
+    icon: 'users',
+    title: 'Official shuttle bus',
+    cost: 'Free on partner routes',
+    text: 'The fair lays on shuttle buses between the complex and a list of partner hotels. Excellent value if your hotel is on that list and the departure times suit your meetings — check the official route list for the session you are attending.',
+  },
+  {
+    icon: 'calendar',
+    title: 'Private car',
+    cost: 'Fixed price per vehicle',
+    text: 'Your own driver and your own times: early enough to reach the gates before the rush, waiting away from the taxi rank when the day ends, and the boot stays yours for catalogues and samples between halls.',
+  },
+]
+
+/**
  * Multi-day sourcing tour page — a sample week.
  * Deliberately illustrative: real routes are built around the buyer's own
  * supplier list, and the districts named are the ones we drive every week.
@@ -798,6 +827,36 @@ export const faqGroups = [
       {
         q: 'Can you do a one-way transfer from Guangzhou to Foshan?',
         a: 'Absolutely — this is one of our most common bookings. A one-way private transfer from Baiyun Airport to Foshan city starts at $87 for a sedan and $117 for a seven-seat MPV, including tolls.',
+      },
+      {
+        q: 'Can you pick me up if I am entering China on visa-free transit?',
+        a: 'Yes. Guangzhou Baiyun (CAN) is one of the ports covered by China\u2019s 240-hour (10-day) visa-free transit policy, and travellers arriving on visa-free transit are met in the arrivals hall exactly like every other guest. Send your flight number and your onward ticket when you book, and we will time the pickup around how long immigration takes.',
+      },
+      {
+        q: 'Do you drive from Baiyun Airport straight to the Canton Fair?',
+        a: 'Yes — Guangzhou Airport to Canton Fair is one of our busiest show-week runs. We collect you in the arrivals hall and drive you directly to the Pazhou Complex, or to your hotel if you would rather drop your bags first. Over the peak mornings we leave early enough to be ahead of the queue at the gates. Send your flight number and fair dates together and we will plan the whole arrival as one trip.',
+      },
+    ],
+  },
+  {
+    id: 'visa',
+    title: 'Visas & Visa-Free Transit',
+    items: [
+      {
+        q: 'What is China\u2019s 240-hour visa-free transit policy?',
+        a: 'China\u2019s visa-free transit policy allows citizens of the eligible countries to enter without a visa for up to 240 hours (10 days) when they are transiting to a third country. Guangzhou Baiyun International Airport (CAN) is one of the ports of entry, and under the Guangdong arrangements you can travel within the province rather than being confined to the city you landed in. Entry is granted at the border, so the decision is made by the immigration officer on arrival, not by us.',
+      },
+      {
+        q: 'Which nationalities can use visa-free transit in Guangzhou?',
+        a: 'The list of eligible countries is long and it changes, so the reliable check is the Chinese embassy or consulate for your country, plus your airline — carriers verify documents before boarding, and they will not let you fly without the right paperwork. We are a car service, not an immigration adviser, and we would rather point you at the official answer than guess.',
+      },
+      {
+        q: 'What do I need to show at Baiyun Airport for visa-free transit?',
+        a: 'In practice: a passport with at least six months\u2019 validity, a confirmed onward ticket to a third country leaving within the 240-hour window, and an address in China where you will stay. Keep those in your hand luggage rather than the overhead bin — you will be asked for them at the transit counter before you reach immigration.',
+      },
+      {
+        q: 'Can you take me out of Guangzhou on a visa-free transit entry?',
+        a: 'Within Guangdong, yes — Foshan, Dongguan, Shenzhen, Zhuhai and the surrounding cities are all normal trips for us. Outside the province, check the conditions of your entry first. If you are unsure, tell us your intended route when you ask for a quote and we will tell you what we know and what you should confirm yourself.',
       },
     ],
   },
@@ -899,6 +958,18 @@ export const faqGroups = [
         q: 'What happens if the fair runs late?',
         a: 'Sessions often overrun after a busy day and your driver will wait. Overtime is charged at the standard hourly rate for the vehicle you booked, and your driver always tells you before you pass the included hours.',
       },
+      {
+        q: 'Can I book a Canton Fair 2026 or 2027 transfer in advance?',
+        a: 'Yes, and we recommend it. Both sessions each year — April and October — are our busiest weeks, and vehicles in Guangzhou are committed weeks ahead. If you are holding a hotel booking for Canton Fair 2027 you can reserve the car now at today\u2019s price, with the exact pickup times confirmed nearer the date once your flight and meeting schedule are fixed.',
+      },
+      {
+        q: 'Should I take the Canton Fair shuttle bus or book a private car?',
+        a: 'The shuttle bus to the Pazhou Complex is the cheaper option and it works well if your hotel sits on one of its routes and you are happy to leave and return on its timetable. A private car costs more but runs on your schedule: early drop-off before the halls open, no queue at the pickup point when the day ends, and somewhere to leave samples and catalogues between halls. Buyers with meetings outside the complex, or anyone travelling as a group, usually find the private car is the difference between a productive day and a long one.',
+      },
+      {
+        q: 'Do you run a Pazhou Complex hotel shuttle?',
+        a: 'Not on a fixed loop — our Pazhou Complex hotel shuttle is a private one. We take you from your hotel to the hall entrance closest to your product category in the morning and collect you from an agreed point in the evening, so it is a same car, same driver, same times every day of show week. It is usually cheaper than a daily taxi, and you never repeat your address to a new driver.',
+      },
     ],
   },
   {
@@ -942,6 +1013,10 @@ export const faqGroups = [
       {
         q: 'How do I pay?',
         a: 'International guests usually pay by PayPal or credit / debit card (Visa, Mastercard, Amex) through our secure payment link. You can also pay by Alipay, WeChat Pay, bank transfer or in cash directly to your driver. Corporate bookings can be invoiced.',
+      },
+      {
+        q: 'Can I pay a private driver in China with PayPal?',
+        a: 'Yes — PayPal is how most of our guests from Europe, the US and Australia pay. It covers both the 20% deposit that confirms the booking and the balance after the trip, so you never have to carry cash or set up Alipay and WeChat Pay before you land. If you would rather hand the balance to your driver in cash, that works too.',
       },
       {
         q: 'Do I need to pay a deposit?',
@@ -994,7 +1069,7 @@ export const paymentMethods = [
   {
     icon: 'wallet',
     label: 'PayPal',
-    hint: 'The easiest option for guests from Europe, the US and Australia. Deposit and balance.',
+    hint: 'The easiest way to pay a private driver in China from Europe, the US or Australia. Deposit and balance both fine.',
     badge: 'International',
   },
   {
@@ -1117,9 +1192,9 @@ export const contactChannels = [
   {
     icon: 'mail',
     label: 'Email',
-    value: 'Jackguoyingjie@gmail.com',
+    value: 'jack@cantonpickup.com',
     hint: 'Best for detailed itineraries and invoices',
-    href: 'mailto:Jackguoyingjie@gmail.com',
+    href: 'mailto:jack@cantonpickup.com',
   },
   {
     icon: 'phone',
