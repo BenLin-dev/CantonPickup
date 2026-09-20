@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-18T09:54:29.815Z",
+  "generated": "2026-09-20T00:42:15.835Z",
   "items": [
     {
       "id": "baiyun-airport-pickup",
@@ -10,6 +10,26 @@
       "url": "https://youtube.com/shorts/_Ra8hbWH9K8?si=unsgLCNjEsFUPXOG",
       "provider": "youtube",
       "order": 1
+    },
+    {
+      "id": "guangzhou-airport-transfer",
+      "title": "Airport transfers in Guangzhou",
+      "caption": "Baiyun Airport to your hotel or factory, door to door",
+      "src": "",
+      "poster": "/videos/guangzhou-airport-transfer.jpg",
+      "url": "https://youtube.com/shorts/pG9-syXB2Xg",
+      "provider": "youtube",
+      "order": 2
+    },
+    {
+      "id": "private-car-service",
+      "title": "Private car service in Guangzhou",
+      "caption": "Fixed prices, English-speaking drivers, door to door",
+      "src": "",
+      "poster": "/videos/private-car-service.jpg",
+      "url": "https://youtube.com/shorts/DUJfKv6unPg",
+      "provider": "youtube",
+      "order": 3
     }
   ]
 }

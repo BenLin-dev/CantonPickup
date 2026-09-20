@@ -120,6 +120,18 @@ export const routeNav = routePages.map((r) => ({
  */
 export const fleet = [
   {
+    slug: 'hongqi',
+    name: 'Hongqi E-QM5',
+    models: 'Hongqi E-QM5 or similar',
+    image: '/images/vehicles/hongqi.jpg',
+    passengers: '1–3 passengers',
+    luggage: '2–3 suitcases',
+    tag: 'EV sedan',
+    description:
+      'Hongqi’s fully electric executive sedan — quiet on the motorway, smooth in city traffic and surprisingly spacious in the back. A popular choice for VIP airport pickups and executive transfers.',
+    features: ['Electric drive', 'Rear seat comfort', 'Phone charging', 'Bottled water'],
+  },
+  {
     slug: 'denza-d9',
     name: 'Denza D9',
     models: 'Denza D9 or similar',
@@ -144,16 +156,16 @@ export const fleet = [
     features: ['Reclining seats', 'Panoramic roof', 'Phone charging', 'Bottled water'],
   },
   {
-    slug: 'hongqi',
-    name: 'Hongqi E-QM5',
-    models: 'Hongqi E-QM5 or similar',
-    image: '/images/vehicles/hongqi.jpg',
+    slug: 'byd-han',
+    name: 'B-Class Sedan',
+    models: 'BYD Han, Passat, Hongqi E-QM5, Arcfox or similar',
+    image: '/images/vehicles/byd-han.jpg',
     passengers: '1–3 passengers',
     luggage: '2–3 suitcases',
-    tag: 'EV sedan',
+    tag: 'Best value',
     description:
-      'Hongqi’s fully electric executive sedan — quiet on the motorway, smooth in city traffic and surprisingly spacious in the back. A popular choice for VIP airport pickups and executive transfers.',
-    features: ['Electric drive', 'Rear seat comfort', 'Phone charging', 'Bottled water'],
+      'A quiet, comfortable electric or petrol sedan — ideal for solo travellers and couples who want a smooth, economical transfer.',
+    features: ['Air conditioning', 'Phone charging', 'Bottled water', 'English-speaking driver'],
   },
   {
     slug: 'gac-m8-white',
@@ -166,18 +178,6 @@ export const fleet = [
     description:
       'Spacious seven-seat MPV with sliding doors and a large boot — the most popular choice for families and small groups.',
     features: ['7 seats', 'Large luggage space', 'Air conditioning', 'Child seat on request'],
-  },
-  {
-    slug: 'byd-han',
-    name: 'B-Class Sedan',
-    models: 'BYD Han, Passat, Hongqi E-QM5, Arcfox or similar',
-    image: '/images/vehicles/byd-han.jpg',
-    passengers: '1–3 passengers',
-    luggage: '2–3 suitcases',
-    tag: 'Best value',
-    description:
-      'A quiet, comfortable electric or petrol sedan — ideal for solo travellers and couples who want a smooth, economical transfer.',
-    features: ['Air conditioning', 'Phone charging', 'Bottled water', 'English-speaking driver'],
   },
   {
     slug: 'mercedes-vclass',
@@ -197,7 +197,7 @@ export const fleet = [
  * The three vehicles shown straight away on the Vehicles & Pricing page.
  * Everything else stays behind the "view all vehicles" toggle.
  */
-export const featuredVehicles = ['denza-d9', 'voyah-mpv', 'hongqi']
+export const featuredVehicles = ['hongqi', 'denza-d9', 'voyah-mpv']
 
 /**
  * Price table. Every figure is in US dollars (USD / $) per vehicle, not per

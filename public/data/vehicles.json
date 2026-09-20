@@ -1,6 +1,25 @@
 {
-  "generated": "2026-09-18T09:54:29.797Z",
+  "generated": "2026-09-20T00:42:15.814Z",
   "items": [
+    {
+      "slug": "hongqi",
+      "name": "Hongqi E-QM5",
+      "models": "Hongqi E-QM5 or similar",
+      "image": "/images/vehicles/hongqi.jpg",
+      "images": [
+        "/images/vehicles/hongqi.jpg"
+      ],
+      "passengers": "1–3 passengers",
+      "luggage": "2–3 suitcases",
+      "tag": "EV sedan",
+      "description": "Hongqi’s fully electric executive sedan — quiet on the motorway, smooth in city traffic and surprisingly spacious in the back. A popular choice for VIP airport pickups and executive transfers.",
+      "features": [
+        "Electric drive",
+        "Rear seat comfort",
+        "Phone charging",
+        "Bottled water"
+      ]
+    },
     {
       "slug": "denza-d9",
       "name": "Denza D9",
@@ -40,22 +59,22 @@
       ]
     },
     {
-      "slug": "hongqi",
-      "name": "Hongqi E-QM5",
-      "models": "Hongqi E-QM5 or similar",
-      "image": "/images/vehicles/hongqi.jpg",
+      "slug": "byd-han",
+      "name": "B-Class Sedan",
+      "models": "BYD Han, Passat, Hongqi E-QM5, Arcfox or similar",
+      "image": "/images/vehicles/byd-han.jpg",
       "images": [
-        "/images/vehicles/hongqi.jpg"
+        "/images/vehicles/byd-han.jpg"
       ],
       "passengers": "1–3 passengers",
       "luggage": "2–3 suitcases",
-      "tag": "EV sedan",
-      "description": "Hongqi’s fully electric executive sedan — quiet on the motorway, smooth in city traffic and surprisingly spacious in the back. A popular choice for VIP airport pickups and executive transfers.",
+      "tag": "Best value",
+      "description": "A quiet, comfortable electric or petrol sedan — ideal for solo travellers and couples who want a smooth, economical transfer.",
       "features": [
-        "Electric drive",
-        "Rear seat comfort",
+        "Air conditioning",
         "Phone charging",
-        "Bottled water"
+        "Bottled water",
+        "English-speaking driver"
       ]
     },
     {
@@ -75,25 +94,6 @@
         "Large luggage space",
         "Air conditioning",
         "Child seat on request"
-      ]
-    },
-    {
-      "slug": "byd-han",
-      "name": "B-Class Sedan",
-      "models": "BYD Han, Passat, Hongqi E-QM5, Arcfox or similar",
-      "image": "/images/vehicles/byd-han.jpg",
-      "images": [
-        "/images/vehicles/byd-han.jpg"
-      ],
-      "passengers": "1–3 passengers",
-      "luggage": "2–3 suitcases",
-      "tag": "Best value",
-      "description": "A quiet, comfortable electric or petrol sedan — ideal for solo travellers and couples who want a smooth, economical transfer.",
-      "features": [
-        "Air conditioning",
-        "Phone charging",
-        "Bottled water",
-        "English-speaking driver"
       ]
     },
     {

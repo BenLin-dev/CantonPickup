@@ -75,7 +75,7 @@ python scripts/make-video-poster.py photo.jpg public/videos/airport-pickup.jpg
 python scripts/make-video-poster.py --plain photo.jpg public/videos/airport-pickup.jpg   # wordmark instead of badge
 ```
 
-It crops to 16:9 (the card's shape) and stamps a blue `CantonPickup` badge in
+It crops to 9:16 portrait (the card's shape — Shorts are vertical) and stamps a blue `CantonPickup` badge in
 the bottom-left corner. Any photo sized 4:3 or wider works.
 
 ---

@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 """
-make-video-poster.py — build a watermarked 16:9 poster for a video clip.
+make-video-poster.py — build a watermarked 9:16 poster for a video clip.
 
 A clip's thumbnail lives in `public/videos/` next to the clip itself, under the
 same basename — `baiyun-airport-pickup.jpg` beside `baiyun-airport-pickup.json`
@@ -21,8 +21,9 @@ Options:
   --pill / --plain        blue badge (default) or a plain white wordmark
 
 Notes:
-  * The card is `aspect-ratio: 16 / 9`, so the crop is 16:9 and nothing is
-    re-cropped by `background-size: cover` afterwards.
+  * The card in `VideoGallery.vue` is `aspect-ratio: 9 / 16`, so the crop is
+    portrait 9:16 (`--ratio 16:9` for a wide card) and nothing is re-cropped
+    by `background-size: cover` afterwards.
   * Poppins Bold is fetched once into this folder so the watermark matches the
     site's heading face; Century Gothic Bold / Arial Bold are fallbacks.
   * The filename must match the clip's sidecar / video file, or the scan will
@@ -43,7 +44,10 @@ FALLBACKS = [
     r"C:\Windows\Fonts\arialbd.ttf",
 ]
 BRAND = (18, 85, 155)  # --c-700
-OUT_W, OUT_H = 1600, 900
+# The card in `VideoGallery.vue` is `aspect-ratio: 9 / 16` (Shorts are shot
+# vertically), so the poster is built portrait. `--ratio 16:9` is still
+# available for a wide card elsewhere.
+OUT_W, OUT_H = 1080, 1920
 
 
 def load_font(size):
@@ -66,10 +70,22 @@ def load_font(size):
     return ImageFont.load_default(), "default"
 
 
-def crop_16_9(im, bias=0.0):
-    """Centre-crop to 16:9. `bias` 1.0 keeps the top, -1.0 the bottom."""
+def crop_to_ratio(im, bias=0.0):
+    """Centre-crop to OUT_W:OUT_H (portrait 9:16 by default).
+
+    `bias` 1.0 keeps the top of a landscape source, -1.0 the bottom. For a
+    portrait target the crop almost always comes off the *width* of a landscape
+    photo, so `bias` still decides which horizontal band survives.
+    """
     w, h = im.size
-    want = int(round(w / (OUT_W / OUT_H)))
+    target = OUT_W / OUT_H
+    if w / h > target:
+        # too wide — trim the sides (centred; a bias would pick left/right)
+        want = int(round(h * target))
+        left = (w - want) // 2
+        return im.crop((left, 0, left + want, h))
+    # too tall (or already right) — trim top/bottom, `bias` chooses the band
+    want = int(round(w / target))
     slack = h - want
     top = int(slack * (0.5 - bias * 0.5))
     return im.crop((0, top, w, top + want))
@@ -86,7 +102,7 @@ def darken_bottom(im, start=0.52, strength=0.62, power=1.5):
     return Image.composite(Image.new("RGB", (w, h), (0, 0, 0)), im, mask.resize((w, h)))
 
 
-def watermark(im, text, font, pill=True, size=54, pad=44):
+def watermark(im, text, font, pill=True, size=44, pad=36):
     d = ImageDraw.Draw(im)
     l, t, r, b = d.textbbox((0, 0), text, font=font)
     tw, th = r - l, b - t
@@ -120,13 +136,13 @@ def main():
     ap.add_argument("--plain", action="store_true", help="plain wordmark instead of the badge")
     args = ap.parse_args()
 
-    font, font_path = load_font(54)
+    font, font_path = load_font(44)
     print(f"font: {font_path}")
 
     src = Image.open(args.src).convert("RGB")
     print(f"source: {src.size}")
 
-    im = crop_16_9(src, args.bias).resize((OUT_W, OUT_H), Image.LANCZOS)
+    im = crop_to_ratio(src, args.bias).resize((OUT_W, OUT_H), Image.LANCZOS)
     im = darken_bottom(im, strength=0.34 if not args.plain else 0.62)
     im = watermark(im, args.text, font, pill=not args.plain)
 
