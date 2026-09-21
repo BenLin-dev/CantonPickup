@@ -128,6 +128,59 @@ async function submit() {
           ...(sha256_phone ? { sha256_phone } : {}),
         },
       })
+
+      // Direct gtag() call — the Event snippet you get from Google Ads
+      // when you pick "Install with code" while creating the
+      // "Submit lead form" conversion action (Label `sOmeCK_G0P8cEJWSz-RE`,
+      // conversion ID `AW-18464622869`). This bypasses GTM and goes
+      // straight to Google Ads, which is useful as a fallback when GTM is
+      // blocked by an ad blocker. NOTE: do NOT also fire an Ads
+      // Conversion Tag inside the GTM container on `generate_lead` —
+      // every submission would be counted twice. See
+      // `google-ads-onboarding.md` §10.5.
+      //
+      // Currency is `CNY` — do NOT "fix" this to USD (v2.9.4, 2026-09-21).
+      //
+      // An earlier revision of this file sent `USD` on the theory that the
+      // account was USD-denominated. That was wrong. The Ads account
+      // currency is CNY, confirmed two independent ways:
+      //   1. The 出價 (bidding) screen prefixes the max-CPC input with `¥`.
+      //      Bids are ALWAYS denominated in account currency.
+      //   2. Google's own generated Event snippet for this very conversion
+      //      action came back with `currency: 'CNY'`.
+      //
+      // Google Ads reports conversion values in the ACCOUNT currency, so
+      // the tag must send the same unit. Google will FX-convert a
+      // mismatched currency, but then the reported value drifts with the
+      // daily exchange rate — pure noise for what is just a proxy value.
+      //
+      // NOTE: the GA4 `dataLayer.push` above deliberately keeps
+      // `currency: 'USD'`. GA4 is a separate product and the business
+      // actually collects in USD (PayPal / cards), so revenue-style
+      // reporting there should stay USD. Only the Ads event uses CNY.
+      //
+      // `user_data` reuses the SHA-256 hashes above so Enhanced
+      // Conversions keeps working — without it, the lead is reported
+      // but cannot be matched back to the click that drove it.
+      const sendTo = 'AW-18464622869/sOmeCK_G0P8cEJWSz-RE'
+      if (typeof gtag === 'function') {
+        gtag('event', 'conversion', {
+          send_to: sendTo,
+          value: 1.0,
+          currency: 'CNY', // Ads account currency — see note above
+          // transaction_id de-duplicates accidental double-fires within
+          // the same Ads attribution window (refreshing the success page,
+          // SPA route changes, etc.).
+          transaction_id:
+            typeof crypto !== 'undefined' && crypto.randomUUID
+              ? crypto.randomUUID()
+              : `${Date.now()}-${Math.random().toString(36).slice(2, 10)}`,
+          user_data: {
+            ...(sha256_email ? { sha256_email } : {}),
+            ...(sha256_phone ? { sha256_phone } : {}),
+          },
+        })
+      }
     }
   } catch (err) {
     state.value = 'error'

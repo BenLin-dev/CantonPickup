@@ -35,7 +35,6 @@ onBeforeUnmount(() => window.removeEventListener('scroll', onScroll))
       target="_blank"
       rel="noopener"
       aria-label="Chat with us on WhatsApp"
-      @click="track('whatsapp')"
     >
       <AppIcon name="whatsapp" :size="22" :stroke="1.7" />
       <span>WhatsApp</span>
