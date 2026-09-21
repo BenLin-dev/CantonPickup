@@ -66,6 +66,23 @@
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600;700;800&display=swap"
     />
 
+    <!--
+      Google Ads gtag.js (Click Identifier linker + Ads account binding).
+      Loaded BEFORE GTM so the linker sets click-id cookies (`_gl`) before
+      GTM tags read them. This snippet alone does NOT count conversions —
+      it only binds the site to Ads account AW-18464622869 and tracks
+      clicks for attribution. Actual conversion events are fired by a
+      Google Ads Conversion Tracking tag inside GTM (triggered on the
+      `generate_lead` dataLayer event); see `google-ads-onboarding.md` §10.5.
+    -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18464622869"></script>
+    <script>
+      window.dataLayer = window.dataLayer || []
+      function gtag(){dataLayer.push(arguments)}
+      gtag('js', new Date())
+      gtag('config', 'AW-18464622869')
+    </script>
+
     <!-- Google Tag Manager -->
     <script>
       ;(function (w, d, s, l, i) {
