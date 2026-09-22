@@ -1,7 +1,1 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" width="96" height="96">
-  <rect width="40" height="40" rx="11" fill="#0b3d7c"/>
-  <path d="M11 25.5h18M14.5 25.5v-6.2a1.6 1.6 0 0 1 .5-1.2l2.3-2.1a1.6 1.6 0 0 1 1.1-.4h5.2a1.6 1.6 0 0 1 1.1.4l2.3 2.1a1.6 1.6 0 0 1 .5 1.2v6.2"
-        stroke="#fff" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-  <circle cx="16.6" cy="26.6" r="1.9" fill="#8cc7e8"/>
-  <circle cx="23.4" cy="26.6" r="1.9" fill="#8cc7e8"/>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><clipPath id="b"><rect width="64" height="64" rx="14.08"/></clipPath><rect width="64" height="64" rx="14.08" fill="#072A4E"/><g clip-path="url(#b)"><svg x="-7.68" y="22.61" width="79.36" height="18.79" viewBox="26.00 5.10 294.00 44.90" preserveAspectRatio="none"><path d="M26.0 46.0 L31.6 42.9 L42.7 33.6 L47.6 30.6 L75.1 20.2 L88.1 15.7 L106.8 10.2 L120.3 7.3 L137.2 5.5 L154.1 5.1 L164.4 5.5 L173.9 6.3 L197.7 9.6 L223.2 14.6 L253.0 21.9 L262.5 24.8 L270.6 27.9 L305.0 44.2 L313.1 47.6 L320.0 50.0 M320.0 50.0 L312.2 47.8 L303.5 46.0 L276.1 41.8 L264.8 39.7 L228.9 30.6 L203.8 25.2 L187.9 22.5 L175.5 20.8 L164.5 19.8 L154.0 19.4 L144.5 19.5 L134.5 20.1 L125.0 21.1 L117.1 22.4 L106.8 25.0 L90.8 29.9 L52.4 43.8 L46.8 44.6 L32.2 44.7 L26.0 46.0 Z" fill="#F5822E"/><path d="M72.0 42.5 L80.2 41.7 L101.1 38.6 L108.2 38.0 L146.1 35.8 L195.0 32.3 L235.3 31.3 L250.0 30.5 M250.0 30.5 L235.3 32.0 L195.4 37.1 L150.2 40.5 L104.9 43.1 L80.2 42.4 L72.0 42.5 Z" fill="#F5822E"/></svg></g></svg>

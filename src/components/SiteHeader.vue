@@ -45,19 +45,7 @@ function isActive(item) {
   <header class="header" :class="{ 'is-stuck': stuck }">
     <div class="container header__inner">
       <RouterLink to="/" class="logo" aria-label="CantonPickup home">
-        <svg class="logo__mark" viewBox="0 0 40 40" fill="none" aria-hidden="true">
-          <rect width="40" height="40" rx="11" fill="#0b3d7c" />
-          <path
-            d="M11 25.5h18M14.5 25.5v-6.2a1.6 1.6 0 0 1 .5-1.2l2.3-2.1a1.6 1.6 0 0 1 1.1-.4h5.2a1.6 1.6 0 0 1 1.1.4l2.3 2.1a1.6 1.6 0 0 1 .5 1.2v6.2"
-            stroke="#fff"
-            stroke-width="1.9"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          />
-          <circle cx="16.6" cy="26.6" r="1.9" fill="#8cc7e8" />
-          <circle cx="23.4" cy="26.6" r="1.9" fill="#8cc7e8" />
-        </svg>
-        <span>Canton<b>Pickup</b></span>
+        <img class="logo__img" src="/logo.svg" alt="CantonPickup" width="159" height="44" />
       </RouterLink>
 
       <nav class="nav" aria-label="Main navigation">
@@ -123,19 +111,7 @@ function isActive(item) {
     >
       <div class="mobile-menu__bar">
         <RouterLink to="/" class="logo" @click="open = false">
-          <svg class="logo__mark" viewBox="0 0 40 40" fill="none" aria-hidden="true">
-            <rect width="40" height="40" rx="11" fill="#0b3d7c" />
-            <path
-              d="M11 25.5h18M14.5 25.5v-6.2a1.6 1.6 0 0 1 .5-1.2l2.3-2.1a1.6 1.6 0 0 1 1.1-.4h5.2a1.6 1.6 0 0 1 1.1.4l2.3 2.1a1.6 1.6 0 0 1 .5 1.2v6.2"
-              stroke="#fff"
-              stroke-width="1.9"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            />
-            <circle cx="16.6" cy="26.6" r="1.9" fill="#8cc7e8" />
-            <circle cx="23.4" cy="26.6" r="1.9" fill="#8cc7e8" />
-          </svg>
-          <span>Canton<b>Pickup</b></span>
+          <img class="logo__img" src="/logo.svg" alt="CantonPickup" width="159" height="44" />
         </RouterLink>
         <button class="close-btn" type="button" aria-label="Close menu" @click="open = false">
           <AppIcon name="close" :size="20" :stroke="2.2" />

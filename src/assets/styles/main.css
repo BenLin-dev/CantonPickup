@@ -872,26 +872,21 @@ p:last-child {
 .logo {
   display: inline-flex;
   align-items: center;
-  gap: 10px;
-  font-weight: 800;
-  font-size: 1.28rem;
-  letter-spacing: -0.03em;
-  color: var(--c-800);
   flex: none;
 }
 
-.logo:hover {
-  color: var(--c-800);
+/* one generated lockup drives the header, the footer and the favicon, so the
+   brand can never drift between them — see scripts/make-logo.py */
+.logo__img {
+  display: block;
+  width: auto;
+  height: 44px;
 }
 
-.logo b {
-  color: var(--c-500);
-}
-
-.logo__mark {
-  width: 34px;
-  height: 34px;
-  flex: none;
+@media (max-width: 620px) {
+  .logo__img {
+    height: 38px;
+  }
 }
 
 .nav {
@@ -1026,6 +1021,12 @@ p:last-child {
   .nav,
   .header__actions .btn {
     display: none;
+  }
+  /* the nav is what pushes the actions right on desktop; once it is gone the
+     actions hug the logo and the burger floats mid-bar, so take over its job
+     (the .burger's own margin-left:auto has no room to act inside a 44px box) */
+  .header__actions {
+    margin-left: auto;
   }
   .burger {
     display: inline-flex;
@@ -2473,8 +2474,8 @@ p:last-child {
   margin-bottom: 14px;
 }
 
-.footer__logo b {
-  color: var(--c-300);
+.footer__logo .logo__img {
+  height: 46px;
 }
 
 .footer__desc {

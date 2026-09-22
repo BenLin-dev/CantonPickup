@@ -18,22 +18,15 @@ const topKeywords = seoKeywords.slice(0, 9)
         <!-- brand -->
         <div>
           <RouterLink to="/" class="logo footer__logo">
-            <svg class="logo__mark" viewBox="0 0 40 40" fill="none" aria-hidden="true">
-              <!-- the footer sits on a mid sky blue, so the mark flips to a
-                   white plate — the brand navy square had almost no contrast
-                   against it -->
-              <rect width="40" height="40" rx="11" fill="#ffffff" />
-              <path
-                d="M11 25.5h18M14.5 25.5v-6.2a1.6 1.6 0 0 1 .5-1.2l2.3-2.1a1.6 1.6 0 0 1 1.1-.4h5.2a1.6 1.6 0 0 1 1.1.4l2.3 2.1a1.6 1.6 0 0 1 .5 1.2v6.2"
-                stroke="#0d69a6"
-                stroke-width="1.9"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              />
-              <circle cx="16.6" cy="26.6" r="1.9" fill="#1273b0" />
-              <circle cx="23.4" cy="26.6" r="1.9" fill="#1273b0" />
-            </svg>
-            <span>Canton<b>Pickup</b></span>
+            <!-- the footer sits on a mid sky blue, so the lockup swaps to the
+                 inverse build — the navy wordmark would vanish against it -->
+            <img
+              class="logo__img"
+              src="/logo-inverse.svg"
+              alt="CantonPickup"
+              width="166"
+              height="46"
+            />
           </RouterLink>
 
           <p class="footer__desc">
