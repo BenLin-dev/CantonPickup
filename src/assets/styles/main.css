@@ -2643,7 +2643,10 @@ p:last-child {
   transition: opacity 0.6s var(--ease-out), transform 0.6s var(--ease-out);
 }
 
-[data-reveal].is-in {
+/* the revealed state is an attribute, not a class — Vue rewrites `className`
+   whenever a `:class` binding on the same element changes, which would wipe a
+   class added by the reveal directive (see composables/useReveal.js) */
+[data-reveal][data-in] {
   opacity: 1;
   transform: none;
 }

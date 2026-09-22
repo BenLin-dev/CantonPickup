@@ -137,7 +137,7 @@ useJsonLd('home-business', {
         </p>
       </div>
 
-      <div class="grid grid--3">
+      <div id="our-services" class="grid grid--3">
         <article
           v-for="(s, i) in serviceCards"
           :key="s.slug"
