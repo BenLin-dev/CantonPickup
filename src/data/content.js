@@ -8,7 +8,7 @@ export const pages = {
     path: '/',
     title: 'Guangzhou Airport Transfer & Private Driver | CantonPickup',
     description:
-      'English-speaking private driver and airport transfer service in Guangzhou and Foshan. Baiyun Airport (CAN) pickup, Guangzhou South Station transfer, full-day private drivers and factory visit transport. Fixed prices, no hidden fees.',
+      'English-speaking private driver and airport transfer in Guangzhou. Baiyun Airport (CAN) pickup, half or full day drivers, fixed prices, no hidden fees.',
     keywords:
       'guangzhou airport transfer, guangzhou airport pickup, guangzhou baiyun airport transfer, CAN airport transfer, private driver guangzhou, guangzhou private driver, english speaking driver guangzhou, full day private driver guangzhou, guangzhou to foshan private transfer, foshan private transfer from guangzhou, private driver for factory visits guangzhou, foshan sourcing trip private driver',
     h1: 'Guangzhou Airport Transfer & Private Driver, Made Simple',
@@ -20,7 +20,7 @@ export const pages = {
     path: '/airport-transfer',
     title: 'Guangzhou Baiyun Airport Transfer & Pickup | CantonPickup',
     description:
-      'Book a Guangzhou Baiyun Airport (CAN) transfer or pickup with an English-speaking driver. Flight monitoring, meet & greet with a name sign, 60 minutes free waiting time and fixed prices to Guangzhou, Foshan and the Canton Fair. Arriving on 240-hour visa-free transit? We meet you at arrivals like everyone else.',
+      'Guangzhou Baiyun Airport (CAN) pickup by English-speaking driver. Flight monitoring, meet & greet with a name sign, 60 minutes free waiting.',
     keywords:
       'guangzhou airport transfer, guangzhou airport pickup, guangzhou baiyun airport transfer, baiyun airport transfer, CAN airport transfer, guangzhou arrival transfer, guangzhou south station pickup, china visa free transit guangzhou, 240-hour visa free transit guangzhou, guangzhou airport to canton fair',
     h1: 'Guangzhou Baiyun Airport Pickup (CAN) — Meet & Greet',
@@ -31,7 +31,7 @@ export const pages = {
     path: '/private-driver',
     title: 'Private Driver Guangzhou & Foshan — Half & Full Day | CantonPickup',
     description:
-      'Hire an English-speaking private driver in Guangzhou or Foshan by the half day, full day or multi-day. Fuel, tolls, parking and a comfortable vehicle included. Flexible itineraries for business, factory visits and sourcing trips.',
+      'Hire an English-speaking private driver in Guangzhou by the half day, full day or multi-day. Fuel, tolls, parking and vehicle included, hourly or daily.',
     keywords:
       'private driver guangzhou, guangzhou private driver, private driver foshan, english speaking driver guangzhou, full day private driver guangzhou, full day private driver foshan, private driver in china, private driver for factory visits guangzhou',
     h1: 'Private Driver in Guangzhou & Foshan — Half Day, Full Day',
@@ -43,7 +43,7 @@ export const pages = {
     path: '/factory-visits',
     title: 'Factory Visit Driver — Guangzhou & Foshan | CantonPickup',
     description:
-      'Private driver and transport for factory visits and sourcing trips in Foshan, Guangzhou and the Pearl River Delta. See several suppliers in one day with an English-speaking driver who knows the industrial districts.',
+      'Private driver for factory visits and sourcing trips in Guangzhou and Foshan. See several suppliers in one day with a driver who knows the districts.',
     keywords:
       'private driver for factory visits guangzhou, private driver for foshan factory visits, foshan sourcing trip private driver, private driver foshan, english speaking driver guangzhou, guangzhou to foshan private transfer',
     h1: 'Business Travel & Factory Visits, Handled',
@@ -54,7 +54,7 @@ export const pages = {
     path: '/intercity-transfer',
     title: 'Guangzhou to Foshan, Shenzhen & the Pearl River Delta | CantonPickup',
     description:
-      'Fixed-price intercity car transfer from Guangzhou to Foshan, Dongguan, Zhongshan, Shenzhen, Zhuhai and Huizhou. One flat rate per vehicle in both directions, tolls and parking included, English-speaking driver.',
+      'Fixed-price intercity transfer from Guangzhou to Foshan, Shenzhen, Dongguan, Zhongshan, Zhuhai and Huizhou. Flat rate per vehicle, tolls included.',
     keywords:
       'guangzhou to foshan private transfer, foshan private transfer from guangzhou, guangzhou to shenzhen private transfer, private car from shenzhen to guangzhou, guangzhou to dongguan car service, intercity transfer guangdong, guangzhou to zhuhai private car',
     h1: 'Private Car Between Guangzhou, Foshan & the Delta',
@@ -65,7 +65,7 @@ export const pages = {
     path: '/canton-fair-transfer',
     title: 'Canton Fair Transfer & Private Driver, Guangzhou | CantonPickup',
     description:
-      'Canton Fair 2026 and 2027 transport with a private driver — hotel, airport or the Pazhou Complex, for both the April and October sessions. A private car rather than the shuttle bus, fixed price per vehicle, early drop-off, English-speaking driver.',
+      'Canton Fair 2026 & 2027 private driver — hotel, airport or Pazhou, April and October sessions. Fixed price per vehicle, English-speaking driver.',
     keywords:
       'canton fair transfer, canton fair private driver, canton fair transport guangzhou, pazhou exhibition centre transfer, canton fair pickup service, canton fair 2026 transfer, canton fair 2027 transfer, canton fair shuttle bus pazhou, pazhou complex hotel shuttle, guangzhou airport to canton fair',
     h1: 'Canton Fair, Minus the Queue',
@@ -76,7 +76,7 @@ export const pages = {
     path: '/multi-day-sourcing-tour',
     title: 'Multi-Day Sourcing Tour Private Driver | CantonPickup',
     description:
-      'Multi-day private driver for sourcing trips in Guangzhou, Foshan and the Pearl River Delta. Keep the same driver and vehicle for three to ten days, with a discounted daily rate and an itinerary that moves with your week.',
+      'Multi-day private driver for sourcing trips in Guangzhou, Foshan and the Delta. Same driver and vehicle for three to ten days at a discounted daily rate.',
     keywords:
       'multi day private driver guangzhou, foshan sourcing trip private driver, sourcing tour private driver china, china sourcing trip driver, private driver for factory visits guangzhou',
     h1: 'One Driver for Your Whole Sourcing Trip',
@@ -87,7 +87,7 @@ export const pages = {
     path: '/vehicles-pricing',
     title: 'Vehicles & Pricing — Guangzhou Airport Transfer | CantonPickup',
     description:
-      'See our fleet and transparent Guangzhou & Foshan car hire prices. Sedan airport pickup from $57, seven-seat MPV from $77, half-day hire from $97 and full-day hire from $187 per vehicle. All in USD, no hidden fees.',
+      'Our fleet and transparent Guangzhou car hire prices. Sedan airport pickup from $57, seven-seat MPV from $77, half-day from $97 per vehicle, all in USD.',
     keywords:
       'guangzhou airport transfer price, foshan airport transfer price, guangzhou car hire with driver, guangzhou mpv hire, guangzhou to foshan private transfer, private driver guangzhou, paypal private driver china',
     h1: 'The Right Vehicle for Your Trip',
@@ -98,7 +98,7 @@ export const pages = {
     path: '/about',
     title: 'About Us — A Local Team in Guangzhou | CantonPickup',
     description:
-      'CantonPickup is a small, friendly local team based in Baiyun District, Guangzhou, providing safe, reliable transport and local support for international visitors and business travellers in the Pearl River Delta.',
+      'CantonPickup is a small local team based in Baiyun District, Guangzhou, providing safe, reliable transport and local support for international visitors.',
     keywords: 'english speaking driver guangzhou, private driver in china, cantonpickup',
     h1: 'A Local Team You Can Count On',
     lead:
@@ -109,7 +109,7 @@ export const pages = {
     path: '/faqs',
     title: 'Frequently Asked Questions | CantonPickup',
     description:
-      'Answers to common questions about Guangzhou and Foshan airport transfers, private drivers, factory visits, Canton Fair transport, 240-hour visa-free transit, pricing, payment and booking with CantonPickup.',
+      'Answers about Guangzhou airport transfers, private drivers, factory visits, Canton Fair transport, visa-free transit, pricing, payment and booking.',
     keywords:
       'guangzhou airport transfer faq, guangzhou private driver booking, china visa free transit guangzhou, paypal private driver china, canton fair shuttle bus pazhou',
     h1: 'Quick Answers to Your Questions',
@@ -121,7 +121,7 @@ export const pages = {
     path: '/contact',
     title: 'Contact CantonPickup — Get a Quote | Guangzhou & Foshan',
     description:
-      'Tell us your travel details and get a fast quote for Guangzhou airport transfers, private drivers and factory visit transport. WhatsApp, WeChat or email — we reply within 30 minutes.',
+      'Get a fast quote for Guangzhou airport transfers, private drivers and factory visits. WhatsApp, WeChat or email — we reply within 30 minutes.',
     keywords:
       'guangzhou airport transfer quote, book private driver guangzhou, contact cantonpickup, guangzhou private driver booking',
     h1: 'Get in Touch',
@@ -137,7 +137,7 @@ export const pages = {
     path: '/blog',
     title: 'Guangzhou Travel & Sourcing Guides | CantonPickup',
     description:
-      'Practical guides for buyers and business travellers in Guangzhou and the Pearl River Delta: wholesale markets, factory clusters, airport arrival, the Canton Fair and Chinese business etiquette.',
+      'Practical guides for buyers and business travellers in Guangzhou: wholesale markets, factory clusters, airport arrival, the Canton Fair and etiquette.',
     keywords:
       'guangzhou sourcing guide, guangzhou wholesale markets, guangzhou factory visit guide, canton fair guide, guangzhou travel tips, private driver in china',
     h1: 'Guangzhou Travel & Sourcing Guides',
@@ -163,7 +163,7 @@ export const pages = {
     path: '/privacy-policy',
     title: 'Privacy Policy | CantonPickup',
     description:
-      'How CantonPickup collects, uses and protects the personal information you share when you request a quote or book an airport transfer or private driver in Guangzhou and Foshan.',
+      'How CantonPickup collects, uses and protects the personal information you share when you request a quote or book an airport transfer in Guangzhou.',
     keywords: 'cantonpickup privacy policy',
     h1: 'Privacy Policy',
     lead:
@@ -174,7 +174,7 @@ export const pages = {
     path: '/terms',
     title: 'Terms & Conditions | CantonPickup',
     description:
-      'The terms that apply to airport transfers, private driver hire and factory visit transport booked with CantonPickup in Guangzhou and Foshan — bookings, payment, cancellation and liability.',
+      'The terms that apply to airport transfers, private driver hire and factory visit transport booked with CantonPickup — payment, cancellation and liability.',
     keywords: 'cantonpickup terms and conditions',
     h1: 'Terms & Conditions',
     lead:

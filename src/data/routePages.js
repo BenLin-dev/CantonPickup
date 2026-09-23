@@ -23,7 +23,7 @@ export const routePages = [
     title: 'Guangzhou to Foshan Private Car & Airport Transfer | Fixed Price | CantonPickup',
     h1: 'Guangzhou to Foshan Private Car & Airport Transfer',
     description:
-      'Door-to-door private car between Guangzhou and Foshan. Fixed price from $57 per vehicle with an English-speaking driver — ideal for factory visits, the Lecong furniture market and business trips.',
+      'Door-to-door private car between Guangzhou and Foshan from $57 per vehicle with an English-speaking driver, for factory visits and business trips.',
     lede: 'Door-to-door private car between Guangzhou and Foshan. Fixed price from $57, with an English-speaking driver — ideal for factory visits, furniture markets and business trips.',
     hero: '/images/hero/factory.jpg',
     heroAlt: 'Factory district on the Guangzhou to Foshan route',
@@ -103,7 +103,7 @@ export const routePages = [
     title: 'Guangzhou to Shenzhen Private Car & Airport Transfer | Fixed Price | CantonPickup',
     h1: 'Guangzhou to Shenzhen Private Car & Airport Transfer',
     description:
-      'Private car between Guangzhou and Shenzhen with an English-speaking driver. Fixed price from $137 per vehicle, tolls and parking included. Door to door, either direction.',
+      'Private car between Guangzhou and Shenzhen. Fixed price from $137 per vehicle with an English-speaking driver, tolls and parking included, both directions.',
     lede: 'Private car between Guangzhou and Shenzhen. Fixed price from $137 with an English-speaking driver — a comfortable alternative to a crowded high-speed train connection.',
     hero: '/images/hero/guangzhou-night.jpg',
     heroAlt: 'City skyline at night on the Guangzhou to Shenzhen corridor',
@@ -185,7 +185,7 @@ export const routePages = [
     title: 'Guangzhou to Dongguan Private Car & Airport Transfer | Fixed Price | CantonPickup',
     h1: 'Guangzhou to Dongguan Private Car & Airport Transfer',
     description:
-      'Private car between Guangzhou and Dongguan with an English-speaking driver. Fixed price from $97 per vehicle, tolls and parking included. Door to door, either direction.',
+      'Private car between Guangzhou and Dongguan. Fixed price from $97 per vehicle with an English-speaking driver, tolls and parking included, both directions.',
     lede: 'Private car between Guangzhou and Dongguan. Fixed price from $97 with an English-speaking driver — the straightforward way to reach factories in Houjie, Chang\u2019an and Songshan Lake.',
     hero: '/images/services/business-travel.jpg',
     heroAlt: 'Business travellers arriving by car at a manufacturing district',
@@ -266,7 +266,7 @@ export const routePages = [
     title: 'Guangzhou to Zhongshan Private Car & Airport Transfer | Fixed Price | CantonPickup',
     h1: 'Guangzhou to Zhongshan Private Car & Airport Transfer',
     description:
-      'Private car between Guangzhou and Zhongshan with an English-speaking driver. Fixed price from $127 per vehicle, tolls and parking included. Door to door, either direction.',
+      'Private car between Guangzhou and Zhongshan from $127 per vehicle with an English-speaking driver, tolls and parking included, both directions.',
     lede: 'Private car between Guangzhou and Zhongshan. Fixed price from $127 with an English-speaking driver — the practical way to reach the lighting markets at Guzhen.',
     hero: '/images/hero/business-district.jpg',
     heroAlt: 'Commercial district on the Guangzhou to Zhongshan route',
@@ -347,7 +347,7 @@ export const routePages = [
     title: 'Guangzhou to Zhuhai Private Car & Airport Transfer | Fixed Price | CantonPickup',
     h1: 'Guangzhou to Zhuhai Private Car & Airport Transfer',
     description:
-      'Private car between Guangzhou and Zhuhai with an English-speaking driver. Fixed price from $147 per vehicle, tolls and parking included. Door to door, either direction.',
+      'Private car between Guangzhou and Zhuhai. Fixed price from $147 per vehicle with an English-speaking driver, tolls and parking included, both directions.',
     lede: 'Private car between Guangzhou and Zhuhai. Fixed price from $147 with an English-speaking driver — including drop-offs at Gongbei for the Macao, China crossing.',
     hero: '/images/hero/highway-dusk.jpg',
     heroAlt: 'Highway interchange at dusk on the Guangzhou to Zhuhai corridor',
@@ -428,7 +428,7 @@ export const routePages = [
     title: 'Guangzhou to Huizhou Private Car & Airport Transfer | Fixed Price | CantonPickup',
     h1: 'Guangzhou to Huizhou Private Car & Airport Transfer',
     description:
-      'Private car between Guangzhou and Huizhou with an English-speaking driver. Fixed price from $157 per vehicle, tolls and parking included. Door to door, either direction.',
+      'Private car between Guangzhou and Huizhou. Fixed price from $157 per vehicle with an English-speaking driver, tolls and parking included, both directions.',
     lede: 'Private car between Guangzhou and Huizhou. Fixed price from $157 with an English-speaking driver — door to door to Daya Bay, Huicheng or the electronics plants inland.',
     hero: '/images/hero/guangzhou-aerial.jpg',
     heroAlt: 'Aerial view of the Guangdong coastline on the Guangzhou to Huizhou route',
