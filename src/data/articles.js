@@ -13,6 +13,13 @@
  *   { heading, body: [para, ...], list: [item, ...] }
  *
  * Add or reorder blocks freely; the article page renders whatever is there.
+ *
+ * `title` is the on-page `<h1>`, the card label and the breadcrumb, so it can be
+ * as long as it reads well. The browser-tab / SERP string is
+ * `` `${seoTitle || title} | CantonPickup` `` — the brand suffix costs 15
+ * characters, and Bing fails a page over 60, so any article whose `title`
+ * cannot absorb that gets an explicit `seoTitle` of at most 45 characters.
+ * Both are read by `ArticleView.vue` and by `src/entry-server.js`.
  */
 
 export const articleCategories = [
@@ -27,6 +34,7 @@ export const articles = [
   {
     slug: 'guangzhou-wholesale-markets-guide',
     title: 'Guangzhou Wholesale Markets: A Practical Guide for Foreign Buyers',
+    seoTitle: 'Guangzhou Wholesale Markets: A Buyer\u2019s Guide',
     excerpt:
       'Which market sells what, how the pricing works, and how to cover two or three of them in a single buying day without losing an afternoon to traffic.',
     category: 'Wholesale Markets',
@@ -93,6 +101,7 @@ export const articles = [
   {
     slug: 'baima-market-guangzhou',
     title: 'Baima Market, Guangzhou: What to Expect on Your First Buying Day',
+    seoTitle: 'Baima Market, Guangzhou: What to Expect',
     excerpt:
       'Baima is the clothing wholesale hub most buyers start with — what it sells, how the floors are arranged, and how wholesale pricing is negotiated.',
     category: 'Wholesale Markets',
@@ -151,6 +160,7 @@ export const articles = [
   {
     slug: 'factory-areas-near-guangzhou',
     title: 'Where the Factories Are: Manufacturing Clusters Near Guangzhou',
+    seoTitle: 'Where the Factories Are Near Guangzhou',
     excerpt:
       'Electronics, furniture, ceramics, textiles, appliances and lighting are made in different cities. Here is which cluster to visit for which product.',
     category: 'Factory & Sourcing',
@@ -229,6 +239,7 @@ export const articles = [
   {
     slug: 'baiyun-airport-arrival-guide',
     title: 'Arriving at Guangzhou Baiyun Airport: A Step-by-Step Guide',
+    seoTitle: 'Guangzhou Baiyun Airport Arrival Guide',
     excerpt:
       'Immigration, baggage, SIM cards, the arrivals hall and how to find your driver once you are through — everything first-time visitors ask us.',
     category: 'Travel Tips',
@@ -430,6 +441,7 @@ export const articles = [
   {
     slug: 'guangzhou-vs-shenzhen-sourcing',
     title: 'Guangzhou or Shenzhen? Choosing Where to Source',
+    seoTitle: 'Guangzhou or Shenzhen? Where to Source',
     excerpt:
       'Two cities an hour apart that do very different things. A comparison of product categories, factory access, costs and which one fits your product.',
     category: 'Factory & Sourcing',
@@ -494,6 +506,7 @@ export const articles = [
   {
     slug: 'negotiating-with-chinese-suppliers',
     title: 'Negotiating with Chinese Suppliers: What Actually Works',
+    seoTitle: 'How to Negotiate with Chinese Suppliers',
     excerpt:
       'Price, minimum order quantities, payment terms and the small cultural moves that make a negotiation go your way — without damaging the relationship.',
     category: 'Factory & Sourcing',
@@ -629,6 +642,7 @@ export const articles = [
   {
     slug: 'business-etiquette-in-china',
     title: 'Business Etiquette in China: A Short, Practical Guide',
+    seoTitle: 'Business Etiquette in China: Practical Tips',
     excerpt:
       'Meetings, cards, meals, gifts and the WeChat habits that matter — the small things that change how a Chinese counterpart reads you.',
     category: 'Factory & Sourcing',

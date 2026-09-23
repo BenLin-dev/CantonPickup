@@ -22,7 +22,9 @@ const related = article ? relatedArticles(article, 3) : []
 
 useSeo({
   path: route.path,
-  title: article ? `${article.title} | CantonPickup` : 'Guides | CantonPickup',
+  // `seoTitle` (when present) is the shortened variant: `<title>` may not exceed
+  // 60 characters, while the on-page `<h1>` above stays the fuller headline.
+  title: article ? `${article.seoTitle || article.title} | CantonPickup` : 'Guides | CantonPickup',
   description: article?.excerpt || '',
   keywords: [
     article?.category?.toLowerCase() || 'guangzhou guide',

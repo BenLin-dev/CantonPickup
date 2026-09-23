@@ -20,7 +20,7 @@ export const routePages = [
   {
     slug: 'guangzhou-to-foshan',
     city: 'Foshan',
-    title: 'Guangzhou to Foshan Private Car & Airport Transfer | Fixed Price | CantonPickup',
+    title: 'Guangzhou to Foshan Private Car & Airport Transfer',
     h1: 'Guangzhou to Foshan Private Car & Airport Transfer',
     description:
       'Door-to-door private car between Guangzhou and Foshan from $57 per vehicle with an English-speaking driver, for factory visits and business trips.',
@@ -100,7 +100,7 @@ export const routePages = [
   {
     slug: 'guangzhou-to-shenzhen',
     city: 'Shenzhen',
-    title: 'Guangzhou to Shenzhen Private Car & Airport Transfer | Fixed Price | CantonPickup',
+    title: 'Guangzhou to Shenzhen Private Car & Airport Transfer',
     h1: 'Guangzhou to Shenzhen Private Car & Airport Transfer',
     description:
       'Private car between Guangzhou and Shenzhen. Fixed price from $137 per vehicle with an English-speaking driver, tolls and parking included, both directions.',
@@ -182,7 +182,7 @@ export const routePages = [
   {
     slug: 'guangzhou-to-dongguan',
     city: 'Dongguan',
-    title: 'Guangzhou to Dongguan Private Car & Airport Transfer | Fixed Price | CantonPickup',
+    title: 'Guangzhou to Dongguan Private Car & Airport Transfer',
     h1: 'Guangzhou to Dongguan Private Car & Airport Transfer',
     description:
       'Private car between Guangzhou and Dongguan. Fixed price from $97 per vehicle with an English-speaking driver, tolls and parking included, both directions.',
@@ -263,7 +263,7 @@ export const routePages = [
   {
     slug: 'guangzhou-to-zhongshan',
     city: 'Zhongshan',
-    title: 'Guangzhou to Zhongshan Private Car & Airport Transfer | Fixed Price | CantonPickup',
+    title: 'Guangzhou to Zhongshan Private Car & Airport Transfer',
     h1: 'Guangzhou to Zhongshan Private Car & Airport Transfer',
     description:
       'Private car between Guangzhou and Zhongshan from $127 per vehicle with an English-speaking driver, tolls and parking included, both directions.',
@@ -344,7 +344,7 @@ export const routePages = [
   {
     slug: 'guangzhou-to-zhuhai',
     city: 'Zhuhai',
-    title: 'Guangzhou to Zhuhai Private Car & Airport Transfer | Fixed Price | CantonPickup',
+    title: 'Guangzhou to Zhuhai Private Car & Airport Transfer',
     h1: 'Guangzhou to Zhuhai Private Car & Airport Transfer',
     description:
       'Private car between Guangzhou and Zhuhai. Fixed price from $147 per vehicle with an English-speaking driver, tolls and parking included, both directions.',
@@ -425,7 +425,7 @@ export const routePages = [
   {
     slug: 'guangzhou-to-huizhou',
     city: 'Huizhou',
-    title: 'Guangzhou to Huizhou Private Car & Airport Transfer | Fixed Price | CantonPickup',
+    title: 'Guangzhou to Huizhou Private Car & Airport Transfer',
     h1: 'Guangzhou to Huizhou Private Car & Airport Transfer',
     description:
       'Private car between Guangzhou and Huizhou. Fixed price from $157 per vehicle with an English-speaking driver, tolls and parking included, both directions.',

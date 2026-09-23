@@ -29,7 +29,7 @@ export const pages = {
 
   privateDriver: {
     path: '/private-driver',
-    title: 'Private Driver Guangzhou & Foshan — Half & Full Day | CantonPickup',
+    title: 'Private Driver Guangzhou & Foshan — Half & Full Day',
     description:
       'Hire an English-speaking private driver in Guangzhou by the half day, full day or multi-day. Fuel, tolls, parking and vehicle included, hourly or daily.',
     keywords:
@@ -52,7 +52,7 @@ export const pages = {
 
   intercityTransfer: {
     path: '/intercity-transfer',
-    title: 'Guangzhou to Foshan, Shenzhen & the Pearl River Delta | CantonPickup',
+    title: 'Guangzhou to Foshan, Shenzhen & the Pearl River Delta',
     description:
       'Fixed-price intercity transfer from Guangzhou to Foshan, Shenzhen, Dongguan, Zhongshan, Zhuhai and Huizhou. Flat rate per vehicle, tolls included.',
     keywords:
@@ -63,7 +63,7 @@ export const pages = {
 
   cantonFairTransfer: {
     path: '/canton-fair-transfer',
-    title: 'Canton Fair Transfer & Private Driver, Guangzhou | CantonPickup',
+    title: 'Canton Fair Transfer & Private Driver, Guangzhou',
     description:
       'Canton Fair 2026 & 2027 private driver — hotel, airport or Pazhou, April and October sessions. Fixed price per vehicle, English-speaking driver.',
     keywords:
@@ -85,7 +85,7 @@ export const pages = {
 
   vehiclesPricing: {
     path: '/vehicles-pricing',
-    title: 'Vehicles & Pricing — Guangzhou Airport Transfer | CantonPickup',
+    title: 'Vehicles & Pricing — Guangzhou Airport Transfer',
     description:
       'Our fleet and transparent Guangzhou car hire prices. Sedan airport pickup from $57, seven-seat MPV from $77, half-day from $97 per vehicle, all in USD.',
     keywords:

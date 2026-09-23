@@ -52,7 +52,7 @@ export async function render(url) {
     || (article
       ? {
           path: url,
-          title: `${article.title} | CantonPickup`,
+          title: `${article.seoTitle || article.title} | CantonPickup`,
           description: article.excerpt,
           keywords: `${article.category?.toLowerCase() || 'guangzhou guide'}, guangzhou private driver, china sourcing trip`,
         }
