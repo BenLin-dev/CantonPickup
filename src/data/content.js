@@ -11,7 +11,7 @@ export const pages = {
       'English-speaking private driver and airport transfer service in Guangzhou and Foshan. Baiyun Airport (CAN) pickup, Guangzhou South Station transfer, full-day private drivers and factory visit transport. Fixed prices, no hidden fees.',
     keywords:
       'guangzhou airport transfer, guangzhou airport pickup, guangzhou baiyun airport transfer, CAN airport transfer, private driver guangzhou, guangzhou private driver, english speaking driver guangzhou, full day private driver guangzhou, guangzhou to foshan private transfer, foshan private transfer from guangzhou, private driver for factory visits guangzhou, foshan sourcing trip private driver',
-    h1: 'Your Ride in Foshan Made Simple',
+    h1: 'Guangzhou Airport Transfer & Private Driver, Made Simple',
     lead:
       'Airport transfers, private drivers and factory visits. Reliable, safe and easy — so you can focus on what matters.',
   },
@@ -23,7 +23,7 @@ export const pages = {
       'Book a Guangzhou Baiyun Airport (CAN) transfer or pickup with an English-speaking driver. Flight monitoring, meet & greet with a name sign, 60 minutes free waiting time and fixed prices to Guangzhou, Foshan and the Canton Fair. Arriving on 240-hour visa-free transit? We meet you at arrivals like everyone else.',
     keywords:
       'guangzhou airport transfer, guangzhou airport pickup, guangzhou baiyun airport transfer, baiyun airport transfer, CAN airport transfer, guangzhou arrival transfer, guangzhou south station pickup, china visa free transit guangzhou, 240-hour visa free transit guangzhou, guangzhou airport to canton fair',
-    h1: "From Airport to Foshan — We've Got You",
+    h1: 'Guangzhou Baiyun Airport Pickup (CAN) — Meet & Greet',
     lead: 'On-time pickups, flight monitoring, and a friendly driver waiting for you.',
   },
 
@@ -34,7 +34,7 @@ export const pages = {
       'Hire an English-speaking private driver in Guangzhou or Foshan by the half day, full day or multi-day. Fuel, tolls, parking and a comfortable vehicle included. Flexible itineraries for business, factory visits and sourcing trips.',
     keywords:
       'private driver guangzhou, guangzhou private driver, private driver foshan, english speaking driver guangzhou, full day private driver guangzhou, full day private driver foshan, private driver in china, private driver for factory visits guangzhou',
-    h1: 'Your Own Driver When You Need One',
+    h1: 'Private Driver in Guangzhou & Foshan — Half Day, Full Day',
     lead:
       'Flexible hourly and daily private driver service in Guangzhou and Foshan — for business, meetings, or your own schedule.',
   },
@@ -57,7 +57,7 @@ export const pages = {
       'Fixed-price intercity car transfer from Guangzhou to Foshan, Dongguan, Zhongshan, Shenzhen, Zhuhai and Huizhou. One flat rate per vehicle in both directions, tolls and parking included, English-speaking driver.',
     keywords:
       'guangzhou to foshan private transfer, foshan private transfer from guangzhou, guangzhou to shenzhen private transfer, private car from shenzhen to guangzhou, guangzhou to dongguan car service, intercity transfer guangdong, guangzhou to zhuhai private car',
-    h1: 'Between Cities, Without the Guesswork',
+    h1: 'Private Car Between Guangzhou, Foshan & the Delta',
     lead: 'One flat price per vehicle in both directions — doors covered from your hotel to theirs.',
   },
 

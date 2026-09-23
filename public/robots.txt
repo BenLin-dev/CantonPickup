@@ -1,6 +1,26 @@
 User-agent: *
 Allow: /
 
+# AI assistants and search crawlers: the whole site may be read, quoted and
+# cited. A plain-text summary for language models lives at /llms.txt.
+User-agent: GPTBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
 # Assets do not need to be crawled
 Disallow: /data/
 Disallow: /videos/
