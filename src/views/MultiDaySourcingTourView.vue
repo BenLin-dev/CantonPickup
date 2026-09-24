@@ -12,6 +12,7 @@ import {
   sourcingSteps,
   faqGroups,
   ctaBands,
+  heroBadges,
 } from '@/data/content'
 import { site, vehicleOptions } from '@/data/site'
 import { money } from '@/utils/price'
@@ -73,6 +74,7 @@ const included = [
     eyebrow="Multi-Day Sourcing Tour"
     :title="page.h1"
     :lead="page.lead"
+    :badges="heroBadges.multiDaySourcingTour"
     priority
     :crumbs="[{ label: 'Home', to: '/' }, { label: 'Multi-Day Sourcing Tour' }]"
   >
@@ -81,7 +83,7 @@ const included = [
         Get a Quote
         <AppIcon name="arrow" :size="18" :stroke="2.2" class="btn__arrow" />
       </RouterLink>
-      <a :href="site.whatsappLink" target="_blank" rel="noopener" class="btn btn--ghost-light btn--lg">
+      <a :href="site.waLink($route.path)" target="_blank" rel="noopener" class="btn btn--ghost-light btn--lg">
         <AppIcon name="whatsapp" :size="18" :stroke="1.8" />
         WhatsApp us
       </a>

@@ -209,7 +209,9 @@ function buildLocalBusiness() {
       'Foshan sourcing trip private driver',
       'Private driver in China',
     ],
-    sameAs: [site.whatsappLink],
+    // `whatsappUrl`, not `whatsappLink` — structured data wants the canonical
+    // profile address, not the click-to-chat URL with `?text=` on it.
+    sameAs: [site.whatsappUrl],
   }
 }
 

@@ -13,6 +13,97 @@
 import { serviceCards } from './content.js'
 import { routePages } from './routePages.js'
 
+/**
+ * WhatsApp click-to-chat, in three pieces.
+ *
+ * Every WhatsApp button on the site used to point at the bare
+ * `https://wa.me/<number>`, which opens an EMPTY composer. A visitor arriving
+ * from an ad had to invent a sentence before anything could be answered — the
+ * highest-intent tap on the whole site dead-ended in a blank box. The
+ * reference site (cantonride.com) pre-fills "Hi, I need a transfer in
+ * Guangzhou"; this is the same idea.
+ *
+ * Three separate values on purpose:
+ *   - `whatsappUrl`   bare profile address. Used in structured data (`sameAs`)
+ *                     and anywhere a canonical, parameterless URL is expected
+ *                     — you do not want `?text=...` sitting in JSON-LD.
+ *   - `whatsappLink`  what every human-facing button uses.
+ *   - `whatsappText`  the message itself, exported so the copy can be shown or
+ *                     asserted against without re-deriving it from the URL.
+ *
+ * Keep the message SHORT and ready to send as-is. A message containing blanks
+ * the visitor has to fill in is worse than no message at all — on a phone they
+ * would have to place a cursor mid-sentence.
+ */
+const WHATSAPP_NUMBER = '8613202442074'
+const WHATSAPP_TEXT = "Hi CantonPickup, I'd like a quote for a private transfer in Guangzhou."
+
+/**
+ * Pre-filled WhatsApp messages, one per page.
+ *
+ * Every button used to open the same composer no matter which page the visitor
+ * was reading. The message is the first thing we see on the phone, so it may as
+ * well name what they were looking at: "I need an airport transfer from Baiyun
+ * Airport" can be answered from a standing start, "I'd like a quote" cannot.
+ *
+ * Same rules as the original single message:
+ *   - SHORT, and sendable as-is. No blanks to fill in — on a phone the visitor
+ *     would have to place a cursor mid-sentence before they could hit send.
+ *   - No price and no date we cannot stand behind.
+ *   - Keep the "Hi CantonPickup, ..." opening: it reads as a person and it
+ *     tells the inbox which brand the lead came from.
+ */
+const WA_MESSAGES = {
+  '/airport-transfer': 'Hi CantonPickup, I need an airport transfer from Baiyun Airport (CAN).',
+  '/private-driver': 'Hi CantonPickup, I would like a price for a private driver in Guangzhou.',
+  '/factory-visits': 'Hi CantonPickup, I need a driver for factory visits in Guangdong.',
+  '/intercity-transfer': 'Hi CantonPickup, I need a private transfer between two cities in Guangdong.',
+  '/canton-fair-transfer': 'Hi CantonPickup, I need a Canton Fair transfer to Pazhou.',
+  '/multi-day-sourcing-tour':
+    'Hi CantonPickup, I am planning a multi-day sourcing trip in Guangdong.',
+  '/vehicles-pricing': 'Hi CantonPickup, which vehicle do you recommend for my trip?',
+  '/reviews': 'Hi CantonPickup, I would like a quote for a private transfer in Guangzhou.',
+  '/faqs': 'Hi CantonPickup, I have a question about your private car service.',
+  '/blog': 'Hi CantonPickup, I read your Guangzhou guide and would like a quote.',
+}
+
+/**
+ * `route.path` → pre-filled message. Not read from `window`: the caller passes
+ * the path in, so the server render and the client render produce the same URL
+ * and the prerendered markup is what the browser actually uses.
+ */
+function waMessageFor(path) {
+  // Vue Router hands us `/airport-transfer`; a hand-typed trailing slash or an
+  // older inbound link gives `/airport-transfer/`. Both must answer the same.
+  const clean = String(path || '/').replace(/\/+$/, '') || '/'
+
+  if (WA_MESSAGES[clean]) return WA_MESSAGES[clean]
+
+  // Intercity route pages (/guangzhou-to-foshan, /guangzhou-to-shenzhen, …) —
+  // derived from the same list that builds the pages, so a new route cannot be
+  // added without getting its own message.
+  const routePage = routePages.find((r) => `/${r.slug}` === clean)
+  if (routePage) {
+    return `Hi CantonPickup, I need a private transfer from Guangzhou to ${routePage.city}.`
+  }
+
+  // Individual guides under /blog/<slug>.
+  if (clean.startsWith('/blog/')) {
+    return 'Hi CantonPickup, I read your guide and would like a quote.'
+  }
+
+  return WHATSAPP_TEXT
+}
+
+/**
+ * `encodeURIComponent` deliberately leaves `'` unescaped — it is in the
+ * function's unreserved set. That put a raw apostrophe inside an HTML
+ * attribute, which Vue then had to write as `&#39;`, so the URL in the served
+ * markup did not read as the URL we built. Encode it explicitly so the link
+ * that reaches WhatsApp is byte-for-byte what is written here.
+ */
+const enc = (s) => encodeURIComponent(s).replace(/'/g, '%27')
+
 export const site = {
   name: 'CantonPickup',
   legalName: 'CantonPickup',
@@ -23,7 +114,17 @@ export const site = {
   phone: '+86 13202442074',
   phoneRaw: '+8613202442074',
   whatsapp: '+86 13202442074',
-  whatsappLink: 'https://wa.me/8613202442074',
+  whatsappUrl: `https://wa.me/${WHATSAPP_NUMBER}`,
+  whatsappText: WHATSAPP_TEXT,
+  whatsappLink: `https://wa.me/${WHATSAPP_NUMBER}?text=${enc(WHATSAPP_TEXT)}`,
+  /**
+   * Click-to-chat carrying the message that matches the page the visitor is on.
+   * Used by every WhatsApp button: `site.waLink(route.path)`.
+   *
+   * `whatsappLink` above stays as the page-agnostic fallback — it is the one to
+   * use in a context with no route (and it is what `waLink('/')` returns).
+   */
+  waLink: (path) => `https://wa.me/${WHATSAPP_NUMBER}?text=${enc(waMessageFor(path))}`,
   wechat: '+86 13202442074',
   email: 'jack@cantonpickup.com',
   mailto: 'mailto:jack@cantonpickup.com',
@@ -51,7 +152,8 @@ export const site = {
   responseTime: 'We usually reply within 30 minutes.',
 
   social: {
-    whatsapp: 'https://wa.me/8613202442074',
+    // Bare profile URL — this object feeds `sameAs` style listings, not buttons.
+    whatsapp: `https://wa.me/${WHATSAPP_NUMBER}`,
     wechat: '',
     email: 'mailto:jack@cantonpickup.com',
   },
@@ -251,6 +353,31 @@ export const priceHighlights = [
   { label: 'Half-day private driver', from: 97, unit: '5 hours / 120 km', to: '/private-driver' },
   { label: 'Full-day private driver', from: 187, unit: '10 hours / 250 km', to: '/private-driver' },
 ]
+
+/** The "Baiyun Airport pickup / drop-off" row of one of the two rate tables. */
+const airportFare = (tier) =>
+  pricing[tier].rows.find((r) => r.service.startsWith('Baiyun Airport')).price
+
+/**
+ * Lowest published fare per vehicle, printed on the fleet cards as
+ * `From $57` — the reference site puts a price on the card and ours did not,
+ * so a visitor had to scroll to the rate table to find out what a car costs.
+ *
+ * It lives here, keyed by slug, instead of on the `fleet` entries because the
+ * live list is served from the generated `public/data/vehicles.json` manifest,
+ * which knows about photos and seats but nothing about money. The figures are
+ * read from `pricing` above rather than typed in: a card can then never quote a
+ * price the tables below it contradict. Every vehicle we list is one of the two
+ * published tiers (sedan / 7-seat MPV), so there are only two numbers.
+ */
+export const priceFromBySlug = {
+  hongqi: airportFare('sedan'),
+  'byd-han': airportFare('sedan'),
+  'denza-d9': airportFare('mpv'),
+  'voyah-mpv': airportFare('mpv'),
+  'gac-m8-white': airportFare('mpv'),
+  'mercedes-vclass': airportFare('mpv'),
+}
 
 /**
  * Popular fixed-price routes shown on the airport transfer page.

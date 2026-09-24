@@ -16,6 +16,7 @@ import {
   paymentMethods,
   paymentSteps,
   cancellationPolicy,
+  heroBadges,
 } from '@/data/content'
 import { site, pricing, priceHighlights, intercityRoutes, popularRoutes, featuredVehicles } from '@/data/site'
 import { money, moneyOr } from '@/utils/price'
@@ -75,6 +76,7 @@ function trackCta(label, destination) {
     eyebrow="Vehicles &amp; Pricing"
     :title="page.h1"
     :lead="page.lead"
+    :badges="heroBadges.vehiclesPricing"
     priority
     :crumbs="[{ label: 'Home', to: '/' }, { label: 'Vehicles & Pricing' }]"
   >
@@ -381,7 +383,7 @@ function trackCta(label, destination) {
               class="btn btn--sm"
               @click="trackCta('Book with a 20% deposit', '/contact')"
             >Book with a 20% deposit</RouterLink>
-            <a :href="site.whatsappLink" target="_blank" rel="noopener" class="btn btn--outline btn--sm">
+            <a :href="site.waLink($route.path)" target="_blank" rel="noopener" class="btn btn--outline btn--sm">
               <AppIcon name="whatsapp" :size="17" :stroke="1.8" />
               Ask a question
             </a>

@@ -8,8 +8,10 @@ import { site } from '@/data/site'
  *
  * Deliberately a thin wrapper around `QuoteForm` rather than a second form
  * implementation — one submit path, one place to fix a bug, one set of GTM
- * events. `QuoteForm` already knows how to run in `compact` mode (it hides the
- * pickup / drop-off pair) and how to pre-select a service from a slug.
+ * events, and one field list. It used to pass `compact` to hide the
+ * pickup / drop-off pair; `QuoteForm` no longer has those fields (they moved
+ * into the required "Trip details" textarea), so there is nothing left to
+ * switch and both forms are identical.
  *
  * The panel is rendered eagerly, not lazily, on purpose: it has to be present
  * in the prerendered HTML so the page still converts if the JS bundle is slow.
@@ -54,7 +56,7 @@ defineProps({
 
       <p class="inline-quote__alt">
         Prefer to chat? Message us on
-        <a :href="site.whatsappLink" target="_blank" rel="noopener">
+        <a :href="site.waLink($route.path)" target="_blank" rel="noopener">
           WhatsApp {{ site.whatsapp }}
         </a>
         — we usually answer within minutes.
@@ -62,7 +64,7 @@ defineProps({
     </div>
 
     <div class="inline-quote__form">
-      <QuoteForm compact :preselect="service" />
+      <QuoteForm :preselect="service" />
       <p v-if="reassurance" class="inline-quote__fineprint">{{ reassurance }}</p>
     </div>
   </div>

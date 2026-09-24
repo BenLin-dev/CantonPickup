@@ -36,7 +36,7 @@ const topKeywords = seoKeywords.slice(0, 9)
           </p>
 
           <div class="footer__social">
-            <a :href="site.whatsappLink" target="_blank" rel="noopener" aria-label="WhatsApp">
+            <a :href="site.waLink($route.path)" target="_blank" rel="noopener" aria-label="WhatsApp">
               <AppIcon name="whatsapp" :size="19" :stroke="1.8" />
             </a>
             <a :href="site.mailto" aria-label="Email">
@@ -78,7 +78,7 @@ const topKeywords = seoKeywords.slice(0, 9)
         <div>
           <h4>Get in touch</h4>
           <div class="footer__links">
-            <a :href="site.whatsappLink" target="_blank" rel="noopener">
+            <a :href="site.waLink($route.path)" target="_blank" rel="noopener">
               WhatsApp &amp; WeChat: {{ site.whatsapp }}
             </a>
             <a :href="site.mailto">{{ site.email }}</a>

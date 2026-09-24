@@ -76,6 +76,20 @@ const route = useRoute()
 const preselect = computed(() => serviceBySlug(String(route.query.service || ''))?.quote || '')
 
 /**
+ * `contactChannels` ships a plain `https://wa.me/...` address, because
+ * `content.js` cannot import `site.js` — `site.js` imports `content.js`, so
+ * that would be a cycle. Swap in the shared click-to-chat link instead, so
+ * this card carries the same pre-filled first message as the header, footer
+ * and floating button and can never drift from them.
+ *
+ * `route.path` rather than `$route.path`: this one is built in script, not in
+ * the template.
+ */
+const channels = computed(() =>
+  contactChannels.map((c) => (c.icon === 'whatsapp' ? { ...c, href: site.waLink(route.path) } : c)),
+)
+
+/**
  * Keyless Google Maps embed — `output=embed` on the plain maps URL renders the
  * interactive map without an API key, which keeps the page dependency-free.
  */
@@ -134,6 +148,7 @@ const goodToKnow = [
     :title="page.h1"
     :lead="page.lead"
     priority
+    :media-on-mobile="false"
     :crumbs="[{ label: 'Home', to: '/' }, { label: 'Contact' }]"
     :meta="[
       { icon: 'clock', text: site.responseTime },
@@ -141,7 +156,7 @@ const goodToKnow = [
     ]"
   >
     <template #actions>
-      <a :href="site.whatsappLink" target="_blank" rel="noopener" class="btn btn--lg">
+      <a :href="site.waLink($route.path)" target="_blank" rel="noopener" class="btn btn--lg">
         <AppIcon name="whatsapp" :size="19" :stroke="1.8" />
         WhatsApp us
       </a>
@@ -152,9 +167,9 @@ const goodToKnow = [
   <!-- ------------------------------------------------ contact information -->
   <section class="section" id="quote">
     <div class="container">
-      <div class="split" style="align-items: flex-start">
+      <div class="split contact-split" style="align-items: flex-start">
         <!-- left: how to reach us -->
-        <div v-reveal>
+        <div class="contact-split__info" v-reveal>
           <p class="eyebrow">Talk to a person</p>
           <h2>Contact Information</h2>
           <p class="lead">
@@ -163,7 +178,7 @@ const goodToKnow = [
           </p>
 
           <div class="stack mt-32" style="--gap: 12px">
-            <template v-for="c in contactChannels" :key="c.label">
+            <template v-for="c in channels" :key="c.label">
               <a
                 v-if="c.href"
                 class="card card--link"
@@ -197,7 +212,7 @@ const goodToKnow = [
         </div>
 
         <!-- right: the quote form -->
-        <div v-reveal="{ delay: 100 }">
+        <div class="contact-split__form" v-reveal="{ delay: 100 }">
           <div class="card" style="padding: clamp(22px, 3vw, 34px)">
             <p class="eyebrow">Get a quote</p>
             <h2 style="font-size: 1.4rem; margin-bottom: 8px">Send Us a Message</h2>
@@ -338,6 +353,21 @@ const goodToKnow = [
 </template>
 
 <style scoped>
+/*
+ * Mobile order swap: the quote form comes BEFORE the contact-channel list.
+ *
+ * On a phone `.split` collapses to one column, so the stacked order decided
+ * what the visitor met first — and it met the eyebrow, the heading, the lead
+ * and three channel cards before a single input. That is what put the first
+ * form field at 1830px (2.2 screens). The form is the Google Ads conversion,
+ * so it goes first; the "talk to a person" cards follow it.
+ */
+@media (max-width: 900px) {
+  .contact-split__form {
+    order: -1;
+  }
+}
+
 /* reassurance list under the quote form */
 .quote-assure {
   display: grid;

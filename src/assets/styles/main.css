@@ -1165,10 +1165,20 @@ p:last-child {
     linear-gradient(0deg, rgba(13, 105, 166, 0.4), rgba(13, 105, 166, 0) 55%);
 }
 
+/*
+ * `padding-block`, NOT the `padding` shorthand.
+ *
+ * This element also carries `.container`, whose `padding-inline: var(--gutter)`
+ * is the only horizontal inset the hero has. The shorthand silently wiped it —
+ * same specificity (one class each), and an equal-specificity rule later in the
+ * file wins — so the breadcrumb, eyebrow, H1 and lead sat flush against the
+ * screen edge. On a desktop the centred 1200px `max-width` hid it; on a phone
+ * every line of the hero started at x=0.
+ */
 .hero__inner {
   position: relative;
   z-index: 2;
-  padding: clamp(52px, 8vw, 104px) 0 clamp(48px, 7vw, 92px);
+  padding-block: clamp(52px, 8vw, 104px) clamp(48px, 7vw, 92px);
 }
 
 .hero__copy {
@@ -1280,6 +1290,26 @@ p:last-child {
   }
 }
 
+/*
+ * Phones: the hero calls to action go full width and stack.
+ *
+ * Side by side in a 354px column the two buttons wrapped into a ragged block —
+ * one 191px, one 205px, on two lines — and neither read as the primary action.
+ * The reference site's first screen has one full-bleed button; stretching ours
+ * gives every row a single obvious target and lines the pair up with the trust
+ * pills above them. Desktop keeps the side-by-side row.
+ */
+@media (max-width: 560px) {
+  .hero .btn-row {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .hero .btn-row > * {
+    width: 100%;
+  }
+}
+
 /* home hero: split with photo */
 .hero--split .hero__inner {
   padding-bottom: clamp(52px, 8vw, 96px);
@@ -1304,6 +1334,15 @@ p:last-child {
     aspect-ratio: 16 / 10;
     margin-top: 30px;
   }
+
+  /*
+   * Opt-out switch (`<HeroSection :media-on-mobile="false">`) used by the
+   * `/contact/` ads landing page: on a phone the stacked photo sat directly
+   * above the quote form and cost ~274px of the first two screens.
+   */
+  .hero__media--desktop-only {
+    display: none;
+  }
 }
 
 /* -------------------------------------------------------------- marquee */
@@ -1312,11 +1351,16 @@ p:last-child {
   border-block: 1px solid var(--c-200);
 }
 
+/*
+ * Same trap as `.hero__inner`: this element also carries `.container`, so the
+ * shorthand used to cancel the gutter and push the three trust columns to the
+ * screen edge on a phone.
+ */
 .trust-strip__inner {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 22px;
-  padding: 24px 0;
+  padding-block: 24px;
 }
 
 .trust-item {
@@ -1871,6 +1915,35 @@ p:last-child {
   flex: 1;
 }
 
+/*
+ * "From $57" on the card itself.
+ *
+ * The reference site prints its price on the fleet card; ours kept it only in
+ * the rate table further down, so a visitor deciding between two cars had to
+ * scroll away and back. The figure comes from `priceFromBySlug` (site.js),
+ * which reads it out of `pricing` — it can never contradict the tables below.
+ */
+.vehicle__price {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 4px 8px;
+  margin: 0;
+}
+
+.vehicle__price strong {
+  font-size: 1.34rem;
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+  color: var(--c-700);
+}
+
+.vehicle__price small {
+  font-size: 0.78rem;
+  color: var(--c-muted-2);
+}
+
 /* --------------------------------------------------------------- tables */
 .price-table-wrap {
   overflow-x: auto;
@@ -2414,6 +2487,18 @@ p:last-child {
     width: 52px;
     padding: 0;
     justify-content: center;
+  }
+}
+
+/*
+ * Email + phone are desktop-only. On a phone or tablet the stack collapses to
+ * the single WhatsApp button — one obvious tap target instead of a three-way
+ * choice, matching the reference site. The drawer sits at z-index 90, above
+ * `.floating` (70), so an open mobile menu still covers the button.
+ */
+@media (max-width: 900px) {
+  .floating .fab--desktop {
+    display: none;
   }
 }
 

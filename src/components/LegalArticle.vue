@@ -40,7 +40,7 @@ defineProps({
           during the day.
         </p>
         <div class="btn-row mt-24">
-          <a :href="site.whatsappLink" target="_blank" rel="noopener" class="btn btn--sm">
+          <a :href="site.waLink($route.path)" target="_blank" rel="noopener" class="btn btn--sm">
             <AppIcon name="whatsapp" :size="17" :stroke="1.8" />
             WhatsApp
           </a>

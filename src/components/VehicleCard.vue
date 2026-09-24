@@ -1,10 +1,22 @@
 <script setup>
 import { computed, ref } from 'vue'
 import AppIcon from './AppIcon.vue'
+import { priceFromBySlug } from '@/data/site'
+import { money } from '@/utils/price'
 
 const props = defineProps({
   vehicle: { type: Object, required: true },
 })
+
+/**
+ * Lowest published fare for this vehicle, printed on the card as `From $57`.
+ *
+ * Looked up by slug, not read off `vehicle`: the live list is served from the
+ * generated `public/data/vehicles.json` manifest, which has no price field, so
+ * a value added to the `fleet` fallback would disappear the moment the
+ * manifest loads. Unknown slugs simply render no price rather than a wrong one.
+ */
+const from = computed(() => priceFromBySlug[props.vehicle.slug] || 0)
 
 /**
  * Photos may arrive either as a full path (`/images/vehicles/byd-han.jpg`, what
@@ -78,6 +90,11 @@ function trackSelectVehicle() {
           {{ vehicle.luggage }}
         </span>
       </div>
+
+      <p v-if="from" class="vehicle__price">
+        <strong>From {{ money(from) }}</strong>
+        <small>airport pickup · per vehicle</small>
+      </p>
 
       <p v-if="vehicle.description" class="vehicle__desc">{{ vehicle.description }}</p>
 

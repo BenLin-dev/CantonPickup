@@ -259,7 +259,7 @@ onBeforeUnmount(() => {
 
       <p class="table-note" style="text-align: center">
         {{ items.length }} reviews from guests we have driven.
-        <a :href="site.whatsappLink" target="_blank" rel="noopener">Travelled with us? Send us yours.</a>
+        <a :href="site.waLink($route.path)" target="_blank" rel="noopener">Travelled with us? Send us yours.</a>
       </p>
     </div>
 

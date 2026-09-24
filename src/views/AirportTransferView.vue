@@ -5,7 +5,7 @@ import FaqAccordion from '@/components/FaqAccordion.vue'
 import CtaBand from '@/components/CtaBand.vue'
 import AppIcon from '@/components/AppIcon.vue'
 import { useSeo, useJsonLd, useBreadcrumbs } from '@/composables/useSeo'
-import { pages, airportAdvantages, airportSteps, faqGroups, ctaBands } from '@/data/content'
+import { pages, airportAdvantages, airportSteps, faqGroups, ctaBands, heroBadges } from '@/data/content'
 import { site, popularRoutes, vehicleOptions } from '@/data/site'
 import { money } from '@/utils/price'
 
@@ -65,6 +65,7 @@ useBreadcrumbs('airport-transfer', [
     eyebrow="Airport Transfer"
     :title="page.h1"
     :lead="page.lead"
+    :badges="heroBadges.airportTransfer"
     priority
     :crumbs="[{ label: 'Home', to: '/' }, { label: 'Airport Transfer' }]"
   >
@@ -73,7 +74,7 @@ useBreadcrumbs('airport-transfer', [
         Get a Quote
         <AppIcon name="arrow" :size="18" :stroke="2.2" class="btn__arrow" />
       </RouterLink>
-      <a :href="site.whatsappLink" target="_blank" rel="noopener" class="btn btn--ghost-light btn--lg">
+      <a :href="site.waLink($route.path)" target="_blank" rel="noopener" class="btn btn--ghost-light btn--lg">
         <AppIcon name="whatsapp" :size="18" :stroke="1.8" />
         WhatsApp us
       </a>

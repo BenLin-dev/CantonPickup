@@ -13,6 +13,7 @@ import {
   cantonFairSteps,
   faqGroups,
   ctaBands,
+  heroBadges,
 } from '@/data/content'
 import { site } from '@/data/site'
 import { money } from '@/utils/price'
@@ -76,6 +77,7 @@ const fairTips = [
     eyebrow="Canton Fair Transfer"
     :title="page.h1"
     :lead="page.lead"
+    :badges="heroBadges.cantonFairTransfer"
     priority
     :crumbs="[{ label: 'Home', to: '/' }, { label: 'Canton Fair Transfer' }]"
   >
@@ -84,7 +86,7 @@ const fairTips = [
         Get a Quote
         <AppIcon name="arrow" :size="18" :stroke="2.2" class="btn__arrow" />
       </RouterLink>
-      <a :href="site.whatsappLink" target="_blank" rel="noopener" class="btn btn--ghost-light btn--lg">
+      <a :href="site.waLink($route.path)" target="_blank" rel="noopener" class="btn btn--ghost-light btn--lg">
         <AppIcon name="whatsapp" :size="18" :stroke="1.8" />
         WhatsApp us
       </a>

@@ -6,7 +6,7 @@ import FaqAccordion from '@/components/FaqAccordion.vue'
 import CtaBand from '@/components/CtaBand.vue'
 import AppIcon from '@/components/AppIcon.vue'
 import { useSeo, useJsonLd, useBreadcrumbs } from '@/composables/useSeo'
-import { pages, factorySupport, factorySteps, faqGroups, ctaBands } from '@/data/content'
+import { pages, factorySupport, factorySteps, faqGroups, ctaBands, heroBadges } from '@/data/content'
 import { site } from '@/data/site'
 
 const page = pages.factoryVisits
@@ -76,6 +76,7 @@ const areas = [
     eyebrow="Business Travel & Factory Visits"
     :title="page.h1"
     :lead="page.lead"
+    :badges="heroBadges.factoryVisits"
     priority
     :crumbs="[{ label: 'Home', to: '/' }, { label: 'Business Travel & Factory Visits' }]"
   >
@@ -205,7 +206,7 @@ const areas = [
           </ul>
 
           <div class="btn-row mt-32">
-            <a :href="site.whatsappLink" target="_blank" rel="noopener" class="btn">
+            <a :href="site.waLink($route.path)" target="_blank" rel="noopener" class="btn">
               <AppIcon name="whatsapp" :size="18" :stroke="1.8" />
               Tell us what you need
             </a>

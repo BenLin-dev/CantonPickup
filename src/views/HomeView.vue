@@ -92,7 +92,9 @@ useJsonLd('home-business', {
     'Foshan sourcing trip private driver',
     'Private driver in China',
   ],
-  sameAs: [site.whatsappLink],
+  // Canonical profile address; `whatsappLink` carries the pre-filled message
+  // and must not end up in JSON-LD.
+  sameAs: [site.whatsappUrl],
 })
 </script>
 

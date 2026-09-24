@@ -110,7 +110,7 @@ function cell(value) {
           Get a Quote
           <AppIcon name="arrow" :size="18" :stroke="2.2" class="btn__arrow" />
         </a>
-        <a :href="site.whatsappLink" target="_blank" rel="noopener" class="btn btn--ghost-light btn--lg">
+        <a :href="site.waLink($route.path)" target="_blank" rel="noopener" class="btn btn--ghost-light btn--lg">
           <AppIcon name="whatsapp" :size="18" :stroke="1.8" />
           WhatsApp us
         </a>

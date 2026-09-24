@@ -1,5 +1,5 @@
 <script setup>
-import { reactive, ref, computed } from 'vue'
+import { reactive, ref } from 'vue'
 import AppIcon from './AppIcon.vue'
 import { site, serviceOptions } from '@/data/site'
 
@@ -8,9 +8,19 @@ import { site, serviceOptions } from '@/data/site'
  * Submits to Web3Forms (access key configured in `src/data/site.js`) using
  * fetch, so the visitor stays on the page. A `generate_lead` event is pushed
  * to the GTM dataLayer on success so Google Ads can register the conversion.
+ *
+ * FIVE visible fields, on purpose (2026-09-24). It used to carry ten — the extra
+ * five (travel date, flight number, passengers, pickup, drop-off) were all
+ * optional, and every one of them was a reason to close the tab before reaching
+ * the button. The reference site (cantonride.com) asks for six including its
+ * honeypot, and folds pickup / destination / date / time / passenger count into
+ * the message textarea's placeholder. That is exactly the structure here: a
+ * required "Trip details" box does the work the five separate inputs used to.
+ *
+ * Required fields are name, email and Trip details — the minimum needed to
+ * answer a lead. Nothing else gates the submit.
  */
 const props = defineProps({
-  compact: { type: Boolean, default: false },
   /**
    * Value to pre-select in "Service needed" — set from `?service=<slug>` on the
    * contact page so a "Book Now" button does not make the visitor choose twice.
@@ -23,19 +33,12 @@ const form = reactive({
   email: '',
   phone: '',
   service: serviceOptions.includes(props.preselect) ? props.preselect : '',
-  date: '',
-  flight: '',
-  pickup: '',
-  dropoff: '',
-  passengers: '',
   message: '',
   botcheck: '',
 })
 
 const state = ref('idle') // idle | sending | ok | error
 const errorMsg = ref('')
-
-const today = computed(() => new Date().toISOString().slice(0, 10))
 
 /**
  * SHA-256 of a normalised string, hex-encoded. Returns an empty string when
@@ -80,11 +83,6 @@ async function submit() {
     email: form.email,
     phone: form.phone,
     service: form.service,
-    travel_date: form.date,
-    flight_number: form.flight,
-    pickup_location: form.pickup,
-    dropoff_location: form.dropoff,
-    passengers: form.passengers,
     message: form.message,
     page: typeof window !== 'undefined' ? window.location.href : '',
   }
@@ -196,11 +194,6 @@ function reset() {
     email: '',
     phone: '',
     service: '',
-    date: '',
-    flight: '',
-    pickup: '',
-    dropoff: '',
-    passengers: '',
     message: '',
     botcheck: '',
   })
@@ -269,68 +262,6 @@ function reset() {
           </select>
         </div>
 
-        <div class="field">
-          <label for="q-date">Travel date</label>
-          <input
-            id="q-date"
-            v-model="form.date"
-            name="travel_date"
-            type="date"
-            :min="today"
-          />
-        </div>
-
-        <div class="field">
-          <label for="q-flight">Flight number <span class="opt">(airport pickups)</span></label>
-          <input
-            id="q-flight"
-            v-model.trim="form.flight"
-            name="flight_number"
-            type="text"
-            placeholder="e.g. CZ 304 / BA 0881"
-            autocomplete="off"
-          />
-          <p class="field__hint">We track your flight, so we are there even if it lands late.</p>
-        </div>
-
-        <div class="field">
-          <label for="q-pax">Number of passengers</label>
-          <select id="q-pax" v-model="form.passengers" name="passengers">
-            <option value="">Please choose…</option>
-            <option>1</option>
-            <option>2</option>
-            <option>3</option>
-            <option>4</option>
-            <option>5</option>
-            <option>6</option>
-            <option>7+</option>
-          </select>
-        </div>
-
-        <template v-if="!compact">
-          <div class="field">
-            <label for="q-pickup">Pickup location</label>
-            <input
-              id="q-pickup"
-              v-model.trim="form.pickup"
-              name="pickup_location"
-              type="text"
-              placeholder="e.g. Baiyun Airport (CAN), Terminal 2"
-            />
-          </div>
-
-          <div class="field">
-            <label for="q-dropoff">Drop-off location</label>
-            <input
-              id="q-dropoff"
-              v-model.trim="form.dropoff"
-              name="dropoff_location"
-              type="text"
-              placeholder="e.g. Foshan, Nanhai District"
-            />
-          </div>
-        </template>
-
         <div class="field field--full">
           <label for="q-message">
             Trip details <span class="req">*</span>
@@ -340,7 +271,7 @@ function reset() {
             v-model.trim="form.message"
             name="message"
             required
-            placeholder="Flight number, arrival time, luggage, child seats, number of factory visits — anything that helps us quote accurately."
+            placeholder="Pickup and drop-off, travel date, flight number, number of passengers, luggage, child seats — anything that helps us quote accurately."
           />
         </div>
       </div>
@@ -389,7 +320,7 @@ function reset() {
         </strong>
         <span>
           We usually reply within 30 minutes. If it is urgent, message us on
-          <a :href="site.whatsappLink" target="_blank" rel="noopener">WhatsApp {{ site.whatsapp }}</a>.
+          <a :href="site.waLink($route.path)" target="_blank" rel="noopener">WhatsApp {{ site.whatsapp }}</a>.
         </span>
         <div style="margin-top: 14px">
           <button class="btn btn--outline btn--sm" type="button" @click="reset">

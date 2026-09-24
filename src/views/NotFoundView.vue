@@ -53,7 +53,7 @@ const links = [
 
       <p class="table-note mt-32">
         Or reach us directly on
-        <a :href="site.whatsappLink" target="_blank" rel="noopener">WhatsApp {{ site.whatsapp }}</a>
+        <a :href="site.waLink($route.path)" target="_blank" rel="noopener">WhatsApp {{ site.whatsapp }}</a>
         or by
         <a :href="site.mailto">email</a>.
       </p>

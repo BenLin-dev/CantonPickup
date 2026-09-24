@@ -5,7 +5,7 @@ import FaqAccordion from '@/components/FaqAccordion.vue'
 import CtaBand from '@/components/CtaBand.vue'
 import AppIcon from '@/components/AppIcon.vue'
 import { useSeo, useJsonLd, useBreadcrumbs } from '@/composables/useSeo'
-import { pages, driverOptions, driverIncluded, driverUseCases, faqGroups, ctaBands } from '@/data/content'
+import { pages, driverOptions, driverIncluded, driverUseCases, faqGroups, ctaBands, heroBadges } from '@/data/content'
 import { site } from '@/data/site'
 import { money } from '@/utils/price'
 
@@ -57,6 +57,7 @@ useBreadcrumbs('private-driver', [
     eyebrow="Private Driver"
     :title="page.h1"
     :lead="page.lead"
+    :badges="heroBadges.privateDriver"
     priority
     :crumbs="[{ label: 'Home', to: '/' }, { label: 'Private Driver' }]"
   >
@@ -137,7 +138,7 @@ useBreadcrumbs('private-driver', [
               Get a Quote
               <AppIcon name="arrow" :size="17" :stroke="2.2" class="btn__arrow" />
             </RouterLink>
-            <a :href="site.whatsappLink" target="_blank" rel="noopener" class="btn btn--outline">
+            <a :href="site.waLink($route.path)" target="_blank" rel="noopener" class="btn btn--outline">
               <AppIcon name="whatsapp" :size="17" :stroke="1.8" />
               Ask a question
             </a>

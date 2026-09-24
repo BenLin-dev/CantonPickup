@@ -156,7 +156,7 @@ function isActive(item) {
         </RouterLink>
 
         <div class="stack mt-24" style="--gap: 12px">
-          <a class="btn btn--outline btn--block" :href="site.whatsappLink" target="_blank" rel="noopener">
+          <a class="btn btn--outline btn--block" :href="site.waLink($route.path)" target="_blank" rel="noopener">
             <AppIcon name="whatsapp" :size="18" />
             WhatsApp {{ site.whatsapp }}
           </a>

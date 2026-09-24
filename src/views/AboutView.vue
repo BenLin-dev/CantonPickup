@@ -132,7 +132,7 @@ const facts = [
       </div>
 
       <div class="btn-row mt-40" style="justify-content: center">
-        <a :href="site.whatsappLink" target="_blank" rel="noopener" class="btn">
+        <a :href="site.waLink($route.path)" target="_blank" rel="noopener" class="btn">
           <AppIcon name="whatsapp" :size="18" :stroke="1.8" />
           Say hello on WhatsApp
         </a>

@@ -1205,6 +1205,80 @@ export const contactChannels = [
   },
 ]
 
+/**
+ * Trust pills for the first screen of each service page.
+ *
+ * The reference site (cantonride.com) opens its service pages with six short
+ * claims above the CTA; ours opened with none, so the same four claims sat
+ * 687px down under "Why Choose Us" and a visitor who never scrolled past the
+ * hero never saw a single one. This is the same content, moved up.
+ *
+ * Every line is already a claim made further down its own page — nothing new
+ * is asserted here, so the pills and the sections below can never disagree.
+ * Keep them to two to four words: six pills have to wrap into three tidy rows
+ * on a 390px phone, and anything longer turns into a paragraph.
+ *
+ * An entry is `{ icon, text }`; `icon` is a name from `AppIcon.vue`.
+ */
+export const heroBadges = {
+  airportTransfer: [
+    { icon: 'clock', text: '24/7 pickup & drop-off' },
+    { icon: 'plane', text: 'Flight monitored' },
+    { icon: 'user', text: 'Meet & Greet with name sign' },
+    { icon: 'luggage', text: 'Luggage handled' },
+    { icon: 'shield', text: '60 minutes free waiting' },
+    { icon: 'wallet', text: 'Airport pickup from $57' },
+  ],
+  privateDriver: [
+    { icon: 'user', text: 'English-speaking driver' },
+    { icon: 'chat', text: '24/7 WhatsApp support' },
+    { icon: 'calendar', text: 'Half day, full day, multi-day' },
+    { icon: 'wallet', text: 'Half day from $97' },
+    { icon: 'car', text: 'Sedan or 7-seat MPV' },
+    { icon: 'check', text: 'Fuel, tolls & parking included' },
+  ],
+  factoryVisits: [
+    { icon: 'factory', text: 'Factory-to-factory routing' },
+    { icon: 'calendar', text: 'Two to four visits a day' },
+    { icon: 'map', text: 'Foshan & Delta local knowledge' },
+    { icon: 'chat', text: 'Translation & business support' },
+    { icon: 'wallet', text: 'Fixed price per vehicle' },
+    { icon: 'user', text: 'English-speaking driver' },
+  ],
+  intercityTransfer: [
+    { icon: 'route', text: 'One price per vehicle' },
+    { icon: 'wallet', text: 'Tolls & parking included' },
+    { icon: 'shield', text: 'Door to door' },
+    { icon: 'clock', text: 'An honest arrival window' },
+    { icon: 'car', text: 'Sedan or 7-seat MPV' },
+    { icon: 'luggage', text: 'Luggage handled at both ends' },
+  ],
+  cantonFairTransfer: [
+    { icon: 'calendar', text: 'April & October sessions' },
+    { icon: 'clock', text: 'Early drop-off at the halls' },
+    { icon: 'wallet', text: 'One price held for show week' },
+    { icon: 'users', text: 'Room for samples in the boot' },
+    { icon: 'route', text: 'Hotel ↔ Pazhou fixed price' },
+    { icon: 'user', text: 'English-speaking driver' },
+  ],
+  multiDaySourcingTour: [
+    { icon: 'briefcase', text: 'One driver for the whole trip' },
+    { icon: 'calendar', text: 'Three days or three weeks' },
+    { icon: 'wallet', text: 'Lower daily rate from day three' },
+    { icon: 'factory', text: 'Route rebuilt every evening' },
+    { icon: 'shield', text: 'Samples stay in the car' },
+    { icon: 'user', text: 'English-speaking driver' },
+  ],
+  vehiclesPricing: [
+    { icon: 'car', text: 'Sedans & 7-seat MPVs' },
+    { icon: 'wallet', text: 'Airport pickup from $57' },
+    { icon: 'users', text: '1–6 passengers' },
+    { icon: 'luggage', text: 'Up to 7 suitcases' },
+    { icon: 'shield', text: 'Fuel, tolls & parking included' },
+    { icon: 'check', text: '20% deposit, balance after' },
+  ],
+}
+
 /** Service-page CTAs. */
 export const ctaBands = {
   home: {

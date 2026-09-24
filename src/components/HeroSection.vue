@@ -1,4 +1,5 @@
 <script setup>
+import { computed } from 'vue'
 import AppIcon from './AppIcon.vue'
 
 /**
@@ -15,13 +16,33 @@ const props = defineProps({
   meta: { type: Array, default: () => [] },
   /**
    * Short trust pills shown directly under the lead — e.g. "Fixed price".
-   * Pass plain strings; they render as a wrapped row of chips.
+   *
+   * Either a plain string, or `{ text, icon }` to pick the glyph. Strings keep
+   * the tick they have always had; the service pages pass an icon per pill
+   * (clock, plane, luggage, …) so six claims read as six different things at a
+   * glance instead of six ticks. Same icons as the "Why Choose Us" cards below,
+   * pulled from `heroBadges` in `content.js`.
    */
   badges: { type: Array, default: () => [] },
   crumbs: { type: Array, default: () => [] },
   imageAlt: { type: String, default: '' },
   priority: { type: Boolean, default: false },
+  /**
+   * `variant="split"` only. When false the photo is dropped under 900px, so on
+   * a phone the hero is copy + buttons only.
+   *
+   * Used by `/contact/` — the Google Ads landing page. There the photo stacked
+   * directly above the form and pushed the first field to 1830px, i.e. 2.2
+   * screens down, while the reference site shows its first field at the bottom
+   * of screen one. The photo still renders on desktop, where there is room.
+   */
+  mediaOnMobile: { type: Boolean, default: true },
 })
+
+/** Normalise `['Fixed price', { text: 'Flight monitored', icon: 'plane' }]`. */
+const pillList = computed(() =>
+  props.badges.map((b) => (typeof b === 'string' ? { text: b, icon: 'check' } : b))
+)
 </script>
 
 <template>
@@ -57,10 +78,10 @@ const props = defineProps({
           <h1 class="hero__title">{{ title }}</h1>
           <p v-if="lead" class="hero__lead">{{ lead }}</p>
 
-          <ul v-if="badges.length" class="hero__badges">
-            <li v-for="b in badges" :key="b" class="hero__badge">
-              <AppIcon name="check" :size="15" :stroke="2.8" />
-              {{ b }}
+          <ul v-if="pillList.length" class="hero__badges">
+            <li v-for="b in pillList" :key="b.text" class="hero__badge">
+              <AppIcon :name="b.icon || 'check'" :size="15" :stroke="2.2" />
+              {{ b.text }}
             </li>
           </ul>
 
@@ -76,7 +97,11 @@ const props = defineProps({
           </ul>
         </div>
 
-        <div v-if="variant === 'split' && image" class="hero__media">
+        <div
+          v-if="variant === 'split' && image"
+          class="hero__media"
+          :class="{ 'hero__media--desktop-only': !mediaOnMobile }"
+        >
           <img
             :src="image"
             :alt="imageAlt"
